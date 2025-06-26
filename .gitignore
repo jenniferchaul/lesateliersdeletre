@@ -1,0 +1,31 @@
+# Fichiers de configuration 
+wp-config.php
+.htaccess
+
+# Fichiers de log
+*.log
+
+# Fichiers système 
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires / éditeurs
+.*.swp
+*.swo
+
+# Répertoires WordPress générés automatiquement
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# Plugins (ne pas suivre ceux installés, sauf si tu en développes un)
+wp-content/plugins/**
+!wp-content/plugins/
+
+# Thèmes : ignorer tous les thèmes sauf ton thème custom
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/lesateliersdeletre
+
+
+
