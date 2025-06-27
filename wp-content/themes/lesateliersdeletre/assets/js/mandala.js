@@ -12,7 +12,7 @@ ctx.scale(scale, scale);
 
 const center = {x: width / 2 , y: height / 2};
 const radius = (width / 2);
-const slices = 16;
+const slices = 10;
 const _angle = 360 / slices;
 let _start = 0;
 

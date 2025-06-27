@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 
 error_log('=== functions.php chargé ===');
@@ -80,12 +76,12 @@ wp_add_inline_script('aos-js', 'AOS.init({
         true
     );
 
-        wp_enqueue_script(
-        'mandala-js',
-        get_theme_file_uri('assets/js/mandala.js'),
-        [],
-        '1.0.0',
-        true
-    );
+    //   wp_enqueue_script(
+    //   'mandala-js',
+    //   get_theme_file_uri('assets/js/mandala.js'),
+    //   [],
+    //   '1.0.0',
+    //   true
+    //;
 });
 
