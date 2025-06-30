@@ -188,6 +188,67 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener('scroll', () => {
+  const bg = document.querySelector('.background');
+  if (!bg) return;
+
+  const scrollY = window.scrollY || window.pageYOffset;
+  const speed = 0.05; // ← effet léger, fluide
+  bg.style.transform = `translateY(${scrollY * speed}px)`;
+});
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  /* ---------- Init Splide ---------- */
+  const splide = new Splide('#tubeSplide', {
+    type: 'loop',
+    autoWidth: true,          // chaque slide garde sa largeur
+    focus: 'center',
+    gap: '2rem',
+    drag: true,
+    speed: 900,               // transition entre slides
+    autoplay: true,
+    interval: 4000,           // 4 s
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    arrows: false,
+    pagination: false,
+    wheel: true,              // molette horizontale
+  });
 
+  /* ---------- Effet tube 3D ---------- */
+  const ROT = 30;       // angle Y max
+  const OFF = 70;       // translateY max
+  const SCALE_MIN = 0.75;
+
+  function updateTube() {
+    const curr = splide.index;
+    const len  = splide.length;
+
+    splide.Components.Elements.list.childNodes.forEach(slide => {
+      if (!slide.classList) return;                 // texte / commentaires ignorés
+      const sIndex = parseInt(slide.getAttribute('data-splide-slide-index'));
+      let diff = sIndex - curr;
+      // gestion boucle (ex : -9 → +1)
+      if (diff >  len/2) diff -= len;
+      if (diff < -len/2) diff += len;
+
+      const p = diff;                               // -∞ …0… +∞
+      const rotate = p * ROT;
+      const translateY = OFF * Math.pow(p, 2) * Math.sign(p);
+      const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), .25);
+      const bright = 1 - Math.min(Math.abs(p) * 0.35, .35);
+
+      slide.style.transform =
+        `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
+      slide.style.filter = `brightness(${bright})`;
+    });
+  }
+
+  splide.on('mounted move', updateTube);
+  splide.mount();
+
+  /* Pause auto-slide pendant le drag “manuel” */
+  splide.on('drag', () => splide.Components.Autoplay.pause());
+  splide.on('dragged', () => splide.Components.Autoplay.play());
+});

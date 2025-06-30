@@ -9,11 +9,84 @@
 
   <?php wp_head(); ?>
 </head>
- 
+
 <body <?php body_class(); ?>>
 
-  <div id="cursor-dot"></div>
+  <div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
+
+  <div id="cursor-dot"></div>
 
   <div id="loader">
     <div class="breathing-effect"></div>
@@ -22,81 +95,6 @@
       <h2>Catherine Revollon – Art-thérapeute</h2>
     </div>
   </div>
-
-    <div class="background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-
-  </div>
-
 
   <header class="navbar">
     <div class="navbar-left">

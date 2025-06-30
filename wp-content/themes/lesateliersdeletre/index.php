@@ -9,6 +9,10 @@
 
 <?php get_template_part('partials/outils.tpl'); ?>
 
-<?php get_template_part('partials/test.tpl'); ?>
+<?php get_template_part('partials/ateliers.tpl'); ?>
+
+<?php get_template_part('partials/galerie.tpl'); ?>
+
+<?php get_template_part('partials/contact.tpl'); ?>
 
 <?php get_footer(); ?>

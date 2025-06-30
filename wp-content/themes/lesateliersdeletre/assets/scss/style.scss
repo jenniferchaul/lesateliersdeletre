@@ -4,10 +4,10 @@
 
 html,
 body {
-    height: auto;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // ← stoppe les débordements horizontaux
+  position: relative;
 }
 
 
@@ -18,47 +18,51 @@ body {
             rgb(46, 39, 9) 60%,
             rgba(44, 36, 14, 0.94) 85%,
             rgba(20, 17, 8, 0.9) 100%);
-}
+            //position: relative;
+            
 
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+    .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  will-change: transform;
 
-    span {
-        width: 0.8vmin;
-        height: 0.8vmin;
-        border-radius: 50%;
-        position: absolute;
-        animation-name: move;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        backface-visibility: hidden;
+        span {
+            width: 1vmin;
+            height: 1vmin;
+            border-radius: 50%;
+            position: absolute;
+            animation-name: move;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            backface-visibility: hidden;
 
-        @for $i from 1 through 70 {
-            &:nth-child(#{$i}) {
-                $goldVariants: (
-                    rgba(212, 175, 55, 0.2),
-                    rgba(212, 175, 55, 0.4),
-                    rgba(212, 175, 55, 0.6)
-                );
-            $color: nth($goldVariants, random(length($goldVariants)));
-            top: random(100) * 1%;
-            left: random(100) * 1%;
-            animation-duration: (random(10) + 25) * 1s;
-            animation-delay: -1 * (random(16) + 4) * 1s;
-            transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
-            $x: if(random() > 0.5, -1, 1);
-            box-shadow: 25vmin 0 (random() + 0.3) * 5px $color;
+            @for $i from 1 through 40 {
+                &:nth-child(#{$i}) {
+                    $goldVariants: (
+                        rgba(212, 175, 55, 0.2),
+                        rgba(212, 175, 55, 0.4),
+                        rgba(212, 175, 55, 0.6)
+                    );
+                $color: nth($goldVariants, random(length($goldVariants)));
+                top: random(100) * 1%;
+                left: random(100) * 1%;
+                animation-duration: (random(10) + 25) * 1s;
+                animation-delay: -1 * (random(16) + 4) * 1s;
+                transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+                $x: if(random() > 0.5, -1, 1);
+                box-shadow: 25vmin 0 (random() + 0.3) * 5px $color;
+            }
         }
     }
 }
 }
+
 
 
 .background-layer {
@@ -488,45 +492,6 @@ header {
     overflow: hidden;
     z-index: 1;
 
-    .background {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 0;
-
-        span {
-            width: 1vmin;
-            height: 1vmin;
-            border-radius: 50%;
-            position: absolute;
-            animation-name: move;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            backface-visibility: hidden;
-
-            @for $i from 1 through 40 {
-                &:nth-child(#{$i}) {
-                    $goldVariants: (
-                        rgba(212, 175, 55, 0.2),
-                        rgba(212, 175, 55, 0.4),
-                        rgba(212, 175, 55, 0.6)
-                    );
-                $color: nth($goldVariants, random(length($goldVariants)));
-                top: random(100) * 1%;
-                left: random(100) * 1%;
-                animation-duration: (random(10) + 25) * 1s;
-                animation-delay: -1 * (random(16) + 4) * 1s;
-                transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
-                $x: if(random() > 0.5, -1, 1);
-                box-shadow: 25vmin 0 (random() + 0.3) * 5px $color;
-            }
-        }
-    }
-}
-
 .logo img {
     width: clamp(259px, 42vw, 792px);
     margin-bottom: 11rem;
@@ -808,4 +773,135 @@ header {
             transform: translateY(-200%);
         }
     }
+}
+
+.section-stage {
+  padding: 6rem 7rem;
+  font-family: $montserrat;
+  background: transparent;
+
+  .container-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  .stage-title {
+    font-size: 80px;
+    color: $gold;
+    border-left: 2px solid $gold;
+    padding-left: 1.5rem;
+  }
+
+  .stage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @media (min-width: 900px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .stage-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+
+    .stage-card-inner {
+      color: $white;
+
+      h3 {
+        font-size: 30px;
+        color: $gold;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 0.7rem;
+
+        strong {
+          color: lighten($gold, 10%);
+        }
+      }
+
+      .btn-link {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.6rem 1.4rem;
+        border: 1px solid $gold;
+        color: $gold;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        font-weight: 500;
+
+        &:hover {
+          background: $gold;
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+$cyl-gold: #d4af37;
+
+.cylinder-gallery {
+  padding: 6rem 0 9rem;
+  text-align: center;
+  overflow: hidden;
+
+  .gallery-title {
+    font-size: 4.5rem;
+    color: $cyl-gold;
+    border-left: 2px solid $cyl-gold;
+    padding-left: 1.25rem;
+    margin-bottom: 4rem;
+    display: inline-block;
+  }
+
+  /* ----- Splide wrapper ----- */
+  #tubeSplide {
+    padding: 3rem 4vw;
+    cursor: grab;
+  }
+
+  /* ----- Slides ----- */
+  .tube-slide {
+    width: clamp(240px, 26vw, 380px);   /* responsive */
+    height: 460px;
+    border-radius: 22px;
+    overflow: hidden;
+    transition: transform .6s ease, filter .6s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  /* petit vignettage haut/bas si tu veux
+  &::before,&::after{
+    content:'';position:absolute;left:0;width:100%;height:80px;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 60%);
+    z-index:2;
+  }
+  &::after{top:auto;bottom:0;transform:scaleY(-1);}
+  */
 }

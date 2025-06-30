@@ -83,6 +83,22 @@ wp_add_inline_script('aos-js', 'AOS.init({
        '1.0.0',
        true
        );
+
+  wp_enqueue_style(
+    'splide-style',
+    'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css',
+    [],
+    '4.1.4'
+  );
+
+  wp_enqueue_script(
+    'splide-script',
+    'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js',
+    [],
+    '4.1.4',
+    true
+  );
+
 });
 
 
