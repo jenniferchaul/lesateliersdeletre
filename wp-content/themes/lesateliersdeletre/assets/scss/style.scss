@@ -733,7 +733,26 @@ header {
 .outils {
     position: relative;
     min-height: 100vh; // ou plus si besoin
-    padding: 5rem 0;
+    //padding: -10rem 0;
+    font-family: $montserrat;
+
+    .container-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .outils-title {
+        padding-left: 2rem;
+    }
+
+            h2 {
+            font-size: 80px;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            border-left: 2px solid $gold;
+            padding-left: 1rem;
+            text-align: center;
+        }
 
 
     .container {
@@ -757,6 +776,7 @@ header {
                 font-weight: 300;
                 line-height: 1.5;
                 margin-right: 50px;
+                color: $white;
             }
 
             .img-wrapper {

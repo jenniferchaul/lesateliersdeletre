@@ -5,7 +5,9 @@ let width = 900;
 canvas.style.width = width + "px";
 canvas.style.height = height + "px";
 
-let scale = window.devicePixelRatio;
+//let scale = window.devicePixelRatio;
+let scale = Math.min(window.devicePixelRatio, 1.5);
+
 canvas.width =  width * scale;
 canvas.height = height * scale;
 ctx.scale(scale, scale);
@@ -110,93 +112,93 @@ ctx.clearRect(-center.x, -center.y, width, height);
   }, true)
   
   // 3rd 2nd half
-  syncDraw(() => {
-    ctx.fillStyle = colors[4];
-    ctx.strokeStyle = colors[4];
-    ctx.beginPath();
-    ctx.arc(0, 0, r3x2, 0, d2r(_angle))
-    ctx.stroke()
-    
-    
-    ctx.beginPath();
-    ctx.moveTo(r3x2, 0);
-    ctx.quadraticCurveTo(getX(r3x1, -_angle/2), getY(r3x1, -_angle/2), getX(r3x1, -_angle/4), getY(r3x1, -_angle/4));
-    ctx.lineTo(r3x1, 0);
-    ctx.fill();
-    
-    ctx.strokeStyle = colors[4];
-    ctx.beginPath();
-    ctx.moveTo(r3x2, 0);
-    ctx.quadraticCurveTo(getX(r3x1, _angle/2), getY(r3x1, _angle/2), getX(r3x1, _angle/4), getY(r3x1, _angle/4));
-    ctx.lineTo(r3x1, 0);
-    ctx.stroke();
-    
-    ctx.fillStyle = colors[4];
-    ctx.beginPath();
-    ctx.moveTo(getX(r3x2, _angle/2), getY(r3x2, _angle/2));
-    ctx.quadraticCurveTo(r3x1, 0, getX(r3x1, _angle/4), getY(r3x1, _angle/4));
-    ctx.lineTo(getX(r3x1, _angle/2), getY(r3x1, _angle/2));
-    ctx.fill();
-    
-    ctx.strokeStyle = colors[4];
-    ctx.beginPath();
-    ctx.moveTo(getX(r3x2, _angle/2), getY(r3x2, _angle/2));
-    ctx.quadraticCurveTo(getX(r3x1, _angle), getY(r3x1, _angle), getX(r3x1, 3*_angle/4), getY(r3x1, 3*_angle/4));
-    ctx.lineTo(r3x1, 0);
-    ctx.stroke();
-    
-    
-    ctx.beginPath();
-    ctx.moveTo(r3x1 + 12, 0)
-    ctx.lineTo(r3x1 + 12, 12);
-    ctx.moveTo(r3x1 + 16, 0)
-    ctx.lineTo(r3x1 + 16, 12);
-    ctx.moveTo(r3x1 + 20, 0)
-    ctx.lineTo(r3x1 + 20, 12);
-    ctx.moveTo(r3x1 + 24, 0)
-    ctx.lineTo(r3x1 + 24, 11);
-    ctx.moveTo(r3x1 + 28, 0)
-    ctx.lineTo(r3x1 + 28, 10);
-    ctx.moveTo(r3x1 + 32, 0)
-    ctx.lineTo(r3x1 + 32, 9);
-    ctx.moveTo(r3x1 + 36, 0)
-    ctx.lineTo(r3x1 + 36, 8);
-    ctx.moveTo(r3x1 + 40, 0)
-    ctx.lineTo(r3x1 + 40, 7);
-    ctx.moveTo(r3x1 + 44, 0)
-    ctx.lineTo(r3x1 + 44, 6);
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r3x1 + 12, _angle/2), getY(r3x1 + 12, _angle/2))
-    ctx.lineTo(getX(r3x1 + 12, _angle/2),  getY(r3x1 + 12, 1.6*_angle/2));
-    ctx.moveTo(getX(r3x1 + 16, _angle/2), getY(r3x1 + 16, _angle/2))
-    ctx.lineTo(getX(r3x1 + 16, _angle/2),  getY(r3x1 + 16, 1.5*_angle/2));
-    ctx.moveTo(getX(r3x1 + 20, _angle/2), getY(r3x1 + 20, _angle/2))
-    ctx.lineTo(getX(r3x1 + 20, _angle/2),  getY(r3x1 + 20, 1.5*_angle/2));
-    ctx.moveTo(getX(r3x1 + 24, _angle/2), getY(r3x1 + 24, _angle/2))
-    ctx.lineTo(getX(r3x1 + 24, _angle/2),  getY(r3x1 + 24, 1.4*_angle/2));
-    ctx.moveTo(getX(r3x1 + 28, _angle/2), getY(r3x1 + 28, _angle/2))
-    ctx.lineTo(getX(r3x1 + 28, _angle/2),  getY(r3x1 + 28, 1.4*_angle/2));
-    ctx.moveTo(getX(r3x1 + 32, _angle/2), getY(r3x1 + 32, _angle/2))
-    ctx.lineTo(getX(r3x1 + 32, _angle/2),  getY(r3x1 + 32, 1.3*_angle/2));
-    ctx.moveTo(getX(r3x1 + 36, _angle/2), getY(r3x1 + 36, _angle/2))
-    ctx.lineTo(getX(r3x1 + 36, _angle/2),  getY(r3x1 + 36, 1.3*_angle/2));
-    ctx.moveTo(getX(r3x1 + 40, _angle/2), getY(r3x1 + 40, _angle/2))
-    ctx.lineTo(getX(r3x1 + 40, _angle/2),  getY(r3x1 + 40, 1.2*_angle/2));
-    ctx.moveTo(getX(r3x1 + 44, _angle/2), getY(r3x1 + 44, _angle/2))
-    ctx.lineTo(getX(r3x1 + 44, _angle/2),  getY(r3x1 + 44, 1.2*_angle/2));
-    ctx.stroke();
-    
-    
-    ctx.beginPath();
-    ctx.arc(getX(r3x2 - 10, _angle/4), getY(r3x2 - 10, _angle/4), 4, 0, d2r(360));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r3x2 - 10, 3*_angle/4), getY(r3x2 - 10, 3*_angle/4), 4, 0, d2r(360));
-    ctx.fill();
-  }, false)
+  //syncDraw(() => {
+  //  ctx.fillStyle = colors[4];
+  //  ctx.strokeStyle = colors[4];
+  //  ctx.beginPath();
+  //  ctx.arc(0, 0, r3x2, 0, d2r(_angle))
+  //  ctx.stroke()
+  //  
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r3x2, 0);
+  //  ctx.quadraticCurveTo(getX(r3x1, -_angle/2), getY(r3x1, -_angle/2), getX(r3x1, -_angle/4), getY(r3x1, -_angle/4));
+  //  ctx.lineTo(r3x1, 0);
+  //  ctx.fill();
+  //  
+  //  ctx.strokeStyle = colors[4];
+  //  ctx.beginPath();
+  //  ctx.moveTo(r3x2, 0);
+  //  ctx.quadraticCurveTo(getX(r3x1, _angle/2), getY(r3x1, _angle/2), getX(r3x1, _angle/4), getY(r3x1, _angle/4));
+  //  ctx.lineTo(r3x1, 0);
+  //  ctx.stroke();
+  //  
+  //  ctx.fillStyle = colors[4];
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r3x2, _angle/2), getY(r3x2, _angle/2));
+  //  ctx.quadraticCurveTo(r3x1, 0, getX(r3x1, _angle/4), getY(r3x1, _angle/4));
+  //  ctx.lineTo(getX(r3x1, _angle/2), getY(r3x1, _angle/2));
+  //  ctx.fill();
+  //  
+  //  ctx.strokeStyle = colors[4];
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r3x2, _angle/2), getY(r3x2, _angle/2));
+  //  ctx.quadraticCurveTo(getX(r3x1, _angle), getY(r3x1, _angle), getX(r3x1, 3*_angle/4), getY(r3x1, 3*_angle/4));
+  //  ctx.lineTo(r3x1, 0);
+  //  ctx.stroke();
+  //  
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r3x1 + 12, 0)
+  //  ctx.lineTo(r3x1 + 12, 12);
+  //  ctx.moveTo(r3x1 + 16, 0)
+  //  ctx.lineTo(r3x1 + 16, 12);
+  //  ctx.moveTo(r3x1 + 20, 0)
+  //  ctx.lineTo(r3x1 + 20, 12);
+  //  ctx.moveTo(r3x1 + 24, 0)
+  //  ctx.lineTo(r3x1 + 24, 11);
+  //  ctx.moveTo(r3x1 + 28, 0)
+  //  ctx.lineTo(r3x1 + 28, 10);
+  //  ctx.moveTo(r3x1 + 32, 0)
+  //  ctx.lineTo(r3x1 + 32, 9);
+  //  ctx.moveTo(r3x1 + 36, 0)
+  //  ctx.lineTo(r3x1 + 36, 8);
+  //  ctx.moveTo(r3x1 + 40, 0)
+  //  ctx.lineTo(r3x1 + 40, 7);
+  //  ctx.moveTo(r3x1 + 44, 0)
+  //  ctx.lineTo(r3x1 + 44, 6);
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r3x1 + 12, _angle/2), getY(r3x1 + 12, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 12, _angle/2),  getY(r3x1 + 12, 1.6*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 16, _angle/2), getY(r3x1 + 16, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 16, _angle/2),  getY(r3x1 + 16, 1.5*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 20, _angle/2), getY(r3x1 + 20, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 20, _angle/2),  getY(r3x1 + 20, 1.5*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 24, _angle/2), getY(r3x1 + 24, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 24, _angle/2),  getY(r3x1 + 24, 1.4*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 28, _angle/2), getY(r3x1 + 28, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 28, _angle/2),  getY(r3x1 + 28, 1.4*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 32, _angle/2), getY(r3x1 + 32, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 32, _angle/2),  getY(r3x1 + 32, 1.3*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 36, _angle/2), getY(r3x1 + 36, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 36, _angle/2),  getY(r3x1 + 36, 1.3*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 40, _angle/2), getY(r3x1 + 40, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 40, _angle/2),  getY(r3x1 + 40, 1.2*_angle/2));
+  //  ctx.moveTo(getX(r3x1 + 44, _angle/2), getY(r3x1 + 44, _angle/2))
+  //  ctx.lineTo(getX(r3x1 + 44, _angle/2),  getY(r3x1 + 44, 1.2*_angle/2));
+  //  ctx.stroke();
+  //  
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r3x2 - 10, _angle/4), getY(r3x2 - 10, _angle/4), 4, 0, d2r(360));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r3x2 - 10, 3*_angle/4), getY(r3x2 - 10, 3*_angle/4), 4, 0, d2r(360));
+  //  ctx.fill();
+  //}, false)
   
   // 3rd 1st half
   syncDraw(() => {
@@ -298,7 +300,7 @@ ctx.clearRect(-center.x, -center.y, width, height);
     ctx.moveTo(getX(r4+6, _angle/2 - 2.5), getY(r4+6, _angle/2 - 2.5));
     var tempR = 0;
     var tempA = 0;
-    for (let n = 0; n < 80; n++) {
+    for (let n = 0; n < 40; n++) {
         tempR += 0.10;
         tempA += (Math.PI * 2) / 50;
         const x = getX(r4+6, _angle/2 - 2.5) + tempR * Math.cos(tempA);
@@ -310,7 +312,7 @@ ctx.clearRect(-center.x, -center.y, width, height);
     ctx.moveTo(getX(r4+6, _angle/2 + 2.5), getY(r4+6, _angle/2 + 2.5));
     var tempR = 0;
     var tempA = 0;
-    for (let n = 0; n < 80; n++) {
+    for (let n = 0; n < 40; n++) {
         tempR += 0.10;
         tempA += (Math.PI * 2) / 50;
         const x = getX(r4+6, _angle/2 + 2.5) + tempR * Math.sin(tempA);
@@ -352,7 +354,7 @@ ctx.clearRect(-center.x, -center.y, width, height);
     ctx.moveTo(r3x2 + 8, getY(r3x2+5, _angle/2));
     var tempR = 0;
     var tempA = 0;
-    for (let n = 0; n < 80; n++) {
+    for (let n = 0; n < 40; n++) {
         tempR += 0.14;
         tempA += (Math.PI * 2) / 30;
         const x = r3x2+8 + tempR * Math.cos(tempA);
@@ -380,215 +382,215 @@ ctx.clearRect(-center.x, -center.y, width, height);
   
   
   //6th Circle elements
-  syncDraw(() => {
-    
-    ctx.strokeStyle = colors[2]
-    ctx.beginPath();
-    ctx.moveTo(r5, 0);
-    ctx.lineTo(r5 +20, 0)
-    ctx.lineTo(getX(r5 + 40, _angle/4), getY(r5 + 40, _angle/4))
-    ctx.lineTo(getX(r5 + 20, _angle/2), getY(r5 + 20, _angle/2))
-    ctx.lineTo(getX(r5, _angle/2), getY(r5, _angle/2))
-    ctx.arc(0, 0, r5, d2r(_angle/2), 0, true)
-    ctx.stroke();
-    
-    ctx.strokeStyle = colors[2]
-    ctx.beginPath();
-    ctx.moveTo(r5, 0);
-    ctx.lineTo(r5 +20, 0)
-    ctx.lineTo(getX(r5 + 40, -_angle/4), getY(r5 + 40, -_angle/4))
-    ctx.lineTo(getX(r5 + 20, -_angle/2), getY(r5 + 20, -_angle/2))
-    ctx.lineTo(getX(r5, -_angle/2), getY(r5, -_angle/2))
-    ctx.arc(0, 0, r5, d2r(-_angle/2), 0)
-    ctx.stroke();
-  
-    ctx.fillStyle = colors[1]
-    ctx.beginPath();
-    ctx.moveTo(getX(r5 + 40, -_angle/4), getY(r5 + 40, -_angle/4));
-    ctx.lineTo(getX(r5 + 60, -_angle/4), getY(r5 + 60, -_angle/4))
-    ctx.lineTo(getX(r5 + 80, 0), getY(r5 + 80, 0))
-    ctx.lineTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4))
-    ctx.lineTo(getX(r5+ 40, _angle/4), getY(r5+ 40, _angle/4))
-    ctx.lineTo(getX(r5+ 40, _angle/4), getY(r5+ 40, _angle/4))
-    ctx.lineTo(r5+ 20, 0)
-    ctx.fill();
-    
-    ctx.strokeStyle = colors[2]
-    ctx.beginPath();
-    ctx.moveTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4));
-    ctx.lineTo(getX(r5 + 80, _angle/2), getY(r5 + 80, _angle/2))
-    ctx.lineTo(getX(r5 + 60, 3*_angle/4), getY(r5 + 60, 3*_angle/4));   
-    ctx.stroke();
-    
-    ctx.fillStyle = colors[2]
-    ctx.beginPath();
-    ctx.moveTo(r5 + 80, 0);
-    ctx.arc(0, 0, r5 + 80, 0, d2r(_angle/2))
-    ctx.lineTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5 + 80, _angle/2), getY(r5 + 80, _angle/2));
-    ctx.arc(0, 0, r5 + 80, d2r(_angle/2), d2r(_angle))
-    ctx.lineTo(getX(r5 + 60, 3*_angle/4), getY(r5 + 60, 3*_angle/4));
-    ctx.fill();
-    
-    ctx.fillStyle = '#fff';
-    ctx.beginPath();
-    ctx.moveTo(r5+30, 0);
-    ctx.bezierCurveTo(getX(r5 + 70, _angle/10), getY(r5+70, _angle/10), getX(r5+70, -_angle/10), getY(r5+60, -_angle/10), r5+30, 0);
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(r5+30, 0);
-    ctx.bezierCurveTo(getX(r5 + 50, -_angle/4), getY(r5 + 50, -_angle/4), getX(r5 + 50, -_angle/10), getY(r5 + 50, -_angle/15), r5+30, 0);
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(r5+30, 0);
-    ctx.bezierCurveTo(getX(r5 + 50, _angle/4), getY(r5 + 50, _angle/4), getX(r5 + 50, _angle/10), getY(r5 + 50, _angle/15), r5+30, 0);
-    ctx.fill();
-    
-    
-    ctx.fillStyle = colors[1];
-    ctx.beginPath();
-    ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.bezierCurveTo(getX(r5 + 70, _angle/2 -2), getY(r5+70, _angle/2 - 2), getX(r5+70, _angle/2 +2), getY(r5+60, _angle/2+2), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.bezierCurveTo(getX(r5 + 50, _angle/2-5), getY(r5 + 50, _angle/2-5), getX(r5 + 50, _angle/2 - 1), getY(r5 + 50, _angle/2 -1), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.bezierCurveTo(getX(r5 + 50, _angle/2+5), getY(r5 + 50, _angle/2+5), getX(r5 + 50, _angle/2 + 1), getY(r5 + 50, _angle/2 +1), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
-    ctx.fill();
-    
-    ctx.strokeStyle = colors[2];
-    ctx.beginPath();
-    ctx.moveTo(r5 + 10, getY(r5+5, _angle/4));
-    var tempR = 0;
-    var tempA = 0;
-    for (let n = 0; n < 99; n++) {
-        tempR += 0.14;
-        tempA += (Math.PI * 2) / 30;
-        const x = r5+10 + tempR * Math.cos(tempA);
-        const y = getY(r5+10, _angle/4) + tempR * Math.sin(tempA);
-        ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    
-    
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.bezierCurveTo(getX(r5 + 35, -_angle/4-2), getY(r5+ 35, -_angle/4-2), getX(r5 + 35, -_angle/4+2), getY(r5+ 35, -_angle/4+2), getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.bezierCurveTo(getX(r5 + 25, -_angle/4-4), getY(r5+ 25, -_angle/4-4), getX(r5 + 25, -_angle/4-1), getY(r5+ 25, -_angle/4-1), getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.bezierCurveTo(getX(r5 + 25, -_angle/4+4), getY(r5+ 25, -_angle/4+4), getX(r5 + 25, -_angle/4+1), getY(r5+ 25, -_angle/4+1), getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.bezierCurveTo(getX(r5 + 15, -_angle/4-5), getY(r5+ 15, -_angle/4-5), getX(r5 + 15, -_angle/4-2), getY(r5+15, -_angle/4-2), getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.bezierCurveTo(getX(r5 + 15, -_angle/4+5), getY(r5+ 15, -_angle/4+5), getX(r5 + 15, -_angle/4+2), getY(r5+15, -_angle/4+2), getX(r5, -_angle/4), getY(r5, -_angle/4));
-    ctx.stroke();
-    
-    ctx.fillStyle = colors[2];
-    ctx.beginPath();
-    ctx.arc(getX(r5 + 31, 3*_angle/4), getY(r5+31,3*_angle/4), 2, 0, d2r(360));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r5+23, 3*_angle/4-2.5), getY(r5+23,3*_angle/4-2.5), 2, 0, d2r(360));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r5+23, 3*_angle/4+2.5), getY(r5+23,3*_angle/4+2.5), 2, 0, d2r(360));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r5+12, 3*_angle/4-3.5), getY(r5+12,3*_angle/4-3.5), 2, 0, d2r(360));
-    ctx.fill();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r5+12, 3*_angle/4+3.5), getY(r5+12,3*_angle/4+3.5), 2, 0, d2r(360));
-    ctx.fill();
-  
-  }, true)
+  //syncDraw(() => {
+  //  
+  //  ctx.strokeStyle = colors[2]
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5, 0);
+  //  ctx.lineTo(r5 +20, 0)
+  //  ctx.lineTo(getX(r5 + 40, _angle/4), getY(r5 + 40, _angle/4))
+  //  ctx.lineTo(getX(r5 + 20, _angle/2), getY(r5 + 20, _angle/2))
+  //  ctx.lineTo(getX(r5, _angle/2), getY(r5, _angle/2))
+  //  ctx.arc(0, 0, r5, d2r(_angle/2), 0, true)
+  //  ctx.stroke();
+  //  
+  //  ctx.strokeStyle = colors[2]
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5, 0);
+  //  ctx.lineTo(r5 +20, 0)
+  //  ctx.lineTo(getX(r5 + 40, -_angle/4), getY(r5 + 40, -_angle/4))
+  //  ctx.lineTo(getX(r5 + 20, -_angle/2), getY(r5 + 20, -_angle/2))
+  //  ctx.lineTo(getX(r5, -_angle/2), getY(r5, -_angle/2))
+  //  ctx.arc(0, 0, r5, d2r(-_angle/2), 0)
+  //  ctx.stroke();
+  //
+  //  ctx.fillStyle = colors[1]
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5 + 40, -_angle/4), getY(r5 + 40, -_angle/4));
+  //  ctx.lineTo(getX(r5 + 60, -_angle/4), getY(r5 + 60, -_angle/4))
+  //  ctx.lineTo(getX(r5 + 80, 0), getY(r5 + 80, 0))
+  //  ctx.lineTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4))
+  //  ctx.lineTo(getX(r5+ 40, _angle/4), getY(r5+ 40, _angle/4))
+  //  ctx.lineTo(getX(r5+ 40, _angle/4), getY(r5+ 40, _angle/4))
+  //  ctx.lineTo(r5+ 20, 0)
+  //  ctx.fill();
+  //  
+  //  ctx.strokeStyle = colors[2]
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4));
+  //  ctx.lineTo(getX(r5 + 80, _angle/2), getY(r5 + 80, _angle/2))
+  //  ctx.lineTo(getX(r5 + 60, 3*_angle/4), getY(r5 + 60, 3*_angle/4));   
+  //  ctx.stroke();
+  //  
+  //  ctx.fillStyle = colors[2]
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5 + 80, 0);
+  //  ctx.arc(0, 0, r5 + 80, 0, d2r(_angle/2))
+  //  ctx.lineTo(getX(r5 + 60, _angle/4), getY(r5 + 60, _angle/4));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5 + 80, _angle/2), getY(r5 + 80, _angle/2));
+  //  ctx.arc(0, 0, r5 + 80, d2r(_angle/2), d2r(_angle))
+  //  ctx.lineTo(getX(r5 + 60, 3*_angle/4), getY(r5 + 60, 3*_angle/4));
+  //  ctx.fill();
+  //  
+  //  ctx.fillStyle = '#fff';
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5+30, 0);
+  //  ctx.bezierCurveTo(getX(r5 + 70, _angle/10), getY(r5+70, _angle/10), getX(r5+70, -_angle/10), getY(r5+60, -_angle/10), r5+30, 0);
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5+30, 0);
+  //  ctx.bezierCurveTo(getX(r5 + 50, -_angle/4), getY(r5 + 50, -_angle/4), getX(r5 + 50, -_angle/10), getY(r5 + 50, -_angle/15), r5+30, 0);
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5+30, 0);
+  //  ctx.bezierCurveTo(getX(r5 + 50, _angle/4), getY(r5 + 50, _angle/4), getX(r5 + 50, _angle/10), getY(r5 + 50, _angle/15), r5+30, 0);
+  //  ctx.fill();
+  //  
+  //  
+  //  ctx.fillStyle = colors[1];
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.bezierCurveTo(getX(r5 + 70, _angle/2 -2), getY(r5+70, _angle/2 - 2), getX(r5+70, _angle/2 +2), getY(r5+60, _angle/2+2), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.bezierCurveTo(getX(r5 + 50, _angle/2-5), getY(r5 + 50, _angle/2-5), getX(r5 + 50, _angle/2 - 1), getY(r5 + 50, _angle/2 -1), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.bezierCurveTo(getX(r5 + 50, _angle/2+5), getY(r5 + 50, _angle/2+5), getX(r5 + 50, _angle/2 + 1), getY(r5 + 50, _angle/2 +1), getX(r5+30, _angle/2), getY(r5+30, _angle/2));
+  //  ctx.fill();
+  //  
+  //  ctx.strokeStyle = colors[2];
+  //  ctx.beginPath();
+  //  ctx.moveTo(r5 + 10, getY(r5+5, _angle/4));
+  //  var tempR = 0;
+  //  var tempA = 0;
+  //  for (let n = 0; n < 99; n++) {
+  //      tempR += 0.14;
+  //      tempA += (Math.PI * 2) / 30;
+  //      const x = r5+10 + tempR * Math.cos(tempA);
+  //      const y = getY(r5+10, _angle/4) + tempR * Math.sin(tempA);
+  //      ctx.lineTo(x, y);
+  //  }
+  //  ctx.stroke();
+  //  
+  //  
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.bezierCurveTo(getX(r5 + 35, -_angle/4-2), getY(r5+ 35, -_angle/4-2), getX(r5 + 35, -_angle/4+2), getY(r5+ 35, -_angle/4+2), getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.bezierCurveTo(getX(r5 + 25, -_angle/4-4), getY(r5+ 25, -_angle/4-4), getX(r5 + 25, -_angle/4-1), getY(r5+ 25, -_angle/4-1), getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.bezierCurveTo(getX(r5 + 25, -_angle/4+4), getY(r5+ 25, -_angle/4+4), getX(r5 + 25, -_angle/4+1), getY(r5+ 25, -_angle/4+1), getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.bezierCurveTo(getX(r5 + 15, -_angle/4-5), getY(r5+ 15, -_angle/4-5), getX(r5 + 15, -_angle/4-2), getY(r5+15, -_angle/4-2), getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.bezierCurveTo(getX(r5 + 15, -_angle/4+5), getY(r5+ 15, -_angle/4+5), getX(r5 + 15, -_angle/4+2), getY(r5+15, -_angle/4+2), getX(r5, -_angle/4), getY(r5, -_angle/4));
+  //  ctx.stroke();
+  //  
+  //  ctx.fillStyle = colors[2];
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r5 + 31, 3*_angle/4), getY(r5+31,3*_angle/4), 2, 0, d2r(360));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r5+23, 3*_angle/4-2.5), getY(r5+23,3*_angle/4-2.5), 2, 0, d2r(360));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r5+23, 3*_angle/4+2.5), getY(r5+23,3*_angle/4+2.5), 2, 0, d2r(360));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r5+12, 3*_angle/4-3.5), getY(r5+12,3*_angle/4-3.5), 2, 0, d2r(360));
+  //  ctx.fill();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r5+12, 3*_angle/4+3.5), getY(r5+12,3*_angle/4+3.5), 2, 0, d2r(360));
+  //  ctx.fill();
+  //
+  //}, true)
   
   //7th circle
-  syncDraw(() => {
-    
-    ctx.strokeStyle = colors[1]
-    ctx.beginPath();
-    ctx.moveTo(r6, 0);
-    ctx.bezierCurveTo(r6 + 25, 0, getX(r6 + 25, -_angle/4), getY(r6 + 25, -_angle/4), getX(r6 + 50, -_angle/4), getY(r6 + 50, -_angle/4),);
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r6, -_angle/2), getY(r6, -_angle/2));
-    ctx.bezierCurveTo(getX(r6 + 25, -_angle/2), getY(r6 + 25, -_angle/2), getX(r6 + 25, -_angle/4), getY(r6 + 25, -_angle/4), getX(r6 + 50, -_angle/4), getY(r6 + 50, -_angle/4),);
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(r6, 0);
-    ctx.bezierCurveTo(r6 + 25, 0, getX(r6 + 25, _angle/4), getY(r6 + 25, _angle/4), getX(r6 + 50, _angle/4), getY(r6 + 50, _angle/4),);
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(getX(r6, _angle/2), getY(r6, _angle/2));
-    ctx.bezierCurveTo(getX(r6 + 25, _angle/2), getY(r6 + 25, _angle/2), getX(r6 + 25, _angle/4), getY(r6 + 25, _angle/4), getX(r6 + 50, _angle/4), getY(r6 + 50, _angle/4),);
-    ctx.stroke();
-    
-    
-    ctx.strokeStyle = colors[2];
-    ctx.beginPath();
-    ctx.moveTo(r6 + 8, getY(r6+5, _angle/4));
-    var tempR = 0;
-    var tempA = 0;
-    for (let n = 0; n < 135; n++) {
-        tempR += 0.09;
-        tempA += (Math.PI * 2) / 30;
-        const x = r6+8 + tempR * Math.cos(tempA);
-        const y = getY(r6+8, _angle/4) + tempR * Math.sin(tempA);
-        ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.moveTo(r6 + 8, getY(r6+5, -_angle/4));
-    var tempR = 0;
-    var tempA = 0;
-    for (let n = 0; n < 135; n++) {
-        tempR += 0.09;
-        tempA += (Math.PI * 2) / 30;
-        const x = r6+8 + tempR * Math.cos(tempA);
-        const y = getY(r6+8, -_angle/4) + tempR * Math.sin(tempA);
-        ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.arc(getX(r6+27, _angle/4), getY(r6+27,_angle/4), 3, 0, d2r(360));
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(getX(r6+27, 3*_angle/4), getY(r6+27,3*_angle/4), 3, 0, d2r(360));
-    ctx.fill();
-  }, false)
+  //syncDraw(() => {
+  //  
+  //  ctx.strokeStyle = colors[1]
+  //  ctx.beginPath();
+  //  ctx.moveTo(r6, 0);
+  //  ctx.bezierCurveTo(r6 + 25, 0, getX(r6 + 25, -_angle/4), getY(r6 + 25, -_angle/4), getX(r6 + 50, -_angle/4), getY(r6 + 50, -_angle/4),);
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r6, -_angle/2), getY(r6, -_angle/2));
+  //  ctx.bezierCurveTo(getX(r6 + 25, -_angle/2), getY(r6 + 25, -_angle/2), getX(r6 + 25, -_angle/4), getY(r6 + 25, -_angle/4), getX(r6 + 50, -_angle/4), getY(r6 + 50, -_angle/4),);
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r6, 0);
+  //  ctx.bezierCurveTo(r6 + 25, 0, getX(r6 + 25, _angle/4), getY(r6 + 25, _angle/4), getX(r6 + 50, _angle/4), getY(r6 + 50, _angle/4),);
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(getX(r6, _angle/2), getY(r6, _angle/2));
+  //  ctx.bezierCurveTo(getX(r6 + 25, _angle/2), getY(r6 + 25, _angle/2), getX(r6 + 25, _angle/4), getY(r6 + 25, _angle/4), getX(r6 + 50, _angle/4), getY(r6 + 50, _angle/4),);
+  //  ctx.stroke();
+  //  
+  //  
+  //  ctx.strokeStyle = colors[2];
+  //  ctx.beginPath();
+  //  ctx.moveTo(r6 + 8, getY(r6+5, _angle/4));
+  //  var tempR = 0;
+  //  var tempA = 0;
+  //  for (let n = 0; n < 135; n++) {
+  //      tempR += 0.09;
+  //      tempA += (Math.PI * 2) / 30;
+  //      const x = r6+8 + tempR * Math.cos(tempA);
+  //      const y = getY(r6+8, _angle/4) + tempR * Math.sin(tempA);
+  //      ctx.lineTo(x, y);
+  //  }
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.moveTo(r6 + 8, getY(r6+5, -_angle/4));
+  //  var tempR = 0;
+  //  var tempA = 0;
+  //  for (let n = 0; n < 135; n++) {
+  //      tempR += 0.09;
+  //      tempA += (Math.PI * 2) / 30;
+  //      const x = r6+8 + tempR * Math.cos(tempA);
+  //      const y = getY(r6+8, -_angle/4) + tempR * Math.sin(tempA);
+  //      ctx.lineTo(x, y);
+  //  }
+  //  ctx.stroke();
+  //  
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r6+27, _angle/4), getY(r6+27,_angle/4), 3, 0, d2r(360));
+  //  ctx.fill();
+  //  ctx.beginPath();
+  //  ctx.arc(getX(r6+27, 3*_angle/4), getY(r6+27,3*_angle/4), 3, 0, d2r(360));
+  //  ctx.fill();
+  //}, false)
   
   
   window.requestAnimationFrame(init);
