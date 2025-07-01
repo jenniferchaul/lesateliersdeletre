@@ -15,4 +15,9 @@
 
 <?php get_template_part('partials/contact.tpl'); ?>
 
+<?php get_template_part('partials/blog.tpl'); ?>
+
+<?php get_template_part('partials/avis.tpl'); ?>
+
+
 <?php get_footer(); ?>

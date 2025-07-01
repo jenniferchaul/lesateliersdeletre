@@ -102,3 +102,62 @@ wp_add_inline_script('aos-js', 'AOS.init({
 });
 
 
+function jcdev_create_fake_posts() {
+  if (get_option('jcdev_fake_posts_created')) return;
+
+  $titles = [
+    'L’art-thérapie : une reconnexion à soi',
+    'Créer avec ses mains pour apaiser l’esprit',
+    'Quand les couleurs expriment ce que les mots taisent',
+    'L’intuition artistique chez l’adulte',
+    'Comment se déroule une séance d’art-thérapie ?',
+    'Pourquoi l’art peut soigner',
+  ];
+
+  $images = [
+    'dessin1.jpg',
+    'dessin2.jpg',
+    'dessin3.jpg',
+    'dessin4.jpg',
+    'dessin.jpg',
+    'dessin2.jpg',
+  ];
+
+  foreach ($titles as $index => $title) {
+    $post_id = wp_insert_post([
+      'post_title'   => $title,
+      'post_content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum, nisi ut convallis luctus, enim nisl posuere risus, nec laoreet magna arcu non lorem. Donec in suscipit sem.',
+      'post_status'  => 'publish',
+      'post_author'  => 1,
+      'post_excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      'post_category' => [1]
+    ]);
+
+    if ($post_id && !is_wp_error($post_id)) {
+      // Associe une image à l’article (doit déjà être dans la médiathèque ou dans uploads)
+      $upload_dir = wp_upload_dir();
+      $image_path = get_template_directory() . '/assets/images/' . $images[$index];
+
+      if (file_exists($image_path)) {
+        $filetype = wp_check_filetype(basename($image_path), null);
+        $attachment = [
+          'post_mime_type' => $filetype['type'],
+          'post_title'     => sanitize_file_name(basename($image_path)),
+          'post_content'   => '',
+          'post_status'    => 'inherit'
+        ];
+
+        $attach_id = wp_insert_attachment($attachment, $image_path, $post_id);
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        $attach_data = wp_generate_attachment_metadata($attach_id, $image_path);
+        wp_update_attachment_metadata($attach_id, $attach_data);
+        set_post_thumbnail($post_id, $attach_id);
+      }
+    }
+  }
+
+  update_option('jcdev_fake_posts_created', true);
+}
+add_action('after_setup_theme', 'jcdev_create_fake_posts');
+
+

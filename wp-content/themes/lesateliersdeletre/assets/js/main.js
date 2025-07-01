@@ -199,56 +199,134 @@ window.addEventListener('scroll', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ---------- Init Splide ---------- */
+  const glider = new Glider(document.querySelector('.glider'), {
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    draggable: true,
+    arrows: {
+      prev: '.glider-prev',
+      next: '.glider-next'
+    },
+    rewind: true,
+    duration: 0.6,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
+  const slides = document.querySelectorAll('.tube-slide');
+
+  function applyTransforms() {
+    const center = window.innerWidth / 2;
+    slides.forEach(slide => {
+      const rect = slide.getBoundingClientRect();
+      const slideCenter = rect.left + rect.width / 2;
+      const offset = (slideCenter - center) / center;
+
+      const rotateY = -offset * 30;
+      const translateY = Math.pow(offset, 2) * 60 * Math.sign(offset);
+      const scale = 1 - Math.min(Math.abs(offset) * 0.25, 0.25);
+      const bright = 1 - Math.min(Math.abs(offset) * 0.35, 0.35);
+
+      slide.style.transform = `translateY(${translateY}px) rotateY(${rotateY}deg) scale(${scale})`;
+      slide.style.filter = `brightness(${bright})`;
+    });
+  }
+
+  applyTransforms();
+  window.addEventListener('resize', applyTransforms);
+  document.querySelector('.glider').addEventListener('scroll', () => {
+    requestAnimationFrame(applyTransforms);
+  });
+
+  // Auto scroll simulé
+  let autoScroll = setInterval(() => {
+    glider.scrollItem('next');
+  }, 4000);
+
+  document.querySelector('.glider').addEventListener('mousedown', () => clearInterval(autoScroll));
+  document.querySelector('.glider').addEventListener('mouseup', () => {
+    autoScroll = setInterval(() => {
+      glider.scrollItem('next');
+    }, 4000);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Splide('#avisSplide', {
+    type: 'loop',
+    perPage: 2,
+    gap: '2rem',
+    autoplay: true,
+    interval: 2000,
+    pauseOnHover: true,
+    breakpoints: {
+      768: { perPage: 1 },
+    },
+    arrows: false,
+    pagination: true,
+  }).mount();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   const splide = new Splide('#tubeSplide', {
     type: 'loop',
-    autoWidth: true,          // chaque slide garde sa largeur
+    perPage: 3,
     focus: 'center',
     gap: '2rem',
-    drag: true,
-    speed: 900,               // transition entre slides
+    speed: 1000,
     autoplay: true,
-    interval: 4000,           // 4 s
+    interval: 4000,
     pauseOnHover: true,
     pauseOnFocus: true,
     arrows: false,
     pagination: false,
-    wheel: true,              // molette horizontale
+    drag: true,
+    wheel: true,
+    breakpoints: {
+      768: { perPage: 1 },
+      1024: { perPage: 2 }
+    }
   });
 
-  /* ---------- Effet tube 3D ---------- */
-  const ROT = 30;       // angle Y max
-  const OFF = 70;       // translateY max
-  const SCALE_MIN = 0.75;
+  // effet incurvé
+  const ROT = 60;
+  const OFF = 80;
+  const SCALE_MIN = 0.6;
 
   function updateTube() {
     const curr = splide.index;
-    const len  = splide.length;
+    const len = splide.length;
 
     splide.Components.Elements.list.childNodes.forEach(slide => {
-      if (!slide.classList) return;                 // texte / commentaires ignorés
+      if (!slide.classList) return;
       const sIndex = parseInt(slide.getAttribute('data-splide-slide-index'));
       let diff = sIndex - curr;
-      // gestion boucle (ex : -9 → +1)
-      if (diff >  len/2) diff -= len;
-      if (diff < -len/2) diff += len;
+      if (diff > len / 2) diff -= len;
+      if (diff < -len / 2) diff += len;
 
-      const p = diff;                               // -∞ …0… +∞
+      const p = diff;
       const rotate = p * ROT;
       const translateY = OFF * Math.pow(p, 2) * Math.sign(p);
-      const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), .25);
-      const bright = 1 - Math.min(Math.abs(p) * 0.35, .35);
+      const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), 0.25);
+      const bright = 1 - Math.min(Math.abs(p) * 0.35, 0.35);
 
-      slide.style.transform =
-        `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
+      slide.style.transform = `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
       slide.style.filter = `brightness(${bright})`;
     });
   }
 
   splide.on('mounted move', updateTube);
   splide.mount();
-
-  /* Pause auto-slide pendant le drag “manuel” */
-  splide.on('drag', () => splide.Components.Autoplay.pause());
-  splide.on('dragged', () => splide.Components.Autoplay.play());
 });

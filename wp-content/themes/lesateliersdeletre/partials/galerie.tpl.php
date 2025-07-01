@@ -6,10 +6,9 @@
       <ul class="splide__list">
         <?php
           $imgs = ['dessin.jpg','dessin1.jpg','dessin2.jpg','dessin3.jpg','dessin4.jpg'];
-          /* répète 3 × pour la boucle infinie sans doublon immédiat */
           for ($r = 0; $r < 3; $r++) {
             foreach ($imgs as $k => $img) {
-              $index = ($k + $r) % count($imgs);     // décale
+              $index = ($k + $r) % count($imgs);
               echo '<li class="splide__slide tube-slide">';
               echo '<img src="' . get_template_directory_uri() . '/assets/images/' . $imgs[$index] . '" alt="">';
               echo '</li>';
