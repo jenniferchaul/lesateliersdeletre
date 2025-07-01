@@ -28,4 +28,7 @@
             </div>
         </div>
     </div>
+
+    <a href="/stages" class="cta-button">Tous les stages</a>
+
 </section>

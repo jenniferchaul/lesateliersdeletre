@@ -19,5 +19,7 @@
 
 <?php get_template_part('partials/avis.tpl'); ?>
 
+<?php get_template_part('partials/test.tpl'); ?>
+
 
 <?php get_footer(); ?>

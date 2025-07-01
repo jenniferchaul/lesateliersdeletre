@@ -7,59 +7,59 @@ define('THEME_VERSION', '1.0.0');
 add_action('after_setup_theme', 'lesateliersdeletre_initializeTheme');
 
 if (!function_exists('lesateliersdeletre_initializeTheme')) {
-    function lesateliersdeletre_initializeTheme()
-    {
-        add_theme_support('title-tag');
+  function lesateliersdeletre_initializeTheme()
+  {
+    add_theme_support('title-tag');
 
-        add_theme_support('post-thumbnails');
+    add_theme_support('post-thumbnails');
 
-        add_theme_support('menus');
+    add_theme_support('menus');
 
-        add_theme_support('page-attributes');
-    }
+    add_theme_support('page-attributes');
+  }
 }
 
 add_action('wp_enqueue_scripts', function () {
 
-    wp_enqueue_style(
-        'lesateliersdeletre-styles',
-        get_theme_file_uri('assets/css/style.css'),
-        [],
-        THEME_VERSION
-    );
+  wp_enqueue_style(
+    'lesateliersdeletre-styles',
+    get_theme_file_uri('assets/css/style.css'),
+    [],
+    THEME_VERSION
+  );
 
-    // Google Fonts
-    wp_enqueue_style(
-        'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap',
-        [],
-        null
-    );
+  // Google Fonts
+  wp_enqueue_style(
+    'google-fonts',
+    'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap',
+    [],
+    null
+  );
 
-    wp_enqueue_style(
-        'font-awesome',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
-        [],
-        '5.15.4'
-    );
+  wp_enqueue_style(
+    'font-awesome',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+    [],
+    '5.15.4'
+  );
 
-    // ✅ AOS (Animation on Scroll)
-    wp_enqueue_style(
-        'aos-css',
-        'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css',
-        [],
-        null
-    );
+  // ✅ AOS (Animation on Scroll)
+  wp_enqueue_style(
+    'aos-css',
+    'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css',
+    [],
+    null
+  );
 
-    wp_enqueue_script(
-        'aos-js',
-        'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js',
-        [],
-        null,
-        true
-    );
+  wp_enqueue_script(
+    'aos-js',
+    'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js',
+    [],
+    null,
+    true
+  );
 
-wp_add_inline_script('aos-js', 'AOS.init({
+  wp_add_inline_script('aos-js', 'AOS.init({
     once: true,
     duration: 800,
     delay: 100,
@@ -68,21 +68,21 @@ wp_add_inline_script('aos-js', 'AOS.init({
 });');
 
 
-    wp_enqueue_script(
-        'main-js',
-        get_theme_file_uri('assets/js/main.js'),
-        [],
-        '1.0.0',
-        true
-    );
+  wp_enqueue_script(
+    'main-js',
+    get_theme_file_uri('assets/js/main.js'),
+    [],
+    '1.0.0',
+    true
+  );
 
-       wp_enqueue_script(
-       'mandala-js',
-       get_theme_file_uri('assets/js/mandala.js'),
-       [],
-       '1.0.0',
-       true
-       );
+  wp_enqueue_script(
+    'mandala-js',
+    get_theme_file_uri('assets/js/mandala.js'),
+    [],
+    '1.0.0',
+    true
+  );
 
   wp_enqueue_style(
     'splide-style',
@@ -99,10 +99,46 @@ wp_add_inline_script('aos-js', 'AOS.init({
     true
   );
 
+  // GSAP Core
+  wp_enqueue_script(
+    'gsap',
+    'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js',
+    [],
+    '3.13.0',
+    true
+  );
+
+  // ScrollTrigger
+  wp_enqueue_script(
+    'gsap-scrolltrigger',
+    'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js',
+    ['gsap'],
+    '3.13.0',
+    true
+  );
+
+  // Splitting.js
+  wp_enqueue_script(
+    'splitting',
+    'https://unpkg.com/splitting/dist/splitting.min.js',
+    [],
+    null,
+    true
+  );
+
+  // Lenis (scroll fluide)
+  wp_enqueue_script(
+    'lenis',
+    'https://unpkg.com/lenis@1.3.4/dist/lenis.min.js',
+    [],
+    '1.3.4',
+    true
+  );
 });
 
 
-function jcdev_create_fake_posts() {
+function jcdev_create_fake_posts()
+{
   if (get_option('jcdev_fake_posts_created')) return;
 
   $titles = [
@@ -159,5 +195,3 @@ function jcdev_create_fake_posts() {
   update_option('jcdev_fake_posts_created', true);
 }
 add_action('after_setup_theme', 'jcdev_create_fake_posts');
-
-

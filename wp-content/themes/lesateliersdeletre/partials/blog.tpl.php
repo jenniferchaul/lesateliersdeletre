@@ -30,4 +30,7 @@
         </article>
     <?php endwhile; wp_reset_postdata(); ?>
   </div>
+
+  <a href="/blog" class="cta-button">Voir tous les articles</a>
+
 </section>

@@ -1,284 +1,170 @@
-// ---------------------------------------------
-// 1. Loader (animation d’intro)
-// ---------------------------------------------
-window.addEventListener("load", () => {
+// --------------------------------------------------
+// main.js — version sans Glider (Splide only)
+// --------------------------------------------------
+
+// 1. Loader
+window.addEventListener('load', () => {
   setTimeout(() => {
-    const loader = document.getElementById("loader");
-    if (loader) {
-      loader.classList.add("hidden");
-    }
-  }, 1000);
+    document.getElementById('loader')?.classList.add('hidden');
+  }, 9000);
 });
 
-// ---------------------------------------------
 // 2. Curseur personnalisé
-// ---------------------------------------------
-const cursor = document.getElementById("cursor-dot");
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
+const cursor = document.getElementById('cursor-dot');
+let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
-
-function animateCursor() {
-  currentX += (mouseX - currentX) * 0.15;
-  currentY += (mouseY - currentY) * 0.15;
-  cursor.style.left = `${currentX}px`;
-  cursor.style.top = `${currentY}px`;
+(function animateCursor () {
+  curX += (mouseX - curX) * 0.15;
+  curY += (mouseY - curY) * 0.15;
+  cursor.style.left = `${curX}px`;
+  cursor.style.top  = `${curY}px`;
   requestAnimationFrame(animateCursor);
-}
-animateCursor();
+})();
 
-// ---------------------------------------------
-// 3. Scroll vers la section intro-home
-// ---------------------------------------------
+// 3. Scroll vers #intro-home
 document.getElementById('scrollDown')?.addEventListener('click', (e) => {
   e.preventDefault();
   const target = document.querySelector('#intro-home');
-  if (target && typeof lenis !== 'undefined') {
-    lenis.scrollTo(target);
-  } else {
-    target?.scrollIntoView({ behavior: 'smooth' });
+  if (!target) return;
+  typeof lenis !== 'undefined'
+    ? lenis.scrollTo(target)
+    : target.scrollIntoView({ behavior: 'smooth' });
+});
+
+// 4. Animation de texte (Splitting + GSAP)
+const split = Splitting();
+gsap.registerPlugin(ScrollTrigger);
+split.forEach(s => {
+  gsap.from(s.words, {
+    color: '#dec449',
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: s.el.closest('.intro-text, .intro-text_customer'),
+      scrub: true,
+    }
+  });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const backToTop = document.getElementById('back-to-top');
+
+  if (backToTop) {
+    // Afficher le bouton au scroll
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // Remonter la page en douceur au clic
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
   }
 });
 
-// ---------------------------------------------
-// 4. Animation des textes (Splitting.js)
-// ---------------------------------------------
 
-let selection = Splitting()
-
-gsap.registerPlugin(ScrollTrigger)
-
-selection.forEach((split) => {
-  gsap.from(split.words, {
-    color: "#dec449",
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: ".intro-text",
-      scrub: true,
-    }
-  });
 });
 
-selection.forEach((split) => {
-  gsap.from(split.words, {
-    color: "#dec449",
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: ".intro-text_customer",
-      scrub: true,
-    }
-  });
-});
-
-// ---------------------------------------------
 // 5. Animation photo art-thérapeute
-// ---------------------------------------------
-
-gsap.from(".photo-art-therapeute", {
+gsap.from('.photo-art-therapeute', {
   scale: 0.8,
   opacity: 0,
   duration: 1.6,
-  ease: "power3.out",
+  ease: 'power3.out',
   scrollTrigger: {
-    trigger: ".photo-art-therapeute",
-    start: "top 80%",
-    toggleActions: "play none none none"
+    trigger: '.photo-art-therapeute',
+    start: 'top 80%',
+    toggleActions: 'play none none none'
   }
 });
 
-// ---------------------------------------------
-// 6. STACKING EFFECT (effet d’empilement)
-// ---------------------------------------------
+// 6. Stacking effect (section .outils)
+document.addEventListener('DOMContentLoaded', () => {
+  const cards   = gsap.utils.toArray('.stack-card');
+  const content = gsap.utils.toArray('.outils .content');
+  const texts   = gsap.utils.toArray('.outils .text');
+  const imgs    = gsap.utils.toArray('.outils .img-wrapper');
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const cards = gsap.utils.toArray(".stack-card");
-
-  cards.forEach((card, i) => {
-    const direction = i % 2 === 0 ? -1 : 1; // gauche/droite
-    gsap.fromTo(card,
+  cards.forEach((c, i) => {
+    const dir = i % 2 ? 1 : -1;
+    gsap.fromTo(c,
+      { y: i * 10, x: dir * 30, rotation: dir * 5, opacity: 0, zIndex: cards.length - i },
       {
-        y: i * 10,
-        x: direction * 30,
-        rotation: direction * 5,
-        opacity: 0,
-        zIndex: cards.length - i
-      },
-      {
-        y: 0,
-        x: 0,
-        rotation: 0,
-        opacity: 1,
+        y: 0, x: 0, rotation: 0, opacity: 1,
         scrollTrigger: {
-          trigger: ".stack-section",
-          start: "top top",
-          end: "+=200%",
+          trigger: '.stack-section',
+          start: 'top top',
+          end: '+=200%',
           scrub: true,
-          pin: ".stack-wrapper",
+          pin: '.stack-wrapper',
           pinSpacing: true
         }
-      }
-    );
+      });
   });
 
-  const contents = gsap.utils.toArray(".outils .content");
-  const texts = gsap.utils.toArray(".outils .text");
-  const imageWrappers = gsap.utils.toArray(".outils .img-wrapper");
-
-  //gsap.set(".content:first-child .text", { y: -50 });
-
-  //const tl = gsap.timeline({
-  //  defaults: { ease: "power2.out" },
-  //  scrollTrigger: {
-  //    trigger: ".outils",
-  //    pin: ".container",
-  //    start: "top top",
-  //    end: "+=${contents.length * 50}%",
-  //    scrub: 3,
-  //  },
-  //});
-
-  // Timeline avec scrollTrigger
+  // timeline de reveal
   const tl = gsap.timeline({
-    defaults: { ease: "power2.out" },
     scrollTrigger: {
-      trigger: ".outils",
+      trigger: '.outils',
       pin: true,
-      start: "top top",
-      end: `+=${contents.length * 50}%`,
+      start: 'top top',
+      end: `+=${content.length * 50}%`,
       scrub: 3,
-    },
+    }
   });
 
-  // Masquer tous les textes et images sauf le premier
   gsap.set(texts, { opacity: 0 });
-  gsap.set(imageWrappers, { opacity: 0, scale: 0.9 });
-
+  gsap.set(imgs , { opacity: 0, scale: 0.9 });
   gsap.set(texts[0], { opacity: 1 });
-  gsap.set(imageWrappers[0], { opacity: 1, scale: 1 });
+  gsap.set(imgs [0], { opacity: 1, scale: 1 });
 
-  // Z-index pour empilement visuel
-  //gsap.set(contents, { zIndex: 0 });
-  //gsap.set(contents[0], { zIndex: contents.length });
-
-
-  tl.to(imageWrappers[0], { rotate: -3 }, 0);
-
-  contents.forEach((_, i) => {
-    if (i === contents.length - 1) return;
-    
-    tl.to(texts[i], { opacity: 0, duration: 1 }, "+=0.5")
-      .to(imageWrappers[i], { opacity: 1, scale: 0.95, duration: 1 }, "<")
-      .to(contents[i + 1], { zIndex: contents.length + i + 1 }, "<")
-      .to(imageWrappers[i + 1], {
+  tl.to(imgs[0], { rotate: -3 }, 0);
+  content.forEach((_, i) => {
+    if (i === content.length - 1) return;
+    tl.to(texts[i], { opacity: 0, duration: 1 }, '+=0.5')
+      .to(imgs[i],  { opacity: 1, scale: 0.95, duration: 1 }, '<')
+      .to(content[i + 1], { zIndex: content.length + i + 1 }, '<')
+      .to(imgs[i + 1], {
         scale: 1,
         duration: 2,
         y: (i + 1) * 5,
         x: (i + 1) * -5,
         opacity: 1,
-        rotate: (i + 1) * 3 * (i % 2 === 0 ? 1 : -1),
-      }, "<")
-      .to(texts[i + 1], { opacity: 1, y: -50, duration: 2 }, "<+=0.5");
+        rotate: (i + 1) * 3 * (i % 2 ? -1 : 1)
+      }, '<')
+      .to(texts[i + 1], { opacity: 1, y: -50, duration: 2 }, '<+=0.5');
   });
 });
 
+// 7. Parallaxe légère du fond
 window.addEventListener('scroll', () => {
   const bg = document.querySelector('.background');
-  if (!bg) return;
-
-  const scrollY = window.scrollY || window.pageYOffset;
-  const speed = 0.05; // ← effet léger, fluide
-  bg.style.transform = `translateY(${scrollY * speed}px)`;
+  if (bg) bg.style.transform = `translateY(${(window.pageYOffset || 0)*0.05}px)`;
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const glider = new Glider(document.querySelector('.glider'), {
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    draggable: true,
-    arrows: {
-      prev: '.glider-prev',
-      next: '.glider-next'
-    },
-    rewind: true,
-    duration: 0.6,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  });
-
-  const slides = document.querySelectorAll('.tube-slide');
-
-  function applyTransforms() {
-    const center = window.innerWidth / 2;
-    slides.forEach(slide => {
-      const rect = slide.getBoundingClientRect();
-      const slideCenter = rect.left + rect.width / 2;
-      const offset = (slideCenter - center) / center;
-
-      const rotateY = -offset * 30;
-      const translateY = Math.pow(offset, 2) * 60 * Math.sign(offset);
-      const scale = 1 - Math.min(Math.abs(offset) * 0.25, 0.25);
-      const bright = 1 - Math.min(Math.abs(offset) * 0.35, 0.35);
-
-      slide.style.transform = `translateY(${translateY}px) rotateY(${rotateY}deg) scale(${scale})`;
-      slide.style.filter = `brightness(${bright})`;
-    });
-  }
-
-  applyTransforms();
-  window.addEventListener('resize', applyTransforms);
-  document.querySelector('.glider').addEventListener('scroll', () => {
-    requestAnimationFrame(applyTransforms);
-  });
-
-  // Auto scroll simulé
-  let autoScroll = setInterval(() => {
-    glider.scrollItem('next');
-  }, 4000);
-
-  document.querySelector('.glider').addEventListener('mousedown', () => clearInterval(autoScroll));
-  document.querySelector('.glider').addEventListener('mouseup', () => {
-    autoScroll = setInterval(() => {
-      glider.scrollItem('next');
-    }, 4000);
-  });
-});
-
+// 8. Splide — avis clients
 document.addEventListener('DOMContentLoaded', () => {
   new Splide('#avisSplide', {
-    type: 'loop',
-    perPage: 2,
-    gap: '2rem',
-    autoplay: true,
-    interval: 2000,
+    type       : 'loop',
+    perPage    : 2,
+    gap        : '2rem',
+    autoplay   : true,
+    interval   : 2000,
     pauseOnHover: true,
-    breakpoints: {
-      768: { perPage: 1 },
-    },
-    arrows: false,
-    pagination: true,
+    breakpoints: { 768: { perPage: 1 } },
+    arrows     : false,
+    pagination : true,
   }).mount();
 });
 
+// 9. Splide — galerie tube 3D
 document.addEventListener('DOMContentLoaded', () => {
   const splide = new Splide('#tubeSplide', {
     type: 'loop',
@@ -330,3 +216,84 @@ document.addEventListener('DOMContentLoaded', () => {
   splide.on('mounted move', updateTube);
   splide.mount();
 });
+
+
+// 10. Fade-in section Contact
+document.addEventListener('DOMContentLoaded', () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.contact-wrapper', {
+    y: 60,
+    opacity: 0,
+    duration: 1.1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.contact-intro',
+      start: 'top 80%',
+    },
+  });
+});
+
+let xPos = 0;
+
+gsap.timeline()
+    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
+    .set('.img',  { // apply transform rotations to each image
+      rotateY: (i)=> i*-36,
+      transformOrigin: '50% 50% 500px',
+      z: -500,
+      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
+      backgroundPosition:(i)=>getBgPos(i),
+      backfaceVisibility:'hidden'
+    })    
+    .from('.img', {
+      duration:1.5,
+      y:200,
+      opacity:0,
+      stagger:0.1,
+      ease:'expo'
+    })
+    .add(()=>{
+      $('.img').on('mouseenter', (e)=>{
+        let current = e.currentTarget;
+        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
+      })
+      $('.img').on('mouseleave', (e)=>{
+        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
+      })
+    }, '-=0.5')
+
+$(window).on('mousedown touchstart', dragStart);
+$(window).on('mouseup touchend', dragEnd);
+      
+
+function dragStart(e){ 
+  if (e.touches) e.clientX = e.touches[0].clientX;
+  xPos = Math.round(e.clientX);
+  gsap.set('.ring', {cursor:'grabbing'})
+  $(window).on('mousemove touchmove', drag);
+}
+
+
+function drag(e){
+  if (e.touches) e.clientX = e.touches[0].clientX;    
+
+  gsap.to('.ring', {
+    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
+    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+  });
+  
+  xPos = Math.round(e.clientX);
+}
+
+
+function dragEnd(e){
+  $(window).off('mousemove touchmove', drag);
+  gsap.set('.ring', {cursor:'grab'});
+}
+
+
+function getBgPos(i){ //returns the background-position string to create parallax movement in each image
+  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
+}
+

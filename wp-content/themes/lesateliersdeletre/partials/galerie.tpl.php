@@ -18,4 +18,9 @@
       </ul>
     </div>
   </div>
+
+  <p class="swipe-hint">↔︎ Glissez ou laissez défiler</p>
+
+  <a href="/galerie" class="cta-button">Voir toute la galerie</a>
+
 </section>

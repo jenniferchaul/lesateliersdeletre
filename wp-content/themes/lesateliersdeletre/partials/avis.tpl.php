@@ -1,7 +1,7 @@
 <section class="testimonials" id="avis">
   <div class="testimonials-header" data-aos="fade-up">
-    <h2 class="testimonials-title">Ce qu’ils disent de nous</h2>
-    <p class="testimonials-subtitle">Des retours précieux, touchants... et pleins d'étoiles ✨</p>
+    <h2 class="testimonials-title">Témoignages</h2>
+    <p class="testimonials-subtitle">Des mots sincères, laissés après un moment partagé ✨</p>
   </div>
 
   <div id="avisSplide" class="splide">
@@ -33,4 +33,3 @@
     </div>
   </div>
 </section>
-v
