@@ -332,3 +332,41 @@ document.addEventListener('DOMContentLoaded', () => {
     isPlaying ? play() : pause();
   });
 });
+
+/* ==============================================================
+   MENU BURGER : open / close + verrouillage scroll
+   ============================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+
+  const menu      = document.getElementById('siteMenu');
+  const openBtn   = document.querySelector('.menu-toggle');
+  const closeBtn  = menu.querySelector('.menu-close');
+  const links     = menu.querySelectorAll('a');           // fermer aussi sur clic lien
+
+  if (!menu || !openBtn || !closeBtn) return;
+
+  const openMenu = () => {
+    menu.classList.add('open');
+    document.body.classList.add('menu-open');
+    menu.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    menu.setAttribute('aria-hidden', 'true');
+  };
+
+  /* événements */
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  links.forEach(l => l.addEventListener('click', closeMenu));
+
+  /* ESC clavier */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+});
+

@@ -141,3 +141,30 @@
       </div>
     </div>
   </header>
+
+  <!-- ◊◊◊ MENU OVERLAY (desktop + mobile) ◊◊◊ -->
+  <div id="siteMenu" class="site-menu" aria-hidden="true">
+    <!-- bouton fermeture -->
+    <button class="menu-close" aria-label="Fermer le menu">
+      <span class="close-circle"></span>
+      <span class="close-icon">×</span>
+    </button>
+
+    <!-- navigation -->
+    <nav class="site-menu__nav">
+      <ul>
+        <li><a href="#intro-home"><span class="idx">(01)</span> Accueil</a></li>
+        <li><a href="#art-therapie"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
+        <li><a href="#apropos"><span class="idx">(03)</span> À Propos</a></li>
+        <li><a href="#activities"><span class="idx">(04)</span> Activités</a></li>
+        <li><a href="#blog"><span class="idx">(05)</span> Blog</a></li>
+        <li><a href="#contact"><span class="idx">(05)</span> Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- logo (en bas du menu) -->
+    <div class="site-menu__logo">
+      <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="Les Ateliers de l’Être">
+    </div>
+  </div>
+  <!-- ◊◊◊ /MENU OVERLAY ◊◊◊ -->

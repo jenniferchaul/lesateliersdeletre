@@ -1,0 +1,193 @@
+/* === MENU OVERLAY ============================================= */
+$menu-bg: radial-gradient(circle at center,
+        rgb(0, 0, 0) 0%,
+        rgb(30, 23, 0) 30%,
+        rgb(46, 39, 9) 60%,
+        rgba(28, 20, 0) 85%,
+        rgba(15, 12, 4) 100%);
+
+
+.site-menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10vh 8vw 4vh;
+  color: #fff;
+  z-index: 1200;
+  pointer-events: none;
+  overflow: hidden;
+  overscroll-behavior: contain;
+
+  // Pas de transition ici
+  background: none;
+
+  // ✅ FOND en ::before (pas impacté par la transition)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $menu-bg;
+    background-color: #000;
+    z-index: 0;
+    opacity: 0;
+    transition: none;
+  }
+
+  &.open::before {
+    opacity: 1;
+  }
+
+  // ✅ CONTENU avec opacité
+  > * {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &.open {
+    pointer-events: auto;
+
+    > * {
+      opacity: 1;
+    }
+}
+
+    /* ◊◊ bouton CLOSE (coin haut-droit) */
+    .menu-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        width: 180px;
+        height: 180px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        z-index: 2;
+
+        .close-circle,
+        .close-icon {
+            position: absolute;
+            inset: 0;
+        }
+
+        .close-circle {
+            border-radius: 50%;
+            border: 2px solid rgba($gold, .25);
+            border-top-color: $gold;
+            animation: spinBorder 4s linear infinite;
+        }
+
+        .close-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #fff;
+            line-height: 1;
+        }
+    }
+
+    /* ◊◊ navigation */
+    &__nav ul {
+        list-style: none;
+        margin: 0 0 8vh;
+        padding: 0;
+    }
+
+    &__nav li {
+        margin: 1.2rem 0;
+    }
+
+    &__nav a {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(2.4rem, 6vw, 6.5rem);
+        font-weight: 300;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+
+        .idx {
+            font-size: .4em;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: .5rem;
+            opacity: .65;
+        }
+
+        &:hover {
+            color: $gold;
+        }
+    }
+
+    /* logo centré en bas */
+    &__logo {
+        display: none;
+    }
+}
+
+/* disable body scroll quand menu ouvert */
+body.menu-open {
+    overflow: hidden;
+}
+
+body.menu-open {
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    touch-action: none; // important sur mobile pour bloquer gestures
+}
+
+/* rotation cercle doré */
+@keyframes spinBorder {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ▸ CAS MOBILE : masquer bouton Son, ajuster navbar padding */
+@media (max-width: 768px) {
+    .sound-toggle {
+        display: none;
+    }
+
+    // plus de son sur mobile
+    .site-menu {
+        align-items: center;
+        padding: 6vh 5vw 4vh;
+
+        &__nav ul {
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        &__nav li {
+            margin: 2rem 0;
+        }
+
+        &__nav a {
+            font-size: clamp(2rem, 8vw, 4rem);
+        }
+
+        .menu-close {
+            width: 100px;
+            height: 100px;
+            top: 1.2rem;
+            right: 1.2rem;
+
+            .close-icon {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    .navbar {
+        padding: 30px;
+    }
+}
