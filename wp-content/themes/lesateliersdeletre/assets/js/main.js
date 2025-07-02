@@ -6,7 +6,7 @@
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader')?.classList.add('hidden');
-  }, 9000);
+  }, 1000);
 });
 
 // 2. Curseur personnalisé
@@ -234,66 +234,101 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-let xPos = 0;
+//let xPos = 0;
+//
+//gsap.timeline()
+//    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
+//    .set('.img',  { // apply transform rotations to each image
+//      rotateY: (i)=> i*-36,
+//      transformOrigin: '50% 50% 500px',
+//      z: -500,
+//      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
+//      backgroundPosition:(i)=>getBgPos(i),
+//      backfaceVisibility:'hidden'
+//    })    
+//    .from('.img', {
+//      duration:1.5,
+//      y:200,
+//      opacity:0,
+//      stagger:0.1,
+//      ease:'expo'
+//    })
+//    .add(()=>{
+//      $('.img').on('mouseenter', (e)=>{
+//        let current = e.currentTarget;
+//        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
+//      })
+//      $('.img').on('mouseleave', (e)=>{
+//        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
+//      })
+//    }, '-=0.5')
+//
+//$(window).on('mousedown touchstart', dragStart);
+//$(window).on('mouseup touchend', dragEnd);
+//      
+//
+//function dragStart(e){ 
+//  if (e.touches) e.clientX = e.touches[0].clientX;
+//  xPos = Math.round(e.clientX);
+//  gsap.set('.ring', {cursor:'grabbing'})
+//  $(window).on('mousemove touchmove', drag);
+//}
+//
+//
+//function drag(e){
+//  if (e.touches) e.clientX = e.touches[0].clientX;    
+//
+//  gsap.to('.ring', {
+//    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
+//    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+//  });
+//  
+//  xPos = Math.round(e.clientX);
+//}
+//
+//
+//function dragEnd(e){
+//  $(window).off('mousemove touchmove', drag);
+//  gsap.set('.ring', {cursor:'grab'});
+//}
+//
+//
+//function getBgPos(i){ //returns the background-position string to create parallax movement in each image
+//  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
+//}
 
-gsap.timeline()
-    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
-    .set('.img',  { // apply transform rotations to each image
-      rotateY: (i)=> i*-36,
-      transformOrigin: '50% 50% 500px',
-      z: -500,
-      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
-      backgroundPosition:(i)=>getBgPos(i),
-      backfaceVisibility:'hidden'
-    })    
-    .from('.img', {
-      duration:1.5,
-      y:200,
-      opacity:0,
-      stagger:0.1,
-      ease:'expo'
-    })
-    .add(()=>{
-      $('.img').on('mouseenter', (e)=>{
-        let current = e.currentTarget;
-        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
-      })
-      $('.img').on('mouseleave', (e)=>{
-        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
-      })
-    }, '-=0.5')
+// 11. Gestion du son (play / pause)  -----------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const btn   = document.getElementById('soundToggle');
+  if (!btn) return;
 
-$(window).on('mousedown touchstart', dragStart);
-$(window).on('mouseup touchend', dragEnd);
-      
+  const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';   //  <-- chemin fiable
+  const VOLUME    = 0.4;
+  const KEY       = 'lae_music_on';
 
-function dragStart(e){ 
-  if (e.touches) e.clientX = e.touches[0].clientX;
-  xPos = Math.round(e.clientX);
-  gsap.set('.ring', {cursor:'grabbing'})
-  $(window).on('mousemove touchmove', drag);
-}
+  /* instance audio unique */
+  const audio = new Audio(AUDIO_SRC);
+  audio.loop   = true;
+  audio.volume = VOLUME;
 
+ let isPlaying = false;
 
-function drag(e){
-  if (e.touches) e.clientX = e.touches[0].clientX;    
+  /* ----------------- helpers */
+  function play()  { audio.play().catch(() => {/* ignore */}); }
+  function pause() { audio.pause(); }
+  function updateUI () {
+    btn.classList.toggle('muted', !isPlaying);           // pour l’anim des ondes
+  }
 
-  gsap.to('.ring', {
-    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
-    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+  /* ----------------- init */
+  updateUI();
+  if (isPlaying) play();
+
+  /* ----------------- toggle */
+  btn.addEventListener('click', () => {
+    isPlaying = !isPlaying;
+    localStorage.setItem(KEY, isPlaying ? '1' : '0');
+    updateUI();
+    isPlaying ? play() : pause();
   });
-  
-  xPos = Math.round(e.clientX);
-}
-
-
-function dragEnd(e){
-  $(window).off('mousemove touchmove', drag);
-  gsap.set('.ring', {cursor:'grab'});
-}
-
-
-function getBgPos(i){ //returns the background-position string to create parallax movement in each image
-  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
-}
-
+});

@@ -120,13 +120,17 @@
     </div>
 
     <div class="navbar-right">
-      <div class="sound-toggle">
+      <!-- BOUTON SON -->
+      <div class="sound-toggle muted" id="soundToggle" aria-label="Activer / couper le son">
         <div class="wave-icon">
           <div class="wave wave1"></div>
           <div class="wave wave2"></div>
           <div class="wave wave3"></div>
         </div>
-        <span>Son</span>
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-label">Son</span>
       </div>
 
       <div class="menu-toggle">
@@ -135,6 +139,5 @@
         </div>
         <span>Menu</span>
       </div>
-
     </div>
   </header>

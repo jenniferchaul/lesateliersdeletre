@@ -76,6 +76,12 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
+wp_localize_script(
+    'main-js',
+    'laeTheme',                     // 1 nom JS
+    [ 'uri' => get_template_directory_uri() ]   // 2 string -> JS
+);
+
   wp_enqueue_script(
     'mandala-js',
     get_theme_file_uri('assets/js/mandala.js'),
