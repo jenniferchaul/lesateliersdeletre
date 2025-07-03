@@ -9,21 +9,29 @@ window.addEventListener('load', () => {
   }, 1000);
 });
 
-// 2. Curseur personnalisé
-const cursor = document.getElementById('cursor-dot');
-let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+// 2. Curseur personnalisé ─── desktop only ──────────────────────
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  /* souris présente ⇒ on garde le curseur doré animé */
+  const cursor = document.getElementById('cursor-dot');
+  let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-(function animateCursor () {
-  curX += (mouseX - curX) * 0.15;
-  curY += (mouseY - curY) * 0.15;
-  cursor.style.left = `${curX}px`;
-  cursor.style.top  = `${curY}px`;
-  requestAnimationFrame(animateCursor);
-})();
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  (function animateCursor() {
+    curX += (mouseX - curX) * 0.15;
+    curY += (mouseY - curY) * 0.15;
+    cursor.style.left = `${curX}px`;
+    cursor.style.top  = `${curY}px`;
+    requestAnimationFrame(animateCursor);
+  })();
+} else {
+  /* écran tactile ⇒ on masque complètement le dot */
+  const cursor = document.getElementById('cursor-dot');
+  if (cursor) cursor.style.display = 'none';
+}
 
 // 3. Scroll vers #intro-home
 document.getElementById('scrollDown')?.addEventListener('click', (e) => {

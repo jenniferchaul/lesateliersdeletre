@@ -100,7 +100,7 @@
     <div class="navbar-left">
       <!-- Mobile -->
       <a href="tel:+33768330615" class="mobile-only" aria-label="Appeler Les Ateliers de l’Être">
-        <i class="fas fa-phone-alt"></i> 07 68 33 06 15
+        <i class="fas fa-phone-alt"></i>
       </a>
 
       <!-- Desktop -->

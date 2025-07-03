@@ -13,12 +13,18 @@ body {
 
 
 body {
+  //background: radial-gradient(circle at center,
+  //    rgb(18, 14, 0) 0%,
+  //    rgb(28, 23, 5) 30%,
+  //    rgb(46, 39, 9) 60%,
+  //    rgba(44, 36, 14, 0.94) 85%,
+  //    rgba(20, 17, 8, 0.9) 100%);
+
   background: radial-gradient(circle at center,
-      rgb(18, 14, 0) 0%,
-      rgb(28, 23, 5) 30%,
-      rgb(46, 39, 9) 60%,
-      rgba(44, 36, 14, 0.94) 85%,
-      rgba(20, 17, 8, 0.9) 100%);
+        rgb(30, 23, 0) 30%,
+        rgb(46, 39, 9) 60%,
+        rgba(28, 20, 0) 85%,
+        rgba(15, 12, 4) 100%);
   //position: relative;
 
 
@@ -273,31 +279,6 @@ header {
       i {
         margin-right: 8px;
         font-size: inherit;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .mobile-only {
-        display: flex;
-        align-items: center;
-        font-size: 26px;
-        color: $gold;
-        text-decoration: none;
-        justify-content: center;
-
-        &:hover {
-          color: lighten($gold, 10%);
-        }
-
-        i {
-          font-size: inherit;
-          line-height: 1;
-        }
-      }
-
-      .desktop-only {
-        display: none;
-        font-family: $montserrat;
       }
     }
 
@@ -1750,4 +1731,87 @@ $gold: #d4af37;
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media (max-width: 768px) {
+
+  /*Cursor dot*/
+  #cursor-dot {
+    display: none;
+  }
+
+  /* -------- NAVBAR -------- */
+  .navbar {
+    padding: 30px;
+
+    &-left {
+      gap: 18px;
+
+      .desktop-only {
+        display: none; // On masque le numéro
+      }
+
+      .mobile-only {
+        display: flex;
+        font-size: 26px;
+        color: $gold;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: inherit;
+          line-height: 1;
+        }
+
+        // ❌ On masque le texte du numéro (si présent)
+        span, br {
+          display: none;
+        }
+      }
+    }
+
+    &-right {
+      gap: 25px;
+
+      .sound-toggle {
+        display: none !important; // ❌ On supprime tout le bloc Son
+      }
+
+      .menu-toggle {
+        gap: 6px;
+
+        .menu-icon {
+          padding-top: 0;
+
+        
+        .circle-icon-inner {
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+        span {
+          font-size: 1rem;
+          font-family: $montserrat;
+        }
+      }
+    }
+  }
+
+  .section-hero {
+    margin-top: 8rem;
+    .logo img {
+      width: clamp(390px, 42vw, 792px);
+    }
+  }
+}
+
+
+@media (max-width: 340px) {
+.section-hero {
+//margin-top: 1rem;
+    .logo img {
+      width: clamp(350px, 42vw, 792px);
+    }
+}
 }
