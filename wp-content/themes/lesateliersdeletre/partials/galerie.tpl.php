@@ -1,26 +1,13 @@
-<section class="cylinder-gallery" id="galerie">
-  <h2 class="gallery-title">Galerie</h2>
-
-  <div id="tubeSplide" class="splide">
-    <div class="splide__track">
-      <ul class="splide__list">
-        <?php
-          $imgs = ['dessin.jpg','dessin1.jpg','dessin2.jpg','dessin3.jpg','dessin4.jpg'];
-          for ($r = 0; $r < 3; $r++) {
-            foreach ($imgs as $k => $img) {
-              $index = ($k + $r) % count($imgs);
-              echo '<li class="splide__slide tube-slide">';
-              echo '<img src="' . get_template_directory_uri() . '/assets/images/' . $imgs[$index] . '" alt="">';
-              echo '</li>';
-            }
-          }
-        ?>
-      </ul>
-    </div>
+<section class="section" id="carousel-section" style="height: 100vh;">
+  <div class="carousel-heading" data-aos="fade-up">
+    <h2>Galerie</h2>
   </div>
-
-  <p class="swipe-hint">↔︎ Glissez ou laissez défiler</p>
-
-  <a href="/galerie" class="cta-button">Voir toute la galerie</a>
-
+  <div id="tube-image-list" data-images='[
+    "https://picsum.photos/400/300?random=1",
+    "https://picsum.photos/400/300?random=2",
+    "https://picsum.photos/400/300?random=3",
+    "https://picsum.photos/400/300?random=4",
+    "https://picsum.photos/400/300?random=5",
+    "https://picsum.photos/400/300?random=6"
+  ]'></div>
 </section>

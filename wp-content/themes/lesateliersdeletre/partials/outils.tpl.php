@@ -1,6 +1,6 @@
 <section class="outils">
 
-    <div class="container-title">
+    <div class="container-title" data-aos="fade-up">
         <h2 class="outils-title"> Les outils</h2>
     </div>
     <div class="container">

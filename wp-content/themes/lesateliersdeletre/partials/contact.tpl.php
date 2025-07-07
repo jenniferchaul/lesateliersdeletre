@@ -1,17 +1,10 @@
 <!-- ====================== CONTACT ====================== -->
 <section class="contact-intro" id="contact">
-  <!-- carrés décoratifs -->
-  <div class="square-bg sq-1"></div>
-  <div class="square-bg sq-2"></div>
-  <div class="square-bg sq-3"></div>
 
-  <!-- pattern floral -->
-  <svg class="floral" viewBox="0 0 200 200" aria-hidden="true">
-    <path d="M100 10 Q120 50 100 90 Q80 50 100 10Z
-             M100 90 Q140 110 100 150 Q60 110 100 90Z
-             M100 150 Q120 180 100 190 Q80 180 100 150Z"
-          fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
-  </svg>
+<!-- spirales décoratives -->
+<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_1.svg" alt="Spirale décorative" class="spirale spirale-1">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_2.svg" alt="Spirale décorative" class="spirale spirale-2">
+
 
   <div class="contact-wrapper">
     <h2 class="contact-title">Besoin d’un échange personnalisé&nbsp;?</h2>

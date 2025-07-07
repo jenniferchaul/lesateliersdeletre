@@ -173,57 +173,57 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 9. Splide — galerie tube 3D
-document.addEventListener('DOMContentLoaded', () => {
-  const splide = new Splide('#tubeSplide', {
-    type: 'loop',
-    perPage: 3,
-    focus: 'center',
-    gap: '2rem',
-    speed: 1000,
-    autoplay: true,
-    interval: 4000,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-    arrows: false,
-    pagination: false,
-    drag: true,
-    wheel: true,
-    breakpoints: {
-      768: { perPage: 1 },
-      1024: { perPage: 2 }
-    }
-  });
+//cument.addEventListener('DOMContentLoaded', () => {
+//const splide = new Splide('#tubeSplide', {
+//  type: 'loop',
+//  perPage: 3,
+//  focus: 'center',
+//  gap: '2rem',
+//  speed: 1000,
+//  autoplay: true,
+//  interval: 4000,
+//  pauseOnHover: true,
+//  pauseOnFocus: true,
+//  arrows: false,
+//  pagination: false,
+//  drag: true,
+//  wheel: true,
+//  breakpoints: {
+//    768: { perPage: 1 },
+//    1024: { perPage: 2 }
+//  }
+//});
 
   // effet incurvé
-  const ROT = 60;
-  const OFF = 80;
-  const SCALE_MIN = 0.6;
-
-  function updateTube() {
-    const curr = splide.index;
-    const len = splide.length;
-
-    splide.Components.Elements.list.childNodes.forEach(slide => {
-      if (!slide.classList) return;
-      const sIndex = parseInt(slide.getAttribute('data-splide-slide-index'));
-      let diff = sIndex - curr;
-      if (diff > len / 2) diff -= len;
-      if (diff < -len / 2) diff += len;
-
-      const p = diff;
-      const rotate = p * ROT;
-      const translateY = OFF * Math.pow(p, 2) * Math.sign(p);
-      const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), 0.25);
-      const bright = 1 - Math.min(Math.abs(p) * 0.35, 0.35);
-
-      slide.style.transform = `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
-      slide.style.filter = `brightness(${bright})`;
-    });
-  }
-
-  splide.on('mounted move', updateTube);
-  splide.mount();
-});
+//const ROT = 60;
+//const OFF = 80;
+//const SCALE_MIN = 0.6;
+//
+//function updateTube() {
+//  const curr = splide.index;
+//  const len = splide.length;
+//
+//  splide.Components.Elements.list.childNodes.forEach(slide => {
+//    if (!slide.classList) return;
+//    const sIndex = parseInt(slide.getAttribute('data-splide-slide-index'));
+//    let diff = sIndex - curr;
+//    if (diff > len / 2) diff -= len;
+//    if (diff < -len / 2) diff += len;
+//
+//    const p = diff;
+//    const rotate = p * ROT;
+//    const translateY = OFF * Math.pow(p, 2) * Math.sign(p);
+//    const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), 0.25);
+//    const bright = 1 - Math.min(Math.abs(p) * 0.35, 0.35);
+//
+//    slide.style.transform = `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
+//    slide.style.filter = `brightness(${bright})`;
+//  });
+//}
+//
+//splide.on('mounted move', updateTube);
+//splide.mount();
+//;
 
 
 // 10. Fade-in section Contact
@@ -377,4 +377,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init({
+    duration: 1000,     // durée par défaut
+    once: true,         // animation ne se joue qu'une fois
+    easing: 'ease-in-out',
+    delay: 0,           // délai par défaut
+  });
+});
+
 

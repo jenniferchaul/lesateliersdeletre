@@ -82,13 +82,13 @@ wp_localize_script(
     [ 'uri' => get_template_directory_uri() ]   // 2 string -> JS
 );
 
-  wp_enqueue_script(
-    'mandala-js',
-    get_theme_file_uri('assets/js/mandala.js'),
-    [],
-    '1.0.0',
-    true
-  );
+  //wp_enqueue_script(
+  //  'mandala-js',
+  //  get_theme_file_uri('assets/js/mandala.js'),
+  //  [],
+  //  '1.0.0',
+  //  true
+  //);
 
   wp_enqueue_style(
     'splide-style',
@@ -201,3 +201,35 @@ function jcdev_create_fake_posts()
   update_option('jcdev_fake_posts_created', true);
 }
 add_action('after_setup_theme', 'jcdev_create_fake_posts');
+
+function lae_enqueue_effect_assets() {
+  // ✅ On NE charge PLUS Three.js ici car on l'importe en module dans le fichier
+  /*
+  wp_enqueue_script(
+    'three-js',
+    'https://unpkg.com/three@0.154.0/build/three.module.js',
+    [],
+    null,
+    true
+  );
+  */
+
+  // ✅ Notre effet custom – TOUT SE JOUE ICI
+  wp_enqueue_script(
+    'tube-effect',
+    get_theme_file_uri('assets/js/tube-effect.js'),
+    [], // pas de dépendance
+    null,
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'lae_enqueue_effect_assets');
+
+
+// ✅ Ajoute le type="module" uniquement à notre script "tube-effect"
+add_filter('script_loader_tag', function ($tag, $handle, $src) {
+  if ($handle === 'tube-effect') {
+    return '<script type="module" src="' . esc_url($src) . '"></script>';
+  }
+  return $tag;
+}, 10, 3);

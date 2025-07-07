@@ -12,6 +12,9 @@
 
 <body <?php body_class(); ?>>
 
+<canvas id="bg"></canvas>
+
+
   <div class="background">
     <span></span>
     <span></span>
@@ -81,7 +84,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <span></span>
+    <span></span> 
     <span></span>
   </div>
 

@@ -1,11 +1,12 @@
 /* === MENU OVERLAY ============================================= */
-$menu-bg: radial-gradient(circle at center,
-        rgb(0, 0, 0) 0%,
-        rgb(30, 23, 0) 30%,
-        rgb(46, 39, 9) 60%,
-        rgba(28, 20, 0) 85%,
-        rgba(15, 12, 4) 100%);
+//$menu-bg: radial-gradient(circle at center,
+//        rgb(0, 0, 0) 0%,
+//        rgb(30, 23, 0) 30%,
+//        rgb(46, 39, 9) 60%,
+//        rgba(28, 20, 0) 85%,
+//        rgba(15, 12, 4) 100%);
 
+$menu-bg: #1c1400de;
 
 .site-menu {
   position: fixed;
