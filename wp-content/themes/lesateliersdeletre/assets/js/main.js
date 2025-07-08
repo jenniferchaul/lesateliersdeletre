@@ -24,7 +24,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     curX += (mouseX - curX) * 0.15;
     curY += (mouseY - curY) * 0.15;
     cursor.style.left = `${curX}px`;
-    cursor.style.top  = `${curY}px`;
+    cursor.style.top = `${curY}px`;
     requestAnimationFrame(animateCursor);
   })();
 } else {
@@ -43,42 +43,70 @@ document.getElementById('scrollDown')?.addEventListener('click', (e) => {
     : target.scrollIntoView({ behavior: 'smooth' });
 });
 
-// 4. Animation de texte (Splitting + GSAP)
-const split = Splitting();
+// 4. Splitting + GSAP animation
 gsap.registerPlugin(ScrollTrigger);
+const split = Splitting();
+
 split.forEach(s => {
-  gsap.from(s.words, {
-    color: '#dec449',
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: s.el.closest('.intro-text, .intro-text_customer'),
-      scrub: true,
+  const words = s.words;
+  const chars = s.chars;
+
+  ScrollTrigger.create({
+    trigger: s.el,
+    start: 'top 80%',
+    end: 'top 30%',
+    scrub: true,
+    onEnter: () => {
+      gsap.fromTo(words,
+        { color: '#dec449' },
+        {
+          color: '#fff',
+          stagger: 0.2,
+          duration: 1,
+          ease: 'power2.out',
+          overwrite: true
+        });
+    },
+    onLeaveBack: () => {
+      gsap.set(words, { color: '#dec449' });
     }
   });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const backToTop = document.getElementById('back-to-top');
-
-  if (backToTop) {
-    // Afficher le bouton au scroll
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 300);
+  chars.forEach(char => {
+    char.style.display = 'inline-block';
+    char.addEventListener('mouseenter', () => {
+      gsap.fromTo(char,
+        { y: 0, rotation: 0 },
+        {
+          y: -10, rotation: 8,
+          duration: 0.25,
+          ease: 'power2.out',
+          yoyo: true,
+          repeat: 1
+        });
     });
+  });
+});
 
-    // Remonter la page en douceur au clic
-    backToTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById('back-to-top');
+
+    if (backToTop) {
+      // Afficher le bouton au scroll
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
       });
-    });
-  }
-});
 
-
-});
+      // Remonter la page en douceur au clic
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+    }
+  });
 
 // 5. Animation photo art-thérapeute
 gsap.from('.photo-art-therapeute', {
@@ -95,10 +123,10 @@ gsap.from('.photo-art-therapeute', {
 
 // 6. Stacking effect (section .outils)
 document.addEventListener('DOMContentLoaded', () => {
-  const cards   = gsap.utils.toArray('.stack-card');
+  const cards = gsap.utils.toArray('.stack-card');
   const content = gsap.utils.toArray('.outils .content');
-  const texts   = gsap.utils.toArray('.outils .text');
-  const imgs    = gsap.utils.toArray('.outils .img-wrapper');
+  const texts = gsap.utils.toArray('.outils .text');
+  const imgs = gsap.utils.toArray('.outils .img-wrapper');
 
   cards.forEach((c, i) => {
     const dir = i % 2 ? 1 : -1;
@@ -129,15 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   gsap.set(texts, { opacity: 0 });
-  gsap.set(imgs , { opacity: 0, scale: 0.9 });
+  gsap.set(imgs, { opacity: 0, scale: 0.9 });
   gsap.set(texts[0], { opacity: 1 });
-  gsap.set(imgs [0], { opacity: 1, scale: 1 });
+  gsap.set(imgs[0], { opacity: 1, scale: 1 });
 
   tl.to(imgs[0], { rotate: -3 }, 0);
   content.forEach((_, i) => {
     if (i === content.length - 1) return;
     tl.to(texts[i], { opacity: 0, duration: 1 }, '+=0.5')
-      .to(imgs[i],  { opacity: 1, scale: 0.95, duration: 1 }, '<')
+      .to(imgs[i], { opacity: 1, scale: 0.95, duration: 1 }, '<')
       .to(content[i + 1], { zIndex: content.length + i + 1 }, '<')
       .to(imgs[i + 1], {
         scale: 1,
@@ -154,21 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // 7. Parallaxe légère du fond
 window.addEventListener('scroll', () => {
   const bg = document.querySelector('.background');
-  if (bg) bg.style.transform = `translateY(${(window.pageYOffset || 0)*0.05}px)`;
+  if (bg) bg.style.transform = `translateY(${(window.pageYOffset || 0) * 0.05}px)`;
 });
 
 // 8. Splide — avis clients
 document.addEventListener('DOMContentLoaded', () => {
   new Splide('#avisSplide', {
-    type       : 'loop',
-    perPage    : 2,
-    gap        : '2rem',
-    autoplay   : true,
-    interval   : 2000,
+    type: 'loop',
+    perPage: 2,
+    gap: '2rem',
+    autoplay: true,
+    interval: 2000,
     pauseOnHover: true,
     breakpoints: { 768: { perPage: 1 } },
-    arrows     : false,
-    pagination : true,
+    arrows: false,
+    pagination: true,
   }).mount();
 });
 
@@ -194,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //  }
 //});
 
-  // effet incurvé
+// effet incurvé
 //const ROT = 60;
 //const OFF = 80;
 //const SCALE_MIN = 0.6;
@@ -307,24 +335,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 11. Gestion du son (play / pause)  -----------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  const btn   = document.getElementById('soundToggle');
+  const btn = document.getElementById('soundToggle');
   if (!btn) return;
 
   const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';   //  <-- chemin fiable
-  const VOLUME    = 0.4;
-  const KEY       = 'lae_music_on';
+  const VOLUME = 0.4;
+  const KEY = 'lae_music_on';
 
   /* instance audio unique */
   const audio = new Audio(AUDIO_SRC);
-  audio.loop   = true;
+  audio.loop = true;
   audio.volume = VOLUME;
 
- let isPlaying = false;
+  let isPlaying = false;
 
   /* ----------------- helpers */
-  function play()  { audio.play().catch(() => {/* ignore */}); }
+  function play() { audio.play().catch(() => {/* ignore */ }); }
   function pause() { audio.pause(); }
-  function updateUI () {
+  function updateUI() {
     btn.classList.toggle('muted', !isPlaying);           // pour l’anim des ondes
   }
 
@@ -346,10 +374,10 @@ document.addEventListener('DOMContentLoaded', () => {
    ============================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
-  const menu      = document.getElementById('siteMenu');
-  const openBtn   = document.querySelector('.menu-toggle');
-  const closeBtn  = menu.querySelector('.menu-close');
-  const links     = menu.querySelectorAll('a');           // fermer aussi sur clic lien
+  const menu = document.getElementById('siteMenu');
+  const openBtn = document.querySelector('.menu-toggle');
+  const closeBtn = menu.querySelector('.menu-close');
+  const links = menu.querySelectorAll('a');           // fermer aussi sur clic lien
 
   if (!menu || !openBtn || !closeBtn) return;
 
@@ -388,3 +416,69 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+
+
+
+
+// 5. Transition blocs Intro ➔ Catherine (fix pointerEvents + retour)
+gsap.set("#intro-part", {
+  opacity: 1,
+  pointerEvents: "auto",
+  zIndex: 2
+});
+
+gsap.set("#catherine-part", {
+  opacity: 0,
+  pointerEvents: "none",
+  zIndex: 1
+});
+
+const introTL = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#intro-home",
+    start: "top top",
+    end: "+=200%",
+    scrub: true,
+    pin: true,
+  }
+});
+
+introTL.to("#intro-part", {
+  opacity: 0,
+  ease: "power2.out",
+  duration: 1,
+});
+
+introTL.to("#catherine-part", {
+  opacity: 1,
+  ease: "power2.out",
+  duration: 1,
+}, "<+0.1");
+
+ScrollTrigger.create({
+  trigger: "#intro-home",
+  start: "top top",
+  end: "+=200%",
+  onLeaveBack: () => {
+    gsap.set("#intro-part", {
+      pointerEvents: "auto",
+      zIndex: 2
+    });
+    gsap.set("#catherine-part", {
+      pointerEvents: "none",
+      zIndex: 1
+    });
+  },
+  onEnter: () => {
+    gsap.set("#intro-part", {
+      pointerEvents: "none",
+      zIndex: 1
+    });
+    gsap.set("#catherine-part", {
+      pointerEvents: "auto",
+      zIndex: 2
+    });
+  }
+});

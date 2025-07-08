@@ -630,10 +630,10 @@ header {
     padding-right: 15rem;
 
 
-    &.customer {
-      flex-direction: row-reverse;
-      margin-top: 4rem;
-    }
+    //&.customer {
+    //  flex-direction: row-reverse;
+    //  margin-top: 4rem;
+    //}
 
     .intro-title,
     .intro-text,
@@ -670,57 +670,6 @@ header {
       }
     }
 
-
-
-
-    //.buttons {
-    //  display: flex;
-    //  gap: 1rem;
-    //  justify-content: center;
-    //
-    //  .btn {
-    //    position: relative;
-    //    overflow: hidden;
-    //    border: 1px solid #d4af37;
-    //    color: #d4af37;
-    //    padding: 0.8rem 1.4rem;
-    //    text-decoration: none;
-    //    background-color: transparent;
-    //    transition: color 0.5s ease;
-    //
-    //    // Le texte doit passer AU-DESSUS du ::before
-    //    z-index: 0;
-    //
-    //    span {
-    //      position: relative;
-    //      z-index: 2; // au-dessus du ::before
-    //      transition: color 0.5s ease;
-    //    }
-    //
-    //    &::before {
-    //      content: '';
-    //      position: absolute;
-    //      top: 0;
-    //      left: 0;
-    //      width: 0;
-    //      height: 100%;
-    //      background-color: #d4af37;
-    //      z-index: 1;
-    //      transition: width 0.7s ease;
-    //    }
-    //
-    //    &:hover {
-    //      &::before {
-    //        width: 100%;
-    //      }
-    //
-    //      span {
-    //        color: $black;
-    //        font-weight: 500;
-    //      }
-    //    }
-    //  }
-    //}
   }
 
   .button {
@@ -855,7 +804,7 @@ header {
       height: 100%;
       display: flex;
       align-items: center;
-      padding: 0 150px 0 100px;
+      padding: 0 13rem;
       margin-top: -20px;
 
       .text {
@@ -863,7 +812,7 @@ header {
         font-size: clamp(1.1rem, 2.6vw, 1.5rem);
         font-weight: 300;
         line-height: 1.5;
-        margin-right: 50px;
+        margin-right: 32rem;
         color: $white;
       }
 
