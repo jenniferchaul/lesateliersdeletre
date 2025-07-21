@@ -34,7 +34,7 @@ import * as THREE from 'https://unpkg.com/three@0.154.0/build/three.module.js';
   const sprite  = new THREE.TextureLoader().load(
     'https://threejs.org/examples/textures/sprites/circle.png'
   );
-  const palette = [0xfaf3e0, 0xffe066, 0xffcc00, 0xffffff, 0xfcd440];
+  const palette = [0xfaf3e0, 0xffe066, 0xffcc00, 0xffffff, 0xfcd440,];
 
   const positions = new Float32Array(COUNT * 3);
   const origins   = new Float32Array(COUNT * 3);
@@ -89,10 +89,11 @@ import * as THREE from 'https://unpkg.com/three@0.154.0/build/three.module.js';
     loader.load(url, (tex) => {
       const mat  = new THREE.MeshBasicMaterial({
         map: tex,
-        side: THREE.DoubleSide,
+         color: new THREE.Color(0xfff2cc),
         transparent: true,
+        alphaTest: 0.1,
       });
-      const geo  = new THREE.PlaneGeometry(14.4, 10.8);
+      const geo = new THREE.PlaneGeometry(18, 13.5);
       const mesh = new THREE.Mesh(geo, mat);
       mesh.userData.baseAngle = (i / imgUrls.length) * Math.PI * 2;
       cardGroup.add(mesh);

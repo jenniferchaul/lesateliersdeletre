@@ -6,47 +6,110 @@
     <div class="container">
 
         <div class="content">
-            <p class="text">
-                Mandala Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quasi aspernatur sunt soluta perferendis hic similique doloribus reiciendis unde dolores.
-            </p>
+            <div class="text-wrapper">
+                <p class="text">
+                    Le masque, outil d’introspection puissant, invite à explorer nos facettes cachées et à libérer l’imaginaire.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="img-wrapper">
-                <img src="<?= get_template_directory_uri(); ?>/assets/images/dessin.jpg" alt="" class="" ;>
+                <a href=""> <img src="<?= get_template_directory_uri(); ?>/assets/images/masque.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
         <div class="content">
-            <p class="text">
-                Labyrinthe Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia quaerat doloribus sit rerum rem, eaque odio molestiae ea dolorum?
-            </p>
+            <div class="text-wrapper">
+                <p class="text">
+                    Le labyrinthe, miroir symbolique de notre parcours intérieur, invite à explorer nos émotions et à tracer, pas à pas, le chemin vers soi.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="img-wrapper">
-                <img src="<?= get_template_directory_uri(); ?>/assets/images/dessin1.jpg" alt="" class="" ;>
+                <a href=""> <img src="<?= get_template_directory_uri(); ?>/assets/images/labyrinthe.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
         <div class="content">
-            <p class="text">
-                Masque Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur harum rerum neque iure illo dolorum architecto soluta perferendis, sed accusantium.
-            </p>
+            <div class="text-wrapper">
+                <p class="text">
+                    Le collage, entre intuition et expression, libère les émotions enfouies et révèle, en silence, les fragments de soi à recoller.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="img-wrapper">
-                <img src="<?= get_template_directory_uri(); ?>/assets/images/dessin2.jpg" alt="" class="" ;>
+                <a href=""><img src="<?= get_template_directory_uri(); ?>/assets/images/collage2.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
         <div class="content">
-            <p class="text">
-                Jeu de vie Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit delectus iusto, eaque adipisci corporis error vitae sapiente sequi reiciendis rem.
-            </p>
+            <div class="text-wrapper">
+                <p class="text">
+                    Le mandala invite à un recentrage profond et créatif, révélant nos émotions intérieures à travers une pratique apaisante et symbolique.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="img-wrapper">
-                <img src="<?= get_template_directory_uri(); ?>/assets/images/dessin3.jpg" alt="" class="" ;>
+                <a href=""> <img src="<?= get_template_directory_uri(); ?>/assets/images/mandala2.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
         <div class="content">
-            <p class="text">
-                Méditation Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci minima modi veritatis laborum sint? Omnis odit quod eveniet nihil modi.
-            </p>
+            <div class="text-wrapper">
+                <p class="text">
+                    Le Jeu de Vie invite à explorer ses ressentis profonds à travers des images symboliques, révélant intuition, émotions et créativité personnelle.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
             <div class="img-wrapper">
-                <img src="<?= get_template_directory_uri(); ?>/assets/images/dessin4.jpg" alt="" class="" ;>
+                <a href=""> <img src="<?= get_template_directory_uri(); ?>/assets/images/jeux_de_vie.jpg" alt="" class="" ;></a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="text-wrapper">
+                <p class="text">
+                    La méditation guidée vous aide à calmer le mental, vous recentrer, et stimuler une créativité sincère à travers un voyage intérieur apaisant.
+                </p>
+                <div class="button">
+                    <a href="/art-therapie" class="circle-cta">
+                        <span class="inner-circle"></span>
+                        <span class="cta-text">En savoir plus</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="img-wrapper">
+                <a href=""> <img src="<?= get_template_directory_uri(); ?>/assets/images/méditation.jpg" alt="" class="" ;></a>
             </div>
         </div>
     </div>

@@ -1,0 +1,90 @@
+.blog-section {
+  padding: 8rem 2rem;
+  background: transparent;
+  font-family: $montserrat;
+  color: $white;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+    .section-title {
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 5px;
+    background: linear-gradient(to right, #fff 0%, $gold 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+    height: 8rem;
+  }
+
+  .galerie-intro {
+    font-size: 38px;
+    text-align: center;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    margin-top: 5rem;
+  }
+
+.blog-card {
+  background: rgba(0, 0, 0, 40%);
+  backdrop-filter: blur(4px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin: 3rem auto;
+  max-width: 700px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  border: 2px solid rgba(212, 175, 55, 0.15); // 👈 pour permettre l'anim de contour
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+
+  &:hover {
+    transform: scale(1.015);
+    border-color: rgba(212, 175, 55, 0.5); // 👈 doré plus présent mais doux
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  }
+
+    img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin: 0 auto 2rem auto;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: $gold;
+      margin-bottom: 1rem;
+      
+    }
+
+    p {
+      color: lighten($white, 30%);
+    }
+
+    .read-more {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 1px solid $gold;
+      color: $gold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $gold;
+        color: #000;
+      }
+    }
+  }
+}

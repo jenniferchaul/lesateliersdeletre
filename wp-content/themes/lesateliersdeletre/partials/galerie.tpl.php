@@ -2,12 +2,17 @@
   <div class="carousel-heading" data-aos="fade-up">
     <h2>Galerie</h2>
   </div>
+
   <div id="tube-image-list" data-images='[
-    "https://picsum.photos/400/300?random=1",
-    "https://picsum.photos/400/300?random=2",
-    "https://picsum.photos/400/300?random=3",
-    "https://picsum.photos/400/300?random=4",
-    "https://picsum.photos/400/300?random=5",
-    "https://picsum.photos/400/300?random=6"
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie1.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie2.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie3.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie4.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie5.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie6.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie7.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie8.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie9.png",
+    "<?= get_template_directory_uri(); ?>/assets/images/galerie10.png"
   ]'></div>
 </section>

@@ -1,0 +1,130 @@
+.stages-section {
+  padding: 8rem 5vw;
+  font-family: $montserrat;
+
+  .section-title {
+    font-size: 3rem;
+    color: $gold;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .stages-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4rem;
+    margin-bottom: 6rem;
+    margin-top: 10rem;
+    align-items: flex-start;
+  }
+
+  .stage-bubble {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid $gold;
+    border-radius: 120px;
+    padding: 4rem 5rem;
+    min-width: 350px;
+    max-width: 500px;
+    min-height: 320px;
+    flex: 1 1 300px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+
+    // ✅ effet hover sur toute la card
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+    }
+
+    h3 {
+      color: $white;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .date {
+      font-size: 1.4rem;
+      color: $gold;
+      margin-bottom: 1rem;
+    }
+
+    .desc {
+      font-size: 1.3rem;
+      color: lighten($white, 15%);
+    }
+
+    &.past {
+      opacity: 0.5;
+    }
+
+    .bubble-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid $gold;
+      border-radius: 20px;
+      color: $gold;
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $gold;
+        color: #000;
+      }
+    }
+
+    .stage-floating-image {
+      position: absolute;
+      top: -130px;
+      right: -142px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      border: 2px solid $gold;
+      opacity: 0.9;
+
+      img {
+        width: 115%;
+        height: 110%;
+        object-fit: cover;
+        transition: transform 0.4s ease; // ✅ zoom fluide
+      }
+    }
+
+    // ✅ seulement l'image qui zoom
+    &:hover .stage-floating-image img {
+      transform: scale(1.08);
+    }
+
+    .stage-detail {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: $white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease, opacity 0.6s ease;
+      opacity: 0;
+      margin-top: 0;
+      padding-top: 0;
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      &.open {
+        display: block;
+        max-height: 1000px;
+        opacity: 1;
+        margin-top: 2rem;
+        padding-top: 1rem;
+      }
+    }
+  }
+}

@@ -1,7 +1,16 @@
 @import "_reset";
 @import "_colors";
 @import "_font";
-@import "navbar";
+@import "_navbar";
+@import "_apropos";
+@import "_therapie";
+@import "_outils";
+@import "_stages";
+@import "_galerie";
+@import "_blog";
+@import "_article";
+
+
 
 html,
 body {
@@ -30,6 +39,8 @@ body {
 
   background-color: rgb(25 18 0);
 
+
+  cursor: none;
 
   .background {
     position: fixed;
@@ -168,20 +179,56 @@ canvas#bg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: 24px;
+  height: 24px;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: background 0.3s ease;
-
-  background: radial-gradient(circle,
-      rgba(255, 215, 0, 0.85) 0%,
-      rgba(255, 215, 0, 0.2) 70%);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-  filter: blur(0.4px);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABpklEQVR4nK2VMSxDYRDHH0IEAwubRWIlMdg0SLl7KiYrFomJxWJhNxiMBgsJkQiJQTpVeldNpGMHkd69GEQk0tCFGDz52hIaffU+veTyli+//+Xu/vccpw6hSXdYCE5vaarLqXdks7MtyphVRl8Zbo1YXQWUYb0E/8pXJVypC1yS2C+MLxUCpSTczyYiHdZw33cahPHiV3g5hTBuLaCMi0FwJXxWmhiwgkt6ukcY8gHwNyGMWlcvBIcBbXlXwjlruEeINfq+Zg2/y8TahFGrw2HH+U9oyh2pupYMZ/7RbJMV+D4ebf/cCPMVwuuKoV6ZN6HBQrFeJdg1VZeHt5XJDDUbAynhXrEtDJJLRbtDw3NJGFfCp1+GeGmEzRuPJxeMm0PDbxj6lKAQsCmPOQbXsQ0hPAh0KZfMZAX3EjOdxYtYUwAKVgJKMF8TzqXbbyfAePwXAWE4t9z36sPVny1aDS3gMS79sfq8mVUouDFP0J3Rb3c+l8KxcJUnIq3mltSqWgg3Q7vWY3dUGbj4AyF8MNYXxrQwnAjhtqYmlz12B31/ozEUuBwfKj5yX3npUCUAAAAASUVORK5CYII=");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
 }
+
+#cursor-brush {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 9999;
+  //background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACa0lEQVR4nO2WS2sTURTHp74fIG5EUERBfCKidmFxYX0250wqgpCdO0E3fgbdiB9BdCE+EVQQQXwUldg5ZxoXATddSDr3Tps0xkfrW7SIjpzkThza7b1uzB9C4L/53fMez+uoI0eqBLBMMV5WBOOacVhT7kSSeF3ev5AO/dWKQWnGJPtThCedwysMazXDWBNKGIzxgRUR5Y6YR1SdwqNn+XWasNaMlrHYGDi4WPzh4cI8xfhdE0wlyelZTuCacxsUYd1E/qRe7l8kvgAV4aX0UU7gccnfpBgaps6PqkOFhU34rcJsacSWD99UAFvtw8O+jYrxVStCeBgXexf8hcOVFB6FuM9p5Jrw/jT4VZP2rzH7e+3D2d+mGd61uhvuVR7A/BSuCa+14ZTbYx8ewnZFOGEiv10ud8/NwK8b/2NM0GMdPjqY26EIJ03NbxaLvXPacMYbxv+gA3+ndXhM0CORtSKEKRk98SUDivGOmYLJiPLd1uEjob9LE34yNW/VnrA2GsBmRXDXwCekPNbhOvR3a4LPprEuVJ7DEs1IZr3+NP9vrc95XMqtkTprxh9mnn9FAexPr51m/GIy8SYK81uswkcG+1ZJVDMvmmw07NeMj03DNaQMnm0pxvOm2Z7KeW1uPMKBaee1Lr51eJJ4Xel6zY6TKh1ansnEuApwvXW4SJrJRP86+xVTHcqvNGl/L3ffcyXNcMo017nUkz0v+95k4KIzeCKHhPClgGT2xZPFoghepDtAMuHsAYrhaHvZEByXxlOEv41XcVb3TJqjGaPX/JzCM+lXjjNphrMZYE1qrgiOxcXDS52CO/qv9QfRZzccOWzgbAAAAABJRU5ErkJggg==");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACSklEQVR4nL2Xu4sUQRDG+/C1gvgIDBQ1FxHUQwwMRvR0qvZ8ILKZoBiI4h+gwZkpiqChIhiJGGjsBYoMu1V7t+oKBqvB3lT3noKKgQg+EM67kdZddm7RmQm674OOf1/PfPXVjFKe1YqCFcJwVhhva8IbQrhfLZRkArdqwneaMZl3CB82m8NLvMI71XDdP+H9c8Ub/O1EZbkmfJYBT4Txm4mCknN4kqghzXg/C947pg7bnRvQhBeLwO2ZonCLU7gwHhPCuSJwYfiQPKgscgbvVMMdQvC96O2F4JRLeF7iU2Cc0xSOOYObKCgJ42TBm89ogtNuE094ryD8qyFE5VKawrFigcP3zkfOEBwVgtkCBlpCBze5hXN5m22yXDjBU2mOrHIKTxI1JIyvC8z53VarstQp3ERBSRNc1/UwzHwChJesUafwZH7in9i9PmhCGH4ZxjPKh6aqBzZqgo+pWz4SgkOa8WdvzGKGshe4sYlnfBXXcHfahDCMaw4PC0EnptFhP3DuJ14YXxoK9wjD51S1XnMetp6iKFhsbz7wnhtxHfdqwi9CUJ2m0TXKpXStvOvPBwXhcyG4FddgnzBeHSgdkjrsbI/DMqdw+RuqmYG1OasJLmuC8+nH7nzM2g3YYJOcUSzHbQaE8JzyIc14J6dWX7QbsNIL3ERHVgvBj7xdrnxJE5zIXywYezSAuR8VQnDBmwEheJNtAB57KxtjN1x/9Gyvt7qGPtmKtR1g/3S8wJU1MFne3H3HN9s1WOsN9D9N88h6w+HJBQd39RtgO4XrZ8otuwAAAABJRU5ErkJggg==");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s linear;
+
+}
+
+
+
+
+.brush-trace {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.1) 70%);
+  animation: fade-out 0.5s ease-out forwards;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+}
+
 
 #loader {
   position: fixed;
@@ -204,6 +251,33 @@ canvas#bg {
 #loader.hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+body:not(.loaded) .section-hero,
+body:not(.loaded) header,
+body:not(.loaded) .scroll-indicator {
+  opacity: 0 !important;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+body.loaded .section-hero,
+body.loaded header,
+body.loaded .scroll-indicator {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s, visibility 0s linear 0.2s;
+}
+
+.hidden {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
 }
 
 
@@ -230,6 +304,25 @@ header {
   background: radial-gradient(circle, rgba(212, 175, 55, 0.7) 0%, rgba(212, 175, 55, 0.3) 40%, rgba(212, 175, 55, 0.1) 70%, rgba(212, 175, 55, 0) 90%);
   animation: breathe 4s ease-in-out infinite;
   margin-bottom: 100px;
+}
+
+.breathing-effect.transition-out {
+  animation: none;
+  transition: transform 1s ease, opacity 1s ease;
+  transform: scale(8);
+  opacity: 0;
+}
+
+/* Apparition en fondu du logo header */
+.site-menu__logo {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes breathe {
@@ -769,8 +862,7 @@ header {
 
 .outils {
   position: relative;
-  min-height: 100vh; // ou plus si besoin
-  //padding: -10rem 0;
+  min-height: 100vh;
   font-family: $montserrat;
 
   .container-title {
@@ -791,7 +883,6 @@ header {
     text-align: center;
   }
 
-
   .container {
     position: relative;
     width: 100%;
@@ -807,13 +898,91 @@ header {
       padding: 0 13rem;
       margin-top: -20px;
 
-      .text {
-        flex: 1 0 0;
-        font-size: clamp(1.1rem, 2.6vw, 1.5rem);
-        font-weight: 300;
-        line-height: 1.5;
-        margin-right: 32rem;
-        color: $white;
+      .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        flex: 1;
+        opacity: 0; // ← important pour le scrollTrigger
+        transition: opacity 0.6s ease;
+
+        p {
+          font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+          font-weight: 300;
+          line-height: 1.5;
+          color: $white;
+          margin-bottom: 2rem;
+          max-width: 60%;
+        }
+
+        .button {
+          display: flex;
+          justify-content: center;
+
+          .circle-cta {
+            position: relative;
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1rem;
+            color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            cursor: pointer;
+            z-index: 1;
+            transform: scale(1);
+            transition: transform 0.4s ease;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: -6px;
+              left: -6px;
+              width: calc(100% + 12px);
+              height: calc(100% + 12px);
+              border-radius: 50%;
+              border: 2px solid transparent;
+              border-top: 2px solid $gold;
+              border-right: 2px solid #ece8c3;
+              animation: spinBorder 4s linear infinite;
+              z-index: 0;
+              transition: transform 0.4s ease;
+            }
+
+            .cta-text {
+              position: relative;
+              z-index: 2;
+              font-weight: 500;
+              color: #fff;
+            }
+
+            &:hover {
+              transform: scale(1.05);
+
+              &::before {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+
+      .arrow-link {
+        display: inline-block;
+        font-size: 2rem;
+        color: $gold;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        margin-bottom: 1.5rem;
+
+        &:hover {
+          transform: translateX(6px);
+        }
       }
 
       .img-wrapper {
@@ -837,8 +1006,9 @@ header {
       }
     }
 
-    .content:not(:first-child) .text {
-      opacity: 0;
+    // seule la première carte est visible au départ
+    .content:first-child .text-wrapper {
+      opacity: 1;
     }
 
     .content:not(:first-child) .img-wrapper {
@@ -847,8 +1017,9 @@ header {
   }
 }
 
+
 .section-stage {
-  padding: 6rem 7rem;
+  padding: 6rem 7rem 12rem;
   font-family: $montserrat;
   background: transparent;
 
@@ -869,6 +1040,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    margin-bottom: 3rem;
 
     @media (min-width: 900px) {
       flex-direction: row;
@@ -880,15 +1052,60 @@ header {
     flex: 1;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
+    border-radius: 100px;
     padding: 2.5rem;
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
     transition: all 0.4s ease;
     backdrop-filter: blur(5px);
+    perspective: 1000px;
+    position: relative;
 
     &:hover {
       transform: translateY(-6px);
       box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+
+    &.flipped .stage-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .stage-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+      transform-style: preserve-3d;
+      min-height: 300px;
+    }
+
+    .stage-card-front,
+    .stage-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // centrer verticalement
+    align-items: center;     // centrer horizontalement
+    text-align: center;
+    padding: 2rem;
+    }
+
+    .stage-card-front {
+      z-index: 2;
+
+          h3 {
+      font-size: 30px;
+      color: $gold;
+    }
+    }
+
+    .stage-card-back {
+      transform: rotateY(180deg);
+      z-index: 1;
     }
 
     .stage-card-inner {
@@ -910,6 +1127,8 @@ header {
         }
       }
 
+      
+
       .btn-link {
         display: inline-block;
         margin-top: 1.5rem;
@@ -926,8 +1145,118 @@ header {
         }
       }
     }
+
+.flip-arrow {
+  position: absolute;
+  top:0;
+  right: 1rem;
+  font-size: 2.4rem;
+  color: $gold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(180deg);
   }
 }
+
+.close-arrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: $gold;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
+  }
+
+  .cta-button {
+  display: inline-block;
+  margin: 4rem auto 0;
+  padding: 1rem 2rem;
+  border: 1px solid $gold;
+  color: $white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s ease;
+  text-align: center;
+
+    &:hover {
+      background: $gold;
+      color: $black;
+    }
+  }
+
+   .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .circle-cta {
+      position: relative;
+      width: 12rem;
+      height: 12rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #111;
+      border: 1px solid rgba(255, 255, 255, 0.3); // cercle blanc léger
+      background: transparent;
+      cursor: pointer;
+      z-index: 1;
+      transform: scale(1);
+      transition: transform 0.4s ease;
+
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top: 2px solid $gold;
+        border-right: 2px solid #ece8c3;
+        animation: spinBorder 4s linear infinite;
+        z-index: 0;
+        transition: transform 0.4s ease;
+      }
+
+  .cta-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    &::before {
+      transform: scale(1.1); // zoom du cercle tournant
+    }
+  }
+}
+  }
+
+@keyframes spinBorder {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+}
+
 
 $cyl-gold: #d4af37;
 
@@ -972,7 +1301,6 @@ $cyl-gold: #d4af37;
           display: block;
           pointer-events: none;
           user-select: none;
-          border-radius: inherit;
         }
       }
     }
@@ -1057,7 +1385,7 @@ $white: #f8f8f8;
   }
 
   .blog-card {
-    background: $card-bg;
+    background: rgba(255, 255, 255, 0.11);
     color: $white;
     border-radius: 22px;
     overflow: hidden;
@@ -1184,7 +1512,7 @@ $white: #f8f8f8;
 
   #avisSplide {
     .splide__slide {
-      background: $card-bg;
+      background: rgba(255, 255, 255, 0.11);
       color: $white;
       border-radius: 22px;
       padding: 2.5rem;
@@ -1331,12 +1659,12 @@ $cyl-gold: #d4af37;
     z-index: 10; // au-dessus du canvas
 
     h2 {
-      font-size: 3rem;
-      color: #d4af37;
-      font-family: $montserrat;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      font-size: 4.5rem;
+      color: $gold;
+      border-left: 2px solid $gold;
+      padding-left: 1.25rem;
+      display: inline-block;
+        font-family: $montserrat;
     }
   }
 }
@@ -1344,7 +1672,7 @@ $cyl-gold: #d4af37;
 
 .contact-intro {
   position: relative;
-  padding: 12rem 2rem;
+  padding: 34rem 2rem 12rem;
   text-align: center;
   color: $white;
   overflow: visible;
@@ -1466,21 +1794,22 @@ $cyl-gold: #d4af37;
   .spirale {
     position: absolute;
     animation: spin 40s linear infinite;
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: auto;
+    z-index: 2000;
 
     &.spirale-1 {
-      width: 45rem;
-      top: 10%;
-      left: 5%;
+      width: 36rem;
+      top: 31%;
+      left: 3%;
       transform: rotate(15deg);
+      //z-index: 2000;
     }
 
     &.spirale-2 {
-      bottom: 15%;
-      right: 10%;
+      bottom: 3%;
+      right: 3%;
       transform: rotate(-25deg);
-      width: 25rem;
+      width: 36rem;
 
     }
   }
@@ -1496,6 +1825,26 @@ $cyl-gold: #d4af37;
     transform: rotate(360deg);
   }
 }
+
+// Animation cartoon "zoom gag"
+@keyframes spiral-pop-zoom {
+  0%   { transform: scale(1) rotate(0deg); }
+  40%  { transform: scale(1.12) rotate(2deg); }
+  60%  { transform: scale(1.04) rotate(-1deg); }
+  80%  { transform: scale(1.08) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+
+// Hover spiral cartoon stretch (sans casser ton spin)
+.contact-intro .spirale {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); // effet rebondi + fluide
+
+  &:hover {
+    animation: spiral-pop-zoom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
 
 .cta-button {
   display: inline-block;

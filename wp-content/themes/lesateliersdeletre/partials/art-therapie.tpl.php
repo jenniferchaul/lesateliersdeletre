@@ -38,25 +38,4 @@
             </a>
         </div>
     </div>
-
-
-    <!--<div class="content content-intro" id="catherine-part" data-aos="fade-up" data-aos-delay="500">
-        <div>
-            <div class="intro-title" data-aos="fade-up" data-aos-delay="600">
-                <h2>Catherine Revollon, <br> art-thérapeute</h2>
-            </div>
-            <div class="intro-text">
-                <p data-aos="fade-left" data-aos-delay="700" data-splitting>
-                    Catherine Revollon vous accompagne avec bienveillance grâce à l’art-thérapie.
-                    Son approche mêle écoute, créativité et douceur pour aider chacun à se reconnecter à soi-même.
-                </p>
-            </div>
-            <div class="button">
-                <a href="/art-therapie" class="circle-cta">
-                    <span class="inner-circle"></span>
-                    <span class="text">En savoir plus</span>
-                </a>
-            </div>
-        </div>
-    </div>-->
 </section>

@@ -1,7 +1,7 @@
 <section class="section-hero">
 
 
-  <div class="logo">
+  <div class="logo logo-main">
     <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l’Être">
   </div>
 

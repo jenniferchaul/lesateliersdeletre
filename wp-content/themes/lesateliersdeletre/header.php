@@ -15,82 +15,10 @@
 <canvas id="bg"></canvas>
 
 
-  <div class="background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span> 
-    <span></span>
-  </div>
+  <!--<div id="cursor-dot"></div>-->
+  <div id="cursor-brush"></div>
 
-
-  <div id="cursor-dot"></div>
-
+<?php if (is_front_page()) : ?>
   <div id="loader">
     <div class="breathing-effect"></div>
     <div class="name-title">
@@ -98,6 +26,7 @@
       <h2>Catherine Revollon – Art-thérapeute</h2>
     </div>
   </div>
+  <?php endif; ?>
 
   <header class="navbar">
     <div class="navbar-left">
@@ -156,12 +85,14 @@
     <!-- navigation -->
     <nav class="site-menu__nav">
       <ul>
-        <li><a href="#intro-home"><span class="idx">(01)</span> Accueil</a></li>
-        <li><a href="#art-therapie"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
+        <li><a href="/"><span class="idx">(01)</span> Accueil</a></li>
+        <li><a href="/art-therapie"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
         <li><a href="#apropos"><span class="idx">(03)</span> À Propos</a></li>
-        <li><a href="#activities"><span class="idx">(04)</span> Activités</a></li>
-        <li><a href="#blog"><span class="idx">(05)</span> Blog</a></li>
-        <li><a href="#contact"><span class="idx">(05)</span> Contact</a></li>
+        <li><a href="#activities"><span class="idx">(04)</span> Outils</a></li>
+        <li><a href="#activities"><span class="idx">(05)</span> Stages & Ateliers</a></li>
+        <li><a href="#blog"><span class="idx">(06)</span> Blog</a></li>
+        <li><a href="#galerie"><span class="idx">(07)</span> Galerie</a></li>
+        <li><a href="#contact"><span class="idx">(08)</span> Contact</a></li>
       </ul>
     </nav>
 
@@ -170,4 +101,4 @@
       <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="Les Ateliers de l’Être">
     </div>
   </div>
-  <!-- ◊◊◊ /MENU OVERLAY ◊◊◊ -->
+  <!-- ◊◊◊ /MENU OVERLAY ◊◊◊ -->0

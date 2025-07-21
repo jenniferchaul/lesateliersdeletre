@@ -22,7 +22,7 @@
               </span>
               <h3 class="card-title"><?php the_title(); ?></h3>
               <p class="card-excerpt">
-                <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
+                <?php echo wp_trim_words(strip_tags(get_the_content()), 20); ?>
               </p>
               <span class="read-more">Lire l’article</span>
             </div>

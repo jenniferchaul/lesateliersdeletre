@@ -18,9 +18,12 @@
 
       <!-- Bloc navigation rapide -->
       <nav class="footer__links">
+        <a href="<?= home_url('/arttherapie') ?>">L'Art-thérapie</a>
+        <a href="<?= home_url('/apropos') ?>">À Propos</a>
+        <a href="<?= home_url('/outils') ?>">Outils</a>
+        <a href="<?= home_url('stages') ?>">Stages & Ateliers</a>
         <a href="<?= home_url('/galerie') ?>">Galerie</a>
-        <a href="<?= home_url('/blog') ?>">Voir tous les articles</a>
-        <a href="<?= home_url('/stages') ?>">Tous les stages</a>
+        <a href="<?= home_url('/blog') ?>">Blog</a>
         <a href="<?= home_url('/contact') ?>">Contact</a>
       </nav>
 

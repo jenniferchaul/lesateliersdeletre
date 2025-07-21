@@ -3,7 +3,7 @@
 
 <!-- spirales décoratives -->
 <img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_1.svg" alt="Spirale décorative" class="spirale spirale-1">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_2.svg" alt="Spirale décorative" class="spirale spirale-2">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_1.svg" alt="Spirale décorative" class="spirale spirale-2">
 
 
   <div class="contact-wrapper">

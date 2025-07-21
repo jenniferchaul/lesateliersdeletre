@@ -2,36 +2,164 @@
 // main.js — version sans Glider (Splide only)
 // --------------------------------------------------
 
+
+if (!document.getElementById("loader")) {
+  document.body.classList.add("loaded");
+}
+
+
 // 1. Loader
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const circle = loader.querySelector(".breathing-effect");
+
+  window.scrollTo(0, 0); // sécurité
+
   setTimeout(() => {
-    document.getElementById('loader')?.classList.add('hidden');
+    circle?.classList.add("transition-out");
+
+    // Pendant la disparition du cercle, on prépare l’accueil
+    setTimeout(() => {
+      loader.classList.add("fade-out");
+      document.body.classList.add("loaded");
+    }, 50); // un poil avant la fin du fade-out du cercle
   }, 1000);
 });
 
+
+
 // 2. Curseur personnalisé ─── desktop only ──────────────────────
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  /* souris présente ⇒ on garde le curseur doré animé */
-  const cursor = document.getElementById('cursor-dot');
-  let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+//if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+//  /* souris présente ⇒ on garde le curseur doré animé */
+//  const cursor = document.getElementById('cursor-dot');
+//  let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+//
+//  document.addEventListener('mousemove', (e) => {
+//    mouseX = e.clientX;
+//    mouseY = e.clientY;
+//  });
+//
+//  (function animateCursor() {
+//    curX += (mouseX - curX) * 0.15;
+//    curY += (mouseY - curY) * 0.15;
+//    cursor.style.left = `${curX}px`;
+//    cursor.style.top = `${curY}px`;
+//    requestAnimationFrame(animateCursor);
+//  })();
+//} else {
+//  /* écran tactile ⇒ on masque complètement le dot */
+//  const cursor = document.getElementById('cursor-dot');
+//  if (cursor) cursor.style.display = 'none';
+//}
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
+//document.addEventListener("mousemove", (e) => {
+//  const trace = document.createElement("div");
+//  trace.className = "brush-trace";
+//trace.style.left = `${e.clientX - 10}px`;
+//trace.style.top = `${e.clientY - 10}px`;
+//  document.body.appendChild(trace);
+//
+//  setTimeout(() => {
+//    trace.remove();
+//  }, 500); // disparaît au bout de 0.5s
+//});
+//
+//// Curseur "pinceau" dynamique
+//const cursorBrush = document.getElementById("cursor-brush");
+//
+//let lastX = 0;
+//let lastY = 0;
+//
+//if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+//  document.addEventListener("mousemove", (e) => {
+//    // position actuelle
+//    const x = e.clientX;
+//    const y = e.clientY;
+//
+//    // direction
+//    const dx = x - lastX;
+//    const dy = y - lastY;
+//    const angle = Math.atan2(dy, dx) * (180 / Math.PI); // radians -> degrés
+//
+//    // position + rotation du pinceau
+//    const offsetX = 20;
+//    const offsetY = 12;
+//    cursorBrush.style.left = `${x + offsetX}px`;
+//    cursorBrush.style.top = `${y + offsetY}px`;
+//    cursorBrush.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+//
+//    // mise à jour coordonnées
+//    lastX = x;
+//    lastY = y;
+//
+//    // traces dorées
+//    const trace = document.createElement("div");
+//    trace.className = "brush-trace";
+//    trace.style.left = `${x}px`;
+//    trace.style.top = `${y}px`;
+//    document.body.appendChild(trace);
+//
+//    setTimeout(() => {
+//      trace.remove();
+//    }, 500);
+//  });
+//}
 
-  (function animateCursor() {
-    curX += (mouseX - curX) * 0.15;
-    curY += (mouseY - curY) * 0.15;
-    cursor.style.left = `${curX}px`;
-    cursor.style.top = `${curY}px`;
-    requestAnimationFrame(animateCursor);
-  })();
-} else {
-  /* écran tactile ⇒ on masque complètement le dot */
-  const cursor = document.getElementById('cursor-dot');
-  if (cursor) cursor.style.display = 'none';
+const cursorBrush = document.getElementById("cursor-brush");
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+const offsetX = 20;
+const offsetY = 12;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateBrush() {
+  currentX += (mouseX - currentX) * 0.2;
+  currentY += (mouseY - currentY) * 0.2;
+
+  const dx = mouseX - currentX;
+  const dy = mouseY - currentY;
+  const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+  const brushX = currentX + offsetX;
+  const brushY = currentY + offsetY;
+
+  // On place le pinceau avec rotation
+  cursorBrush.style.left = `${brushX}px`;
+  cursorBrush.style.top = `${brushY}px`;
+  cursorBrush.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+  // Ajout de la trace au bout du pinceau
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  if (dist > 1) {
+    // On projette la trace un peu plus loin dans la direction du pinceau
+    const traceOffset = 5; // ← ajuste ici pour que ça tombe à la bonne "pointe"
+    const backOffset = 5;
+
+    const traceOffsetBack = 10; // ← AJUSTE CETTE VALEUR
+    const traceX = brushX - Math.cos(angle * Math.PI / 180) * traceOffsetBack;
+    const traceY = brushY - Math.sin(angle * Math.PI / 180) * traceOffsetBack;
+
+    const trace = document.createElement("div");
+    trace.className = "brush-trace";
+    trace.style.left = `${traceX}px`;
+    trace.style.top = `${traceY}px`;
+    document.body.appendChild(trace);
+
+    setTimeout(() => trace.remove(), 500);
+  }
+
+  requestAnimationFrame(animateBrush);
 }
+
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  animateBrush();
+}
+
 
 // 3. Scroll vers #intro-home
 document.getElementById('scrollDown')?.addEventListener('click', (e) => {
@@ -88,25 +216,25 @@ split.forEach(s => {
   });
 });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const backToTop = document.getElementById('back-to-top');
+document.addEventListener('DOMContentLoaded', () => {
+  const backToTop = document.getElementById('back-to-top');
 
-    if (backToTop) {
-      // Afficher le bouton au scroll
-      window.addEventListener('scroll', () => {
-        backToTop.classList.toggle('visible', window.scrollY > 300);
-      });
+  if (backToTop) {
+    // Afficher le bouton au scroll
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    });
 
-      // Remonter la page en douceur au clic
-      backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+    // Remonter la page en douceur au clic
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
       });
-    }
-  });
+    });
+  }
+});
 
 // 5. Animation photo art-thérapeute
 gsap.from('.photo-art-therapeute', {
@@ -125,7 +253,7 @@ gsap.from('.photo-art-therapeute', {
 document.addEventListener('DOMContentLoaded', () => {
   const cards = gsap.utils.toArray('.stack-card');
   const content = gsap.utils.toArray('.outils .content');
-  const texts = gsap.utils.toArray('.outils .text');
+  const texts = gsap.utils.toArray('.outils .text-wrapper');
   const imgs = gsap.utils.toArray('.outils .img-wrapper');
 
   cards.forEach((c, i) => {
@@ -482,3 +610,110 @@ ScrollTrigger.create({
     });
   }
 });
+
+document.querySelectorAll('.flip-arrow').forEach(arrow => {
+  arrow.addEventListener('click', (e) => {
+    const card = e.target.closest('.stage-card');
+    card.classList.toggle('flipped');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.close-arrow').forEach(close => {
+    close.addEventListener('click', () => {
+      const card = close.closest('.stage-card');
+      card.classList.remove('flipped');
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const blocks = document.querySelectorAll('.art-therapie-section .text-block');
+
+  blocks.forEach((block, index) => {
+    // Le premier bloc s'anime légèrement plus tard pour éviter qu'il soit visible immédiatement
+    gsap.from(block, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      ease: 'power2.out',
+      delay: index === 0 ? 0.6 : 0, // petit délai pour le 1er
+      scrollTrigger: {
+        trigger: block,
+        start: index === 0 ? 'top 90%' : 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+  });
+});
+
+
+
+
+// Animation GSAP du titre de l'Art-thérapie
+gsap.from('.slide-in-title', {
+  x: -100, // tu peux mettre +100 pour une entrée par la droite
+  opacity: 0,
+  duration: 1.5,
+  ease: 'power2.out',
+  scrollTrigger: {
+    trigger: '.slide-in-title',
+    start: 'top 75%',
+    toggleActions: 'play none none none',
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.outil-card');
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  cards.forEach((card, index) => {
+    gsap.to(card, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 80%",
+        end: "bottom center",
+        toggleActions: "play none none none",
+        scrub: false
+      }
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".bubble-link").forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const card = this.closest(".stage-bubble");
+      const detail = card.querySelector(".stage-detail");
+      const isOpen = detail.classList.contains("open");
+
+      if (isOpen) {
+        // Fermer si déjà ouvert
+        detail.classList.remove("open");
+        this.textContent = "En savoir plus";
+      } else {
+        // Fermer toutes les autres (optionnel si tu veux comportement exclusif)
+        document.querySelectorAll(".stage-detail.open").forEach(el => {
+          el.classList.remove("open");
+          const otherLink = el.closest(".stage-bubble").querySelector(".bubble-link");
+          if (otherLink) otherLink.textContent = "En savoir plus";
+        });
+
+        // Ouvrir la card actuelle
+        detail.classList.add("open");
+        this.textContent = "Réduire";
+      }
+    });
+  });
+});
+

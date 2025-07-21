@@ -1,0 +1,188 @@
+.single-post-section {
+  padding: 8rem 2rem;
+  font-family: $montserrat;
+  color: $white;
+  background: transparent;
+  position: relative;
+  height: 100vh;
+
+  .container.open-book {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: auto;
+    gap: 4rem;
+    height: 100%;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent 10%, $gold 40%, $gold 60%, transparent 90%);
+      z-index: 1;
+      transform: translateX(-50%);
+    }
+  }
+
+  
+
+  .book-left {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 4rem;
+    text-align: right;
+    position: relative;
+
+    .post-date {
+      font-size: 1.4rem;
+      color: lighten($white, 30%);
+      margin-bottom: 1rem;
+    }
+
+    .post-title {
+      font-size: 3rem;
+      color: $gold;
+      margin-bottom: 2rem;
+    }
+
+    .post-excerpt {
+      font-style: italic;
+      font-size: 1.6rem;
+      color: lighten($white, 20%);
+      border-left: 4px solid $gold;
+      padding-left: 1rem;
+      margin-top: 2rem;
+      align-self: flex-start;
+      max-width: 85%;
+      text-align: left;
+    }
+  }
+
+.book-right {
+  position: relative;
+  z-index: 2;
+  padding-left: 5rem;
+  overflow-y: auto;
+  height: 100%;
+
+  // 🎨 Scrollbar dorée personnalisée
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: $gold transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gold;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: lighten($gold, 10%);
+  }
+
+  .featured-image {
+    margin-bottom: 2rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .post-body {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: lighten($white, 10%);
+
+    p {
+      margin-bottom: 2rem;
+    }
+
+    h2, h3, h4 {
+      margin-top: 3rem;
+      color: $gold;
+    }
+
+    a {
+      color: $gold;
+      text-decoration: underline;
+
+      &:hover {
+        color: lighten($gold, 10%);
+      }
+    }
+
+    // Lettrine
+    p:first-of-type::first-letter {
+      font-size: 4rem;
+      font-weight: bold;
+      color: $gold;
+      float: left;
+      line-height: 1;
+      padding-right: 0.5rem;
+    }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: lighten($gold, 15%);
+    animation: scroll-bounce 1.5s infinite ease-in-out;
+    opacity: 0.7;
+    pointer-events: none;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  
+
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+}
+
+
+  @media (max-width: 900px) {
+    height: auto;
+
+    .container.open-book {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      height: auto;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .book-left,
+    .book-right {
+      padding: 0;
+      text-align: left;
+    }
+
+    .book-right {
+      overflow-y: visible;
+    }
+  }
+}
