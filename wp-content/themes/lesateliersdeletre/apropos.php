@@ -6,12 +6,9 @@ Template Name: À propos
 get_header();
 ?>
 
-<section class="apropos-section" id="apropos">
+<?php get_template_part('partials/hero.tpl'); ?>
 
-    <!-- Logo centré -->
-    <div class="logo logo-apropos">
-        <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="Logo Les Ateliers de l’Être">
-    </div>
+<section class="apropos-section" id="apropos">
 
     <div class="container">
 

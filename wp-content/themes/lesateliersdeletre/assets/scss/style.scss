@@ -9,36 +9,19 @@
 @import "_galerie";
 @import "_blog";
 @import "_article";
-
+@import "_contact";
 
 
 html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; // ← stoppe les débordements horizontaux
-  //position: relative;
+  overflow-x: hidden;
 }
 
 
 body {
-  //background: radial-gradient(circle at center,
-  //    rgb(18, 14, 0) 0%,
-  //    rgb(28, 23, 5) 30%,
-  //    rgb(46, 39, 9) 60%,
-  //    rgba(44, 36, 14, 0.94) 85%,
-  //    rgba(20, 17, 8, 0.9) 100%);
-
-  //background: radial-gradient(circle at center,
-  //     rgb(30, 23, 0) 30%,
-  //     rgb(46, 39, 9) 60%,
-  //     rgba(28, 20, 0) 85%,
-  //     rgba(15, 12, 4) 100%);
-  //display: none;
-  //position: relative;
-
   background-color: rgb(25 18 0);
-
 
   cursor: none;
 
@@ -266,6 +249,7 @@ body:not(.loaded) .scroll-indicator {
   visibility: hidden;
   transform: translateY(20px);
 }
+
 body.loaded .section-hero,
 body.loaded header,
 body.loaded .scroll-indicator {
@@ -713,20 +697,12 @@ header {
   //background-color: #0f0f0f;
 
   .content {
-    //max-width: 700px;
     z-index: 2;
     font-family: $montserrat;
     display: flex;
     margin-bottom: 3rem;
-    //flex-direction: column;
     text-align: left;
     padding-right: 15rem;
-
-
-    //&.customer {
-    //  flex-direction: row-reverse;
-    //  margin-top: 4rem;
-    //}
 
     .intro-title,
     .intro-text,
@@ -804,27 +780,32 @@ header {
         transition: transform 0.4s ease;
       }
 
-  .cta-text {
-    position: relative;
-    z-index: 2;
-    font-weight: 500;
-    color: #fff;
-  }
+      .cta-text {
+        position: relative;
+        z-index: 2;
+        font-weight: 500;
+        color: #fff;
+      }
 
-  &:hover {
-    transform: scale(1.05);
+      &:hover {
+        transform: scale(1.05);
 
-    &::before {
-      transform: scale(1.1); // zoom du cercle tournant
+        &::before {
+          transform: scale(1.1); // zoom du cercle tournant
+        }
+      }
     }
   }
-}
-  }
 
-@keyframes spinBorder {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spinBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
 
   .intro-img.small-portrait {
@@ -1080,27 +1061,27 @@ header {
 
     .stage-card-front,
     .stage-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; // centrer verticalement
-    align-items: center;     // centrer horizontalement
-    text-align: center;
-    padding: 2rem;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; // centrer verticalement
+      align-items: center; // centrer horizontalement
+      text-align: center;
+      padding: 2rem;
     }
 
     .stage-card-front {
       z-index: 2;
 
-          h3 {
-      font-size: 30px;
-      color: $gold;
-    }
+      h3 {
+        font-size: 30px;
+        color: $gold;
+      }
     }
 
     .stage-card-back {
@@ -1127,7 +1108,7 @@ header {
         }
       }
 
-      
+
 
       .btn-link {
         display: inline-block;
@@ -1146,46 +1127,46 @@ header {
       }
     }
 
-.flip-arrow {
-  position: absolute;
-  top:0;
-  right: 1rem;
-  font-size: 2.4rem;
-  color: $gold;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+    .flip-arrow {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      font-size: 2.4rem;
+      color: $gold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
 
-  &:hover {
-    transform: rotate(180deg);
-  }
-}
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
 
-.close-arrow {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 3rem;
-  color: $gold;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.3s ease;
+    .close-arrow {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 3rem;
+      color: $gold;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease;
 
-  &:hover {
-    transform: rotate(180deg);
-  }
-}
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   .cta-button {
-  display: inline-block;
-  margin: 4rem auto 0;
-  padding: 1rem 2rem;
-  border: 1px solid $gold;
-  color: $white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.4s ease;
-  text-align: center;
+    display: inline-block;
+    margin: 4rem auto 0;
+    padding: 1rem 2rem;
+    border: 1px solid $gold;
+    color: $white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    text-align: center;
 
     &:hover {
       background: $gold;
@@ -1193,7 +1174,7 @@ header {
     }
   }
 
-   .button {
+  .button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1233,27 +1214,32 @@ header {
         transition: transform 0.4s ease;
       }
 
-  .cta-text {
-    position: relative;
-    z-index: 2;
-    font-weight: 500;
-    color: #fff;
-  }
+      .cta-text {
+        position: relative;
+        z-index: 2;
+        font-weight: 500;
+        color: #fff;
+      }
 
-  &:hover {
-    transform: scale(1.05);
+      &:hover {
+        transform: scale(1.05);
 
-    &::before {
-      transform: scale(1.1); // zoom du cercle tournant
+        &::before {
+          transform: scale(1.1); // zoom du cercle tournant
+        }
+      }
     }
   }
-}
-  }
 
-@keyframes spinBorder {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spinBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
 }
 
@@ -1664,7 +1650,7 @@ $cyl-gold: #d4af37;
       border-left: 2px solid $gold;
       padding-left: 1.25rem;
       display: inline-block;
-        font-family: $montserrat;
+      font-family: $montserrat;
     }
   }
 }
@@ -1828,11 +1814,25 @@ $cyl-gold: #d4af37;
 
 // Animation cartoon "zoom gag"
 @keyframes spiral-pop-zoom {
-  0%   { transform: scale(1) rotate(0deg); }
-  40%  { transform: scale(1.12) rotate(2deg); }
-  60%  { transform: scale(1.04) rotate(-1deg); }
-  80%  { transform: scale(1.08) rotate(1deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  40% {
+    transform: scale(1.12) rotate(2deg);
+  }
+
+  60% {
+    transform: scale(1.04) rotate(-1deg);
+  }
+
+  80% {
+    transform: scale(1.08) rotate(1deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 
@@ -2243,4 +2243,25 @@ $gold: #d4af37;
       width: clamp(350px, 42vw, 792px);
     }
   }
+}
+
+@media (max-width: 768px) {
+  .breathing-effect {
+    width: 250px;
+    height: 250px;
+  }
+    .name-title {
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+      font-size: 19px;
+      line-height: 1.4;
+      }
+    }
+
+    .section-intro {
+flex-direction: column;
+padding-left: 0;
+    }
 }

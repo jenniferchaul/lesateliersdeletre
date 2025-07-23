@@ -1,13 +1,36 @@
 .outils-scroll {
-  padding: 10rem 5vw;
+  padding: 0rem 5vw;
   display: flex;
   flex-direction: column;
   gap: 10rem;
   font-family: $montserrat;
   align-items: center;
 
+  .img-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      max-width: 35rem;
+      height: auto;
+      animation: floral-pulse 4s ease-in-out infinite;
+      transform-origin: center center;
+      will-change: transform;
+
+      &.site-logo {
+        width: 37rem;
+      }
+    }
+  }
+
   .section-title {
-    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-size: 6rem;
     text-align: center;
     margin-bottom: 1rem;
     letter-spacing: 5px;
@@ -15,6 +38,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 4s linear infinite;
+    margin-top: 7rem;
   }
 
   .outil-card {
@@ -140,7 +164,18 @@
           line-height: 1.8;
           color: lighten($white, 15%);
           margin-bottom: 2rem;
+
+          &:first-of-type::first-letter {
+            font-size: 4rem;
+            font-weight: bold;
+            color: $gold;
+            float: left;
+            line-height: 1;
+            padding-right: 0.5rem;
+          }
         }
+
+
       }
 
       .scroll-hint {

@@ -6,10 +6,12 @@ Template Name: Stages
 get_header();
 ?>
 
-
-
-
 <section class="stages-section">
+
+    <div class="img-intro">
+        <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="logo" class="site-logo">
+    </div>
+
     <h2 class="section-title">Stages à venir</h2>
     <div class="stages-wrapper">
 
@@ -19,9 +21,6 @@ get_header();
             <div class="stage-floating-image">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie1.png" alt="Atelier Mandala">
             </div>
-
-
-
 
             <h3>Atelier Mandala & Créativité</h3>
             <p class="date">21 juillet 2025</p>

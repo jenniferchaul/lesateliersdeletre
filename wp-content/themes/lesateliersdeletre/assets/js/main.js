@@ -27,84 +27,6 @@ window.addEventListener("load", () => {
 });
 
 
-
-// 2. Curseur personnalisé ─── desktop only ──────────────────────
-//if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-//  /* souris présente ⇒ on garde le curseur doré animé */
-//  const cursor = document.getElementById('cursor-dot');
-//  let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-//
-//  document.addEventListener('mousemove', (e) => {
-//    mouseX = e.clientX;
-//    mouseY = e.clientY;
-//  });
-//
-//  (function animateCursor() {
-//    curX += (mouseX - curX) * 0.15;
-//    curY += (mouseY - curY) * 0.15;
-//    cursor.style.left = `${curX}px`;
-//    cursor.style.top = `${curY}px`;
-//    requestAnimationFrame(animateCursor);
-//  })();
-//} else {
-//  /* écran tactile ⇒ on masque complètement le dot */
-//  const cursor = document.getElementById('cursor-dot');
-//  if (cursor) cursor.style.display = 'none';
-//}
-
-//document.addEventListener("mousemove", (e) => {
-//  const trace = document.createElement("div");
-//  trace.className = "brush-trace";
-//trace.style.left = `${e.clientX - 10}px`;
-//trace.style.top = `${e.clientY - 10}px`;
-//  document.body.appendChild(trace);
-//
-//  setTimeout(() => {
-//    trace.remove();
-//  }, 500); // disparaît au bout de 0.5s
-//});
-//
-//// Curseur "pinceau" dynamique
-//const cursorBrush = document.getElementById("cursor-brush");
-//
-//let lastX = 0;
-//let lastY = 0;
-//
-//if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-//  document.addEventListener("mousemove", (e) => {
-//    // position actuelle
-//    const x = e.clientX;
-//    const y = e.clientY;
-//
-//    // direction
-//    const dx = x - lastX;
-//    const dy = y - lastY;
-//    const angle = Math.atan2(dy, dx) * (180 / Math.PI); // radians -> degrés
-//
-//    // position + rotation du pinceau
-//    const offsetX = 20;
-//    const offsetY = 12;
-//    cursorBrush.style.left = `${x + offsetX}px`;
-//    cursorBrush.style.top = `${y + offsetY}px`;
-//    cursorBrush.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-//
-//    // mise à jour coordonnées
-//    lastX = x;
-//    lastY = y;
-//
-//    // traces dorées
-//    const trace = document.createElement("div");
-//    trace.className = "brush-trace";
-//    trace.style.left = `${x}px`;
-//    trace.style.top = `${y}px`;
-//    document.body.appendChild(trace);
-//
-//    setTimeout(() => {
-//      trace.remove();
-//    }, 500);
-//  });
-//}
-
 const cursorBrush = document.getElementById("cursor-brush");
 let mouseX = 0, mouseY = 0;
 let currentX = 0, currentY = 0;
@@ -278,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: {
       trigger: '.outils',
       pin: true,
-      start: 'top top',
+      start: 'top 60%',
       end: `+=${content.length * 50}%`,
       scrub: 3,
     }
@@ -328,58 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }).mount();
 });
 
-// 9. Splide — galerie tube 3D
-//cument.addEventListener('DOMContentLoaded', () => {
-//const splide = new Splide('#tubeSplide', {
-//  type: 'loop',
-//  perPage: 3,
-//  focus: 'center',
-//  gap: '2rem',
-//  speed: 1000,
-//  autoplay: true,
-//  interval: 4000,
-//  pauseOnHover: true,
-//  pauseOnFocus: true,
-//  arrows: false,
-//  pagination: false,
-//  drag: true,
-//  wheel: true,
-//  breakpoints: {
-//    768: { perPage: 1 },
-//    1024: { perPage: 2 }
-//  }
-//});
-
-// effet incurvé
-//const ROT = 60;
-//const OFF = 80;
-//const SCALE_MIN = 0.6;
-//
-//function updateTube() {
-//  const curr = splide.index;
-//  const len = splide.length;
-//
-//  splide.Components.Elements.list.childNodes.forEach(slide => {
-//    if (!slide.classList) return;
-//    const sIndex = parseInt(slide.getAttribute('data-splide-slide-index'));
-//    let diff = sIndex - curr;
-//    if (diff > len / 2) diff -= len;
-//    if (diff < -len / 2) diff += len;
-//
-//    const p = diff;
-//    const rotate = p * ROT;
-//    const translateY = OFF * Math.pow(p, 2) * Math.sign(p);
-//    const scale = 1 - Math.min(Math.abs(p) * (1 - SCALE_MIN), 0.25);
-//    const bright = 1 - Math.min(Math.abs(p) * 0.35, 0.35);
-//
-//    slide.style.transform = `translateY(${translateY}px) rotateY(${-rotate}deg) scale(${scale})`;
-//    slide.style.filter = `brightness(${bright})`;
-//  });
-//}
-//
-//splide.on('mounted move', updateTube);
-//splide.mount();
-//;
 
 
 // 10. Fade-in section Contact
@@ -398,68 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-//let xPos = 0;
-//
-//gsap.timeline()
-//    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
-//    .set('.img',  { // apply transform rotations to each image
-//      rotateY: (i)=> i*-36,
-//      transformOrigin: '50% 50% 500px',
-//      z: -500,
-//      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
-//      backgroundPosition:(i)=>getBgPos(i),
-//      backfaceVisibility:'hidden'
-//    })    
-//    .from('.img', {
-//      duration:1.5,
-//      y:200,
-//      opacity:0,
-//      stagger:0.1,
-//      ease:'expo'
-//    })
-//    .add(()=>{
-//      $('.img').on('mouseenter', (e)=>{
-//        let current = e.currentTarget;
-//        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
-//      })
-//      $('.img').on('mouseleave', (e)=>{
-//        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
-//      })
-//    }, '-=0.5')
-//
-//$(window).on('mousedown touchstart', dragStart);
-//$(window).on('mouseup touchend', dragEnd);
-//      
-//
-//function dragStart(e){ 
-//  if (e.touches) e.clientX = e.touches[0].clientX;
-//  xPos = Math.round(e.clientX);
-//  gsap.set('.ring', {cursor:'grabbing'})
-//  $(window).on('mousemove touchmove', drag);
-//}
-//
-//
-//function drag(e){
-//  if (e.touches) e.clientX = e.touches[0].clientX;    
-//
-//  gsap.to('.ring', {
-//    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
-//    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
-//  });
-//  
-//  xPos = Math.round(e.clientX);
-//}
-//
-//
-//function dragEnd(e){
-//  $(window).off('mousemove touchmove', drag);
-//  gsap.set('.ring', {cursor:'grab'});
-//}
-//
-//
-//function getBgPos(i){ //returns the background-position string to create parallax movement in each image
-//  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
-//}
 
 // 11. Gestion du son (play / pause)  -----------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -544,12 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
-
 // 5. Transition blocs Intro ➔ Catherine (fix pointerEvents + retour)
 gsap.set("#intro-part", {
   opacity: 1,
@@ -629,28 +431,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.art-therapie-section .text-block');
-
-  blocks.forEach((block, index) => {
-    // Le premier bloc s'anime légèrement plus tard pour éviter qu'il soit visible immédiatement
-    gsap.from(block, {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      ease: 'power2.out',
-      delay: index === 0 ? 0.6 : 0, // petit délai pour le 1er
-      scrollTrigger: {
-        trigger: block,
-        start: index === 0 ? 'top 90%' : 'top 85%',
-        toggleActions: 'play none none none',
-        once: true
-      }
-    });
+const blocks = document.querySelectorAll('.art-therapie-section .text-block');
+blocks.forEach((block, index) => {
+  gsap.from(block, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    ease: 'power2.out',
+    delay: index === 0 ? 0.6 : 0,
+    scrollTrigger: {
+      trigger: block,
+      start: index === 0 ? 'top 90%' : 'top 85%',
+      toggleActions: 'play none none none',
+      once: true
+    }
   });
 });
-
-
-
+});
 
 // Animation GSAP du titre de l'Art-thérapie
 gsap.from('.slide-in-title', {
@@ -715,5 +512,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+});
+
+
+gsap.utils.toArray('.img-scroll').forEach(img => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: img,
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    }
+  });
+
+  // Animation commune à toutes les images
+  tl.fromTo(
+    img,
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 10,
+      ease: 'power2.out',
+    }
+  );
+
+  // Si l’image a la classe .img-rotate, on ajoute une rotation
+  if (img.classList.contains('img-rotate')) {
+    tl.to(img, {
+      rotation: 360,
+      duration: 30,
+      ease: 'power1.inOut',
+    }, "<"); // "<" pour lancer en même temps que l’apparition
+  }
 });
 

@@ -5,6 +5,8 @@ Template Name: Blog
 get_header();
 ?>
 
+<?php get_template_part('partials/hero.tpl'); ?>
+
 <section class="blog-section">
   <div class="container">
     <h2 class="section-title">Blog</h2>

@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="button"> 
-            <a href="/art-therapie" class="circle-cta">
+            <a href="<?= home_url('/lart-therapie') ?>" class="circle-cta">
                 <span class="inner-circle"></span>
                 <span class="cta-text">En savoir plus</span>
             </a>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="button"> 
-            <a href="/art-therapie" class="circle-cta">
+            <a href="<?= get_permalink( get_page_by_path('a-propos') ); ?>" class="circle-cta">
                 <span class="inner-circle"></span>
                 <span class="cta-text">En savoir plus</span>
             </a>

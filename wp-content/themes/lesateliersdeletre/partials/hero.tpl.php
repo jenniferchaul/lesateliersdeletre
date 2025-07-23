@@ -1,8 +1,9 @@
 <section class="section-hero">
 
 
-  <div class="logo logo-main">
-    <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l’Être">
+  <div class="logo logo-main"><a href="<?= home_url('/') ?>">
+      <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l’Être">
+    </a>
   </div>
 
   <div class="scroll-indicator" id="scrollDown">
@@ -10,5 +11,5 @@
       <path d="M12 5v14M5 12l7 7 7-7" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </div>
-  
+
 </section>

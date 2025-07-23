@@ -40,13 +40,13 @@
         <i class="fas fa-phone-alt"></i> 07 68 33 06 15
       </div>
 
-      <a href="mailto:chaul.jennifer@gmail.com" aria-label="Email">
+      <a href="mailto:contact.les.ateliers.de.l.etre@gmail.com" aria-label="Email">
         <i class="fas fa-envelope"></i>
       </a>
       <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.facebook.com/profile.php?id=61560824593856" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-facebook-f"></i>
       </a>
     </div>
@@ -85,14 +85,14 @@
     <!-- navigation -->
     <nav class="site-menu__nav">
       <ul>
-        <li><a href="/"><span class="idx">(01)</span> Accueil</a></li>
-        <li><a href="/art-therapie"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
-        <li><a href="#apropos"><span class="idx">(03)</span> À Propos</a></li>
-        <li><a href="#activities"><span class="idx">(04)</span> Outils</a></li>
-        <li><a href="#activities"><span class="idx">(05)</span> Stages & Ateliers</a></li>
-        <li><a href="#blog"><span class="idx">(06)</span> Blog</a></li>
-        <li><a href="#galerie"><span class="idx">(07)</span> Galerie</a></li>
-        <li><a href="#contact"><span class="idx">(08)</span> Contact</a></li>
+        <li><a href="<?= home_url('/') ?>"><span class="idx">(01)</span> Accueil</a></li>
+        <li><a href="<?= home_url('/lart-therapie') ?>"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
+        <li><a href="<?= home_url('/a-propos') ?>"><span class="idx">(03)</span> À Propos</a></li>
+        <li><a href="<?= home_url('/outils') ?>"><span class="idx">(04)</span> Outils</a></li>
+        <li><a href="<?= home_url('/stages') ?>"><span class="idx">(05)</span> Stages & Ateliers</a></li>
+        <li><a href="<?= home_url('/blog') ?>"><span class="idx">(06)</span> Blog</a></li>
+        <li><a href="<?= home_url('/galerie') ?>"><span class="idx">(07)</span> Galerie</a></li>
+        <li><a href="<?= home_url('/contact') ?>"><span class="idx">(08)</span> Contact</a></li>
       </ul>
     </nav>
 

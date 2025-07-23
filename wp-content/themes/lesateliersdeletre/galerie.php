@@ -7,9 +7,9 @@ get_header();
 
 <section class="photo-gallery">
 
-
-  <div class="logo-galerie">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l'Être">
+  <div class="logo-galerie"><a href="<?= home_url('/') ?>">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l'Être">
+    </a>
   </div>
 
   <div class="container">

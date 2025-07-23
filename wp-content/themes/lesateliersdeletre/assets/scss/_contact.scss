@@ -1,0 +1,205 @@
+.contact-page-art {
+  padding: 8rem 5vw;
+  font-family: $montserrat;
+  color: $white;
+  background-color: transparent;
+
+  .img-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      max-width: 35rem;
+      height: auto;
+      animation: floral-pulse 4s ease-in-out infinite;
+      transform-origin: center center;
+      will-change: transform;
+
+      &.site-logo {
+        width: 37rem;
+      }
+    }
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 6rem;
+
+    .section-title {
+      font-size: 6rem;
+      background: linear-gradient(to right, #fff 0%, $gold 50%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      letter-spacing: 5px;
+    }
+
+    .contact-intro-page {
+      font-size: 1.6rem;
+      max-width: 700px;
+      margin: 2rem auto;
+      color: lighten($white, 15%);
+      line-height: 1.4;
+    }
+
+    .underline {
+      width: 60px;
+      height: 3px;
+      background: $gold;
+      margin: 2rem auto 0;
+      animation: underline-grow 2s ease-out forwards;
+    }
+  }
+
+  .contact-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1420px;
+    margin: auto;
+
+    .contact-form-wrapper,
+    .contact-infos {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-infos {
+      max-height: 29rem;
+    }
+
+    h2 {
+      color: $gold;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p,
+    li {
+      font-size: 1.4rem;
+      color: lighten($white, 15%);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    // Champs CF7 personnalisés
+    .wpcf7-form {
+
+      label {
+        display: block;
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem; // 👈 padding entre le label et le champ
+        color: lighten($white, 15%);
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        border: none;
+        background: rgba(255, 255, 255, 0.05);
+        color: $gold;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.4);
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px $gold;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      input[type="submit"] {
+        background: $gold;
+        color: $black;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: lighten($gold, 10%);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+
+  .map-wrapper {
+  width: 100vw;
+  margin-top: 6rem;
+  margin-left: calc(-1 * (100vw - 100%) / 2); // pour forcer le plein écran même dans un container centré
+  position: relative;
+
+  iframe {
+    width: 100%;
+    height: 450px;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    filter: grayscale(1.01) brightness(0.8);
+  }
+  }
+
+  @media (max-width: 900px) {
+    .contact-main-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// 🎞️ Animations
+@keyframes underline-grow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 600px;
+  }
+
+  100% {
+    background-position: 1500px;
+  }
+}

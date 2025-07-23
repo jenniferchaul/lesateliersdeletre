@@ -1,31 +1,29 @@
 .art-therapie-section {
     position: relative;
-    padding: 0 2rem;
+    padding: 0 4rem;
     color: $white;
     font-family: $montserrat;
-    //text-align: center;
 
     .container {
-        //max-width: 1000px;
         margin: 0 auto;
         position: relative;
         display: flex;
         flex-direction: column;
-        align-items: stretch; // ← au lieu de center
+        align-items: stretch;
         justify-content: center;
 
         .img-intro {
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; // utile pour mobile
-            gap: 2rem; // espace entre l'image et le titre
+            flex-wrap: wrap;
+            gap: 2rem;
             margin-bottom: 4rem;
             flex-direction: column;
 
             img {
                 width: 100%;
-                max-width: 35rem; // ← à adapter selon rendu
+                max-width: 35rem;
                 height: auto;
                 animation: floral-pulse 4s ease-in-out infinite;
                 transform-origin: center center;
@@ -33,10 +31,7 @@
 
                 &.site-logo {
                     width: 37rem;
-
                 }
-
-
             }
 
             .title-wrapper {
@@ -55,27 +50,23 @@
 
         .section-title {
             font-family: $montserrat;
-            font-size: clamp(2.6rem, 6vw, 4.5rem);
-            //color: $gold;
-            margin: 0; // on supprime le margin-bottom
-            padding: 0; // plus de padding gauche
-            border: none; // on enlève le trait
+            font-size: 6rem;
+            margin: 0;
+            padding: 0;
+            border: none;
             text-align: left;
-            white-space: nowrap; // force le titre à rester sur une seule ligne
+            white-space: nowrap;
             overflow: hidden;
             letter-spacing: 7px;
             text-transform: uppercase;
             background: linear-gradient(to right,
                     rgb(235, 234, 232) 0%,
                     rgb(190, 168, 2) 10%,
-                    hsl(0, 0%, 91%) 20%,
-
-                );
+                    hsl(0, 0%, 91%) 20%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s linear infinite;
         }
-
 
         @keyframes shine {
             0% {
@@ -92,45 +83,80 @@
         }
     }
 
-    .text-block {
-        width: auto;
-        margin-bottom: 4rem;
+    // Nouveau bloc : Texte + Image en vis-à-vis
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6rem;
+        gap: 4rem;
+        flex-wrap: wrap;
 
-        p {
-            font-size: 1.5rem;
-            line-height: 1.75;
-            color: lighten($white, 20%);
-            text-align: left;
-            position: relative;
-            transition:
-                color 0.4s ease,
-                transform 0.4s ease,
-                text-shadow 0.4s ease;
+        .text-content {
+            flex: 1;
+            min-width: 300px;
 
+            p {
+                font-size: 1.6rem;
+                line-height: 1.8;
+                color: lighten($white, 10%);
+                transition: all 0.5s ease;
 
-            &:hover {
-                color: $gold;
-                transform: translateX(2px);
-                text-shadow: 0 0 8px rgba(222, 196, 73, 0.4);
+                &.splitting {
+                    //opacity: 0;
+                    transform: translateY(30px);
+                    will-change: transform, opacity;
+                }
+
+                &:hover {
+                    color: $gold;
+                    transform: translateX(2px);
+                    text-shadow: 0 0 8px rgba(222, 196, 73, 0.4);
+                }
+
+                &:first-of-type::first-letter {
+                    font-size: 3.6rem;
+                    font-weight: bold;
+                    color: $gold;
+                    float: left;
+                    line-height: 1;
+                    padding-right: 0.5rem;
+                }
             }
         }
 
-        &.align-left {
-            align-self: flex-start;
-            padding: 0 69rem 0 3rem;
+        .image-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-
-            p {
-                text-align: left;
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             }
         }
 
-        &.align-right {
-            align-self: flex-end;
-            padding: 0 3rem 0 69rem;
+        &.reverse {
+            flex-direction: row-reverse;
+        }
+    }
 
-            p {
-                text-align: left;
+    // Responsive
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+
+            &.reverse {
+                flex-direction: column;
+            }
+
+            .text-content,
+            .image-content {
+                padding: 0;
             }
         }
     }
@@ -140,10 +166,9 @@
         transform: translateY(20px);
         display: inline-block;
     }
-
-
 }
 
+// Animation de pulsation logo
 @keyframes floral-pulse {
     0% {
         transform: scale(1) skew(0deg, 0deg);
@@ -171,4 +196,22 @@
     transform-origin: center center;
     will-change: transform;
     filter: drop-shadow(0 0 10px rgba(222, 196, 73, 0.4));
+}
+
+.img-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+    will-change: transform, opacity;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-block {
+    opacity: 1;
+    transform: translateY(30px);
+    will-change: transform, opacity;
 }

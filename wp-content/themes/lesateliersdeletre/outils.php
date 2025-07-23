@@ -5,11 +5,13 @@ Template Name: Outils
 get_header();
 ?>
 
+<?php get_template_part('partials/hero.tpl'); ?>
+
 <section class="outils-scroll">
 
     <h2 class="section-title">Outils</h2>
 
-    <div class="outil-card">
+    <div class="outil-card" id="masque">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
