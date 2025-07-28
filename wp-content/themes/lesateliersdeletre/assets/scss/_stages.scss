@@ -2,7 +2,7 @@
   padding: 0rem 5vw;
   font-family: $montserrat;
 
-    .img-intro {
+  .img-intro {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,8 +42,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 4rem;
-    margin-bottom: 6rem;
-    margin-top: 23rem;
+    margin-bottom: 10rem;
+    margin-top: 6rem;
     align-items: flex-start;
   }
 
@@ -71,6 +71,7 @@
       color: $white;
       font-size: 1.8rem;
       margin-bottom: 1rem;
+      margin-top: 2rem;
     }
 
     .date {
@@ -106,9 +107,8 @@
     }
 
     .stage-floating-image {
-      position: absolute;
-      top: -130px;
-      right: -142px;
+      position: relative;
+      margin: 0 auto;
       width: 200px;
       height: 200px;
       border-radius: 50%;
@@ -144,6 +144,7 @@
 
       p {
         margin-bottom: 1rem;
+        line-height: 1.2;
       }
 
       &.open {
@@ -153,6 +154,34 @@
         margin-top: 2rem;
         padding-top: 1rem;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .stages-section {
+
+    .img-intro {
+      img {
+        width: 25rem;
+      }
+    }
+
+    .section-title {
+      font-size: 46px;
+      line-height: 1;
+    }
+
+    .stages-wrapper {
+      margin-top: 15rem;
+      margin-bottom: 0;
+    }
+
+    .stage-bubble {
+      margin-bottom: 9rem;
+      border-radius: 60px;
+      padding: 4rem 3rem;
+      line-height: 1.4;
     }
   }
 }

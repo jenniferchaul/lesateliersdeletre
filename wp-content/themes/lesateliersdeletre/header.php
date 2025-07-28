@@ -86,7 +86,7 @@
     <nav class="site-menu__nav">
       <ul>
         <li><a href="<?= home_url('/') ?>"><span class="idx">(01)</span> Accueil</a></li>
-        <li><a href="<?= home_url('/lart-therapie') ?>"><span class="idx">(02)</span> l'Art-Thérapie</a></li>
+        <li><a href="<?= home_url('/lart-therapie') ?>"><span class="idx">(02)</span> L'Art-Thérapie</a></li>
         <li><a href="<?= home_url('/a-propos') ?>"><span class="idx">(03)</span> À Propos</a></li>
         <li><a href="<?= home_url('/outils') ?>"><span class="idx">(04)</span> Outils</a></li>
         <li><a href="<?= home_url('/stages') ?>"><span class="idx">(05)</span> Stages & Ateliers</a></li>
@@ -101,4 +101,4 @@
       <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="Les Ateliers de l’Être">
     </div>
   </div>
-  <!-- ◊◊◊ /MENU OVERLAY ◊◊◊ -->0
+  <!-- ◊◊◊ /MENU OVERLAY ◊◊◊ -->

@@ -72,7 +72,7 @@ get_header();
           <p class="splitting">Participer à un atelier d'art-thérapie, c'est donc s'offrir la chance de plonger dans une expérience riche et transformative. Cela permet d'explorer son univers intérieur à travers l'art, d'accéder à des ressources insoupçonnées et de favoriser un chemin vers la guérison, l'acceptation de soi et un épanouissement durable.</p>
         </div>
         <div class="image-content">
-          <img class="img-scroll img-rotate" src="<?= get_theme_file_uri('assets/images/mandala6.png'); ?>" alt="Art-thérapie image 1">
+          <img class="img-scroll img-rotate" src="<?= get_theme_file_uri('assets/images/mandala12.png'); ?>" alt="Art-thérapie image 1">
         </div>
       </div>
     </div>

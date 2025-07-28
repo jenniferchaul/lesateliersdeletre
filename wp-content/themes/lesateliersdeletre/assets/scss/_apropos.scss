@@ -157,3 +157,44 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .apropos-section {
+    padding: 1rem;
+
+    .section-title {
+      font-size: 46px;
+      margin-bottom: 1rem;
+    }
+
+    .bio-wrapper {
+      gap: 2rem;
+      .photo-art-therapeute {
+        margin: 1rem auto 0;
+        max-width: 330px;
+      }
+      .bio-text {
+        p {
+        font-size: 20px;
+        }
+      }
+    }
+
+    .competences-section {
+      padding: 3rem 1rem;
+
+      .bubble-bg {
+        border-radius: 90px;
+      }
+
+      .competences-content {
+        ul {
+          li {
+            font-size: 20px;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+}

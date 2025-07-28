@@ -29,11 +29,10 @@ get_header();
                 <p>La médiation par le masque nous aide à nous libérer des charges émotionnelles qui nous entravent. En prenant conscience de toutes nos facettes, nous apprenons à nous détacher de la perception sociale que nous avons de nous-mêmes (la persona, selon Carl Jung). Cette prise de conscience favorise la naissance d’un nouvel être, offrant la possibilité d’une métamorphose intérieure.</p>
                 <p>Ce voyage introspectif nous rapproche de la réalité de notre être authentique et contribue à notre cheminement vers l'individuation. En rejoignant mes ateliers, vous découvrirez comment le masque peut devenir un compagnon de route sur cette quête d’authenticité. Ensemble, nous explorerons la manière dont la création artistique des masques peut transformer non seulement notre perception de nous-mêmes, mais aussi notre relation aux autres.</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 
-    <div class="outil-card">
+    <div class="outil-card" id="labyrinthe">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
@@ -53,11 +52,10 @@ get_header();
                 <p>Les ateliers autour du labyrinthe ne sont pas seulement un acte de création ; ils constituent une invitation à se reconnecter à soi-même et à son parcours. En participant à ces stages, vous découvrirez comment l’expression artistique peut devenir un outil puissant pour la réflexion personnelle et la guérison.</p>
                 <p>Rejoindre nos ateliers centrés sur le labyrinthe, c’est s’offrir l’opportunité de transformer un symbole complexe en un chemin vers l’épanouissement personnel. C’est un voyage enrichissant où l’échange et le partage avec d’autres participants favorisent un climat de soutien et d’acceptation mutuelle</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 
-    <div class="outil-card">
+    <div class="outil-card" id="collage">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
@@ -77,11 +75,10 @@ get_header();
                 <p> Le collage est également une forme de narration silencieuse. Chaque oeuvre raconte une histoire, souvent celle d’une résilience, d’un changement ou d’une quête personnelle. Il s’agit d’un processus où l’on peut mettre en image ce qui parfois reste flou ou non exprimé verbalement. C’est une façon de donner voix aux émotions, de faire parler ses ressentis à travers une création qui fait sens.</p>
                 <p> En résumé, le collage en art-thérapie n’est pas qu’une activité créative. C’est une manière profonde de parler sans mots, de se reconnecter à ses émotions, de laisser émerger ce qui est enfoui. C’est un voyage intérieur, une exploration de soi à travers des images, des textures et des couleurs.</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 
-    <div class="outil-card">
+    <div class="outil-card" id="mandala">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
@@ -101,11 +98,10 @@ get_header();
                 <p> Aujourd'hui, ces principes sont appliqués dans un cadre moderne à travers des ateliers d’art-thérapie. Je vous invite à participer à mes sessions, où nous explorerons ensemble la pratique du dessin de mandalas. Vous bénéficierez d’un environnement chaleureux et accueillant où vous pourrez exprimer librement votre créativité. Que vous soyez novice ou expérimenté, chaque participant pourra trouver une voie personnelle vers la sérénité et l'équilibre intérieur.</p>
                 <p> En rejoignant ces ateliers, vous aurez l’opportunité non seulement de créer, mais également de partager vos expériences avec d'autres. Ensemble, nous allons cultiver un espace de confiance et de soutien mutuel, où le mandala devient bien plus qu’un simple outil : il devient un compagnon de route vers la connaissance de soi et l’épanouissement personnel.</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 
-    <div class="outil-card">
+    <div class="outil-card" id="jeu">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
@@ -128,11 +124,10 @@ get_header();
                 <p> Ce jeu propose ainsi une expérience authentique, sans jugement, et vise à soutenir une démarche centrée sur la rencontre sincère avec soi-même. </p>
                 <p> Cet outil permet de retrouver autonomie, liberté créative et confiance dans sa perception, tout en favorisant une meilleure connaissance de soi. La diversité des interprétations démontre que chaque regard est unique, révélant la richesse de l’univers intérieur de chacun.</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 
-    <div class="outil-card">
+    <div class="outil-card" id="meditation">
         <div class="outil-left">
             <div class="orbit">
                 <?php for ($r = 1; $r <= 5; $r++) : ?>
@@ -159,7 +154,6 @@ get_header();
                 <p> Méditer avant de créer, c’est comme préparer le terrain d’un jardin : cela permet de libérer, d’harmoniser et d’accumuler vos énergies intérieures pour que, lors de la fabrication, chaque geste soit plus précis, plus vibrant, et plus porteur de sens.</p>
                 <p> C’est cette étape qui décuple la puissance de votre création, en faisant en sorte que votre oeuvre transmette de façon authentique ce que vous ressentez vraiment au fond de vous.</p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>&darr;</span></div>
         </div>
     </div>
 

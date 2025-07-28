@@ -28,9 +28,9 @@ get_header();
 
     <div class="contact-infos">
       <h2>Coordonnées</h2>
-      <p><strong>Email :</strong>contact.les.ateliers.de.l.etre@gmail.com</p>
-      <p><strong>Téléphone :</strong> 07 68 33 06 15</p>
-      <p><strong>Adresse :</strong> 79 Chemin du Mont de Milly - 71960 Prissé</p>
+      <p><strong>Email : </strong>contact.les.ateliers.de.l.etre@gmail.com</p>
+      <p><strong>Téléphone : </strong> 07 68 33 06 15</p>
+      <p><strong>Adresse : </strong> 79 Chemin du Mont de Milly - 71960 Prissé</p>
 
       <h2>Disponibilités</h2>
       <ul>

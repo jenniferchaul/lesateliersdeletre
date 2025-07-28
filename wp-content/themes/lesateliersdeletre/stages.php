@@ -6,13 +6,12 @@ Template Name: Stages
 get_header();
 ?>
 
+<?php get_template_part('partials/hero.tpl'); ?>
+
 <section class="stages-section">
 
-    <div class="img-intro">
-        <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="logo" class="site-logo">
-    </div>
+    <h2 class="section-title">Stages et ateliers à venir</h2>
 
-    <h2 class="section-title">Stages à venir</h2>
     <div class="stages-wrapper">
 
         <!-- STAGE 1 -->
@@ -64,18 +63,44 @@ get_header();
 
     </div>
 
-    <h2 class="section-title">Stages passés</h2>
+    <h2 class="section-title">Stages et ateliers passés</h2>
     <div class="stages-wrapper">
         <div class="stage-bubble past">
+            <div class="stage-floating-image">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie3.png" alt="Exploration du Soi">
+            </div>
+
             <h3>Exploration du Soi</h3>
             <p class="date">12 mai 2025</p>
             <p class="desc">Un atelier immersif autour de la symbolique personnelle à travers les arts visuels.</p>
+
+            <a href="#" class="bubble-link">En savoir plus</a>
+
+            <div class="stage-detail">
+                <p>✨ Exploration autour des symboles, archétypes et souvenirs visuels marquants. Créations libres en peinture et collage guidé.</p>
+                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
+                    ⏰ <strong>Horaires</strong> : 10h00 – 17h00<br>
+                    💶 <strong>Tarif</strong> : 80 €</p>
+            </div>
         </div>
 
         <div class="stage-bubble past">
-            <h3>Masques et Identité</h3>
-            <p class="date">5 avril 2025</p>
-            <p class="desc">Travail d'introspection basé sur la création de masques pour explorer les facettes du moi.</p>
+            <div class="stage-floating-image">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie3.png" alt="Exploration du Soi">
+            </div>
+
+            <h3>Exploration du Soi</h3>
+            <p class="date">12 mai 2025</p>
+            <p class="desc">Un atelier immersif autour de la symbolique personnelle à travers les arts visuels.</p>
+
+            <a href="#" class="bubble-link">En savoir plus</a>
+
+            <div class="stage-detail">
+                <p>✨ Exploration autour des symboles, archétypes et souvenirs visuels marquants. Créations libres en peinture et collage guidé.</p>
+                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
+                    ⏰ <strong>Horaires</strong> : 10h00 – 17h00<br>
+                    💶 <strong>Tarif</strong> : 80 €</p>
+            </div>
         </div>
     </div>
 </section>

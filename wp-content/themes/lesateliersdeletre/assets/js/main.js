@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: {
       trigger: '.outils',
       pin: true,
-      start: 'top 60%',
+      start: 'top top',
       end: `+=${content.length * 50}%`,
       scrub: 3,
     }
@@ -228,6 +228,37 @@ document.addEventListener('DOMContentLoaded', () => {
       .to(texts[i + 1], { opacity: 1, y: -50, duration: 2 }, '<+=0.5');
   });
 });
+
+content.forEach((item, i) => {
+  const text = texts[i];
+  const img = imgs[i];
+
+  ScrollTrigger.create({
+    trigger: item,
+    start: 'top top',
+    end: 'bottom top',
+    onEnter: () => {
+      item.style.pointerEvents = 'auto';
+    },
+    onLeave: () => {
+      item.style.pointerEvents = 'none';
+    },
+    onEnterBack: () => {
+      item.style.pointerEvents = 'auto';
+    },
+    onLeaveBack: () => {
+      item.style.pointerEvents = 'none';
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const firstImgWrapper = document.querySelector('.outils .content:first-child .img-wrapper');
+  if (firstImgWrapper) {
+    firstImgWrapper.style.pointerEvents = 'auto';
+  }
+});
+
 
 // 7. Parallaxe légère du fond
 window.addEventListener('scroll', () => {

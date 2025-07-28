@@ -19,7 +19,7 @@
             </div>
 
             <div class="img-wrapper">
-                <a href="/#masque"> <img src="<?= get_template_directory_uri(); ?>/assets/images/masque.jpg" alt="" class="" ;></a>
+                <a href="<?= site_url('/outils#lmasque') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/masque.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             </div>
 
             <div class="img-wrapper">
-              <a href="<?= site_url('/outils#masque') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/labyrinthe.jpg" alt="" class="" ;></a>
+              <a href="<?= site_url('/outils#labyrinthe') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/labyrinthe.jpg" alt="" class="" ;></a>
             </div>
         </div>
 

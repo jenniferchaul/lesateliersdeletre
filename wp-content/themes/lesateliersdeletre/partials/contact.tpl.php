@@ -2,8 +2,14 @@
 <section class="contact-intro" id="contact">
 
 <!-- spirales décoratives -->
-<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_1.svg" alt="Spirale décorative" class="spirale spirale-1">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/spirale_1.svg" alt="Spirale décorative" class="spirale spirale-2">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-1">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-2">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-3">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-4">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-5">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-6">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-7">
+<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-8">
 
 
   <div class="contact-wrapper">

@@ -42,13 +42,11 @@
         </div>
     </div>
 
-                <div class="button">
-                    <a href="/stages" class="circle-cta">
-                        <span class="inner-circle"></span>
-                        <span class="cta-text">Tous les stages</span>
-                    </a>
-                </div>
-
-        <!--<div> <a href="/stages" class="cta-button">Tous les stages</a></div>-->
+    <div class="button">
+        <a href="/stages" class="circle-cta">
+            <span class="inner-circle"></span>
+            <span class="cta-text">Tous les stages</span>
+        </a>
+    </div>
 
 </section>
