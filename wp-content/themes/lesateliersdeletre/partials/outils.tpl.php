@@ -3,8 +3,8 @@
     <div class="container-title" data-aos="fade-up">
         <h2 class="outils-title"> Les outils</h2>
     </div>
-    <div class="container">
 
+    <div class="container" data-aos="fade-up">
         <div class="content">
             <div class="text-wrapper">
                 <p class="text">

@@ -1,7 +1,8 @@
 import * as THREE from 'https://unpkg.com/three@0.154.0/build/three.module.js';
 
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-if (isMobile) {
+const isMobileOrTablet = window.innerWidth <= 1024;
+
+if (isMobileOrTablet) {
   document.getElementById('bg')?.classList.add('low-particles');
 }
 
@@ -77,6 +78,11 @@ if (isMobile) {
     depthWrite: false,
   });
 
+if (isMobileOrTablet) {
+  gMat.opacity = 0.25;
+  gMat.needsUpdate = true;
+}
+
   const particles = new THREE.Points(gGeom, gMat);
   scene.add(particles);
 
@@ -93,6 +99,12 @@ if (isMobile) {
 
   imgUrls.forEach((url, i) => {
     loader.load(url, (tex) => {
+
+      tex.center.set(0.5, 0.5);
+      tex.offset.set(0, 0);
+      tex.repeat.set(1, 1);
+      tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+      
       const mat = new THREE.MeshBasicMaterial({
         map: tex,
         color: new THREE.Color(0xfff2cc),
@@ -106,6 +118,7 @@ if (isMobile) {
       cards.push(mesh);
     });
   });
+
 
   /* === 4-bis. IntersectionObserver pour #carousel-section === */
   let cardGroupVisible = false;
@@ -143,7 +156,7 @@ if (isMobile) {
 
     /* --- carrousel --- */
     cardGroup.visible = cardGroupVisible;
-    
+
     const boutonOverlay = document.getElementById('cta-galerie-webgl');
     if (boutonOverlay) {
       boutonOverlay.classList.toggle('hidden', !cardGroupVisible);

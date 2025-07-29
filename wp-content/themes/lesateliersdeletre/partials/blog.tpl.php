@@ -1,10 +1,10 @@
 <section class="blog-preview" id="blog">
-  <div class="container-title">
+  <div class="container-title" data-aos="fade-up">
     <h2 class="blog-title">Derniers articles</h2>
     <p class="blog-subtitle">Nos réflexions, outils et inspirations</p>
   </div>
 
-  <div class="blog-cards">
+  <div class="blog-cards" data-aos="fade-up">
     <?php
       $articles = new WP_Query([
         'post_type' => 'post',
@@ -31,6 +31,13 @@
     <?php endwhile; wp_reset_postdata(); ?>
   </div>
 
-  <a href="/blog" class="cta-button">Voir tous les articles</a>
+  <!--<a href="/blog" class="cta-button">Voir tous les articles</a>-->
+
+      <div class="button">
+        <a href="/blog" class="circle-cta">
+            <span class="inner-circle"></span>
+            <span class="cta-text">Tous les articles</span>
+        </a>
+    </div>
 
 </section>

@@ -4,6 +4,10 @@
 
       <!-- Bloc coordonnées -->
       <div class="footer__bloc">
+          <div class="logo logo-main"><a href="<?= home_url('/') ?>">
+      <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" style="width: 18rem"; alt="Logo Les Ateliers de l’Être">
+    </a>
+  </div>
         <p><i class="fas fa-phone-alt"></i> <a href="tel:+33768330615">07 68 33 06 15</a></p>
         <p><i class="fas fa-envelope"></i> <a href="mailto:contact.les.ateliers.de.l.etre@gmail.com">contact.les.ateliers.de.l.etre@gmail.com</a></p>
         <p><i class="fas fa-map-marker-alt"></i> 79 Chemin du Mont de Milly - 71960 Prissé</p>

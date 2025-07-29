@@ -229,9 +229,19 @@
       flex-direction: column;
       gap: 3rem;
 
-      p {
-        font-size: 20px;
+      .wpcf7-form {
+        input[type="submit"] {
+          padding: 0.5rem 1.5rem;
+          font-size: 18px;
+        }
+      }
 
+      p {
+        font-size: 18px;
+      }
+
+      li {
+        font-size: 18px;
       }
 
       .contact-form-wrapper,

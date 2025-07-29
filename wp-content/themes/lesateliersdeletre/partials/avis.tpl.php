@@ -4,7 +4,7 @@
     <p class="testimonials-subtitle">Des mots sincères, laissés après un moment partagé ✨</p>
   </div>
 
-  <div id="avisSplide" class="splide">
+  <div id="avisSplide" class="splide" data-aos="fade-up">
     <div class="splide__track">
       <ul class="splide__list">
 

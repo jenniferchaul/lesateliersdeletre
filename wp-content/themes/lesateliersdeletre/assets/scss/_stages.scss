@@ -51,7 +51,7 @@
     background: rgba(255, 255, 255, 0.03);
     border: 2px solid $gold;
     border-radius: 120px;
-    padding: 4rem 5rem;
+    padding: 4rem 3rem;
     min-width: 350px;
     max-width: 500px;
     min-height: 320px;
@@ -69,7 +69,7 @@
 
     h3 {
       color: $white;
-      font-size: 1.8rem;
+      font-size: 26px;
       margin-bottom: 1rem;
       margin-top: 2rem;
     }
@@ -83,6 +83,11 @@
     .desc {
       font-size: 1.3rem;
       color: lighten($white, 15%);
+      min-height: 120px; // ✅ Ajuste selon la moyenne de tes textes courts
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
     }
 
     &.past {
@@ -116,6 +121,9 @@
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
       border: 2px solid $gold;
       opacity: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
         width: 115%;
@@ -168,19 +176,18 @@
     }
 
     .section-title {
-      font-size: 46px;
+      font-size: 40px;
       line-height: 1;
     }
 
     .stages-wrapper {
-      margin-top: 15rem;
-      margin-bottom: 0;
+      margin-bottom: 4rem;
     }
 
     .stage-bubble {
-      margin-bottom: 9rem;
+      margin-bottom: 2rem;
       border-radius: 60px;
-      padding: 4rem 3rem;
+      padding: 4rem 1rem;
       line-height: 1.4;
     }
   }

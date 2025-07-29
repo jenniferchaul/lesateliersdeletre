@@ -5,12 +5,9 @@ Template Name: Galerie
 get_header();
 ?>
 
-<section class="photo-gallery">
+<?php get_template_part('partials/hero.tpl'); ?>
 
-  <div class="logo-galerie"><a href="<?= home_url('/') ?>">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" alt="Logo Les Ateliers de l'Être">
-    </a>
-  </div>
+<section class="photo-gallery">
 
   <div class="container">
     <h2 class="section-title">Galerie</h2>
@@ -19,50 +16,48 @@ get_header();
     </p>
   </div>
 
-
-
   <?php
-  $images = [
-    'galerie1.png',
-    'galerie2.png',
-    'galerie3.png',
-    'galerie4.png',
-    'galerie5.png',
-    'galerie6.png',
-    'galerie7.png',
-    'galerie8.png',
-    'galerie9.png',
-    'galerie10.png'
-  ];
+$allBalls = [];
+$total = 20;
 
-  $allBalls = [];
-  $total = 20; // nombre total de boules (tu peux changer ce chiffre)
+$args = array(
+  'post_type' => 'photo',
+  'posts_per_page' => -1,
+  'orderby' => 'rand',
+);
 
-  while (count($allBalls) < $total) {
-    $shuffled = $images;
-    shuffle($shuffled);
+$query = new WP_Query($args);
 
-    foreach ($shuffled as $img) {
-      if (count($allBalls) >= $total) break;
-      $allBalls[] = $img;
+if ($query->have_posts()) {
+  while ($query->have_posts() && count($allBalls) < $total) {
+    $query->the_post();
+    $img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    if ($img_url) {
+      $allBalls[] = $img_url;
     }
   }
 
+  wp_reset_postdata();
+
   $lastImg = '';
   foreach ($allBalls as $i => $image) {
-    // éviter doublon immédiat
     if ($image === $lastImg && $i > 0) continue;
     $lastImg = $image;
 
-    $delay = rand(0, 70000) / 1000; // 0 à 10s
-    $duration = rand(20, 26); // plus lent
-    $left = rand(0, 95); // position entre 0% et 100%
+    $delay = rand(0, 20000) / 1000;
+    $duration = rand(20, 26);
+    $left = rand(0, 95);
 
-    echo '<div class="photo-ball" style="left:' . $left . '%; animation-delay:' . $delay . 's; animation-duration:' . $duration . 's;">
-                <img src="' . get_template_directory_uri() . '/assets/images/' . $image . '" alt="Stage ' . ($i + 1) . '">
-              </div>';
+echo '<div class="photo-ball" style="left:' . $left . '%; animation-delay:' . $delay . 's; animation-duration:' . $duration . 's;">
+  <a href="' . esc_url($image) . '" class="glightbox" data-gallery="galerie">
+    <img src="' . esc_url($image) . '" alt="Photo galerie ' . ($i + 1) . '">
+  </a>
+</div>';
+
   }
-  ?>
+}
+?>
+
 </section>
 
 <div class="photo-gallery-placeholder"></div>

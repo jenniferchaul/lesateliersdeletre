@@ -173,11 +173,13 @@ gsap.from('.photo-art-therapeute', {
 
 // 6. Stacking effect (section .outils)
 document.addEventListener('DOMContentLoaded', () => {
+
   const cards = gsap.utils.toArray('.stack-card');
   const content = gsap.utils.toArray('.outils .content');
   const texts = gsap.utils.toArray('.outils .text-wrapper');
   const imgs = gsap.utils.toArray('.outils .img-wrapper');
 
+  // Animation d’empilement des cartes (desktop et mobile)
   cards.forEach((c, i) => {
     const dir = i % 2 ? 1 : -1;
     gsap.fromTo(c,
@@ -195,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
-  // timeline de reveal
+  // Empilement progressif : texte + image
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.outils',
@@ -212,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.set(imgs[0], { opacity: 1, scale: 1 });
 
   tl.to(imgs[0], { rotate: -3 }, 0);
+
   content.forEach((_, i) => {
     if (i === content.length - 1) return;
     tl.to(texts[i], { opacity: 0, duration: 1 }, '+=0.5')
@@ -227,32 +230,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '<')
       .to(texts[i + 1], { opacity: 1, y: -50, duration: 2 }, '<+=0.5');
   });
-});
+  
 
-content.forEach((item, i) => {
-  const text = texts[i];
-  const img = imgs[i];
-
-  ScrollTrigger.create({
-    trigger: item,
-    start: 'top top',
-    end: 'bottom top',
-    onEnter: () => {
-      item.style.pointerEvents = 'auto';
-    },
-    onLeave: () => {
-      item.style.pointerEvents = 'none';
-    },
-    onEnterBack: () => {
-      item.style.pointerEvents = 'auto';
-    },
-    onLeaveBack: () => {
-      item.style.pointerEvents = 'none';
-    }
+  // Pointer events pour chaque .content actif
+  content.forEach((item, i) => {
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top top',
+      end: 'bottom top',
+      onEnter: () => { item.style.pointerEvents = 'auto'; },
+      onLeave: () => { item.style.pointerEvents = 'none'; },
+      onEnterBack: () => { item.style.pointerEvents = 'auto'; },
+      onLeaveBack: () => { item.style.pointerEvents = 'none'; }
+    });
   });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
   const firstImgWrapper = document.querySelector('.outils .content:first-child .img-wrapper');
   if (firstImgWrapper) {
     firstImgWrapper.style.pointerEvents = 'auto';
@@ -576,4 +568,27 @@ gsap.utils.toArray('.img-scroll').forEach(img => {
     }, "<"); // "<" pour lancer en même temps que l’apparition
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash;
+
+  if (hash && hash.startsWith("#stage-")) {
+    const stage = document.querySelector(hash);
+    if (stage) {
+      const detail = stage.querySelector(".stage-detail");
+      const link = stage.querySelector(".bubble-link");
+
+      if (detail && link && !detail.classList.contains("open")) {
+        // Simule un clic sur "En savoir plus"
+        detail.classList.add("open");
+        link.textContent = "Réduire";
+
+        // Scroll vers l'élément
+        stage.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+});
+
+
 

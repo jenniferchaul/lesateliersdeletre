@@ -230,11 +230,17 @@
                 margin-bottom: 0;
                 .title-wrapper {
                     flex-direction: column;
+                    margin-bottom: 0;
+
                     h2 {
-                        font-size: 46px;
+                        font-size: 40px;
                         white-space: initial;
                         letter-spacing: 0;
                     }
+                }
+
+                .lotus-icon {
+                    width: 30rem;
                 }
             }
         }

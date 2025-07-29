@@ -6,10 +6,6 @@
 <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-2">
 <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-3">
 <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-4">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-5">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-6">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-7">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-8">
 
 
   <div class="contact-wrapper">
@@ -17,9 +13,9 @@
     <p class="contact-subtitle">Je vous réponds avec plaisir.</p>
 
     <div class="contact-details">
-      <p><strong>📞 Téléphone&nbsp;:</strong> <a href="tel:+33612345678">06 12 34 56 78</a></p>
-      <p><strong>📧 Email&nbsp;:</strong> <a href="mailto:contact@lesateliersdeletre.fr">contact@lesateliersdeletre.fr</a></p>
-      <p><strong>📍 Adresse&nbsp;:</strong> 452 Grande Rue, 01290 Grièges</p>
+      <p><strong>📞 Téléphone&nbsp;:</strong> <a href="tel:+33768330615">07 68 33 06 15</a></p>
+      <p><strong>📧 Email&nbsp;:</strong> <a href="mailto:contact@lesateliersdeletre.fr">contact.les.ateliers.de.l.etre@gmail.com</a></p>
+      <p><strong>📍 Adresse&nbsp;:</strong> 79 Chemin de Mont de Milly - 71960 Prissé</p>
     </div>
 
     <a href="/contact" class="cta-btn">

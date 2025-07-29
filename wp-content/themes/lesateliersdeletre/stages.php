@@ -2,107 +2,139 @@
 /*
 Template Name: Stages
 */
-
 get_header();
 ?>
 
 <?php get_template_part('partials/hero.tpl'); ?>
 
 <section class="stages-section">
+  <h2 class="section-title">Stages & ateliers à venir</h2>
+  <div class="stages-wrapper">
+    <?php
+    $today = date('Y-m-d');
 
-    <h2 class="section-title">Stages et ateliers à venir</h2>
+    $args_upcoming = [
+      'post_type' => 'stage',
+      'posts_per_page' => -1,
+      'meta_key' => '_stage_date_debut',
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'meta_query' => [
+        [
+          'key' => '_stage_date_debut',
+          'value' => $today,
+          'compare' => '>=',
+          'type' => 'DATE'
+        ]
+      ]
+    ];
 
-    <div class="stages-wrapper">
+    $upcoming_query = new WP_Query($args_upcoming);
 
-        <!-- STAGE 1 -->
-        <div class="stage-bubble upcoming">
-            <!-- Image flottante incluse dans .stage-bubble -->
-            <div class="stage-floating-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie1.png" alt="Atelier Mandala">
-            </div>
+    if ($upcoming_query->have_posts()) :
+      while ($upcoming_query->have_posts()) : $upcoming_query->the_post();
+        $post_id = get_the_ID();
+        $date_debut = get_post_meta($post_id, '_stage_date_debut', true);
+        $date_fin = get_post_meta($post_id, '_stage_date_fin', true);
+        $lieu = get_post_meta($post_id, '_stage_lieu', true);
+        $horaires = get_post_meta($post_id, '_stage_horaires', true);
+        $tarif = get_post_meta($post_id, '_stage_tarif', true);
+        $desc_courte = get_post_meta($post_id, '_stage_desc_courte', true);
+        $desc_detail = get_post_meta($post_id, '_stage_desc_detail', true);
 
-            <h3>Atelier Mandala & Créativité</h3>
-            <p class="date">21 juillet 2025</p>
-            <p class="desc">Une journée pour reconnecter avec soi à travers la création intuitive de mandalas.</p>
+        $date_affichee = ($date_debut === $date_fin || empty($date_fin)) ?
+          date_i18n('j F Y', strtotime($date_debut)) :
+          'Du ' . date_i18n('j F Y', strtotime($date_debut)) . ' au ' . date_i18n('j F Y', strtotime($date_fin));
+    ?>
+        <div class="stage-bubble upcoming" id="stage-<?php echo $post_id; ?>">
+          <div class="stage-floating-image">
+            <?php the_post_thumbnail('medium'); ?>
+          </div>
 
-            <a href="#" class="bubble-link">En savoir plus</a>
+          <h3><?php the_title(); ?></h3>
+          <p class="date"><?php echo $date_affichee; ?></p>
+          <p class="desc"><?php echo esc_html($desc_courte); ?></p>
 
-            <div class="stage-detail">
-                <p>🌟 Cet atelier invite à ralentir, à se recentrer et à exprimer librement ses ressentis à travers la création de mandalas personnels. Il ne s’agit pas de « bien dessiner », mais de s’exprimer en conscience.</p>
-                <p>🎨 Matériel fourni : feutres, crayons, papiers de couleurs, supports ronds</p>
-                <p>🧘‍♀️ Temps d’introspection guidés par des méditations courtes.</p>
-                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
-                    ⏰ <strong>Horaires</strong> : 9h30 – 17h30<br>
-                    💶 <strong>Tarif</strong> : 85 € (matériel inclus)</p>
-            </div>
+          <a href="<?php echo site_url('/stages#stage-' . $post_id); ?>" class="bubble-link">En savoir plus</a>
+
+          <div class="stage-detail">
+            <p><?php echo nl2br(esc_html($desc_detail)); ?></p>
+            <p>📍 <strong>Lieu</strong> : <?php echo esc_html($lieu); ?><br>
+              ⏰ <strong>Horaires</strong> : <?php echo esc_html($horaires); ?><br>
+              💶 <strong>Tarif</strong> : <?php echo esc_html($tarif); ?> €</p>
+          </div>
         </div>
+    <?php
+      endwhile;
+      wp_reset_postdata();
+    else :
+      echo '<p>Aucun stage à venir pour le moment.</p>';
+    endif;
+    ?>
+  </div>
 
+  <h2 class="section-title">Stages & ateliers passés</h2>
+  <div class="stages-wrapper">
+    <?php
+    $args_past = [
+      'post_type' => 'stage',
+      'posts_per_page' => -1,
+      'meta_key' => '_stage_date_debut',
+      'orderby' => 'meta_value',
+      'order' => 'DESC',
+      'meta_query' => [
+        [
+          'key' => '_stage_date_debut',
+          'value' => $today,
+          'compare' => '<',
+          'type' => 'DATE'
+        ]
+      ]
+    ];
 
+    $past_query = new WP_Query($args_past);
 
-        <!-- STAGE 2 -->
-        <div class="stage-bubble upcoming">
+    if ($past_query->have_posts()) :
+      while ($past_query->have_posts()) : $past_query->the_post();
+        $post_id = get_the_ID();
+        $date_debut = get_post_meta($post_id, '_stage_date_debut', true);
+        $date_fin = get_post_meta($post_id, '_stage_date_fin', true);
+        $lieu = get_post_meta($post_id, '_stage_lieu', true);
+        $horaires = get_post_meta($post_id, '_stage_horaires', true);
+        $tarif = get_post_meta($post_id, '_stage_tarif', true);
+        $desc_courte = get_post_meta($post_id, '_stage_desc_courte', true);
+        $desc_detail = get_post_meta($post_id, '_stage_desc_detail', true);
 
-            <div class="stage-floating-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie2.png" alt="Stage Enfant Intérieur">
-            </div>
+        $date_affichee = ($date_debut === $date_fin || empty($date_fin)) ?
+          date_i18n('j F Y', strtotime($date_debut)) :
+          'Du ' . date_i18n('j F Y', strtotime($date_debut)) . ' au ' . date_i18n('j F Y', strtotime($date_fin));
+    ?>
+        <div class="stage-bubble past" id="stage-<?php echo $post_id; ?>">
+          <div class="stage-floating-image">
+            <?php the_post_thumbnail('medium'); ?>
+          </div>
 
-            <h3>Stage “L’enfant intérieur”</h3>
-            <p class="date">15 août 2025</p>
-            <p class="desc">Explorer ses émotions à travers l’art-thérapie et retrouver sa créativité profonde.</p>
+          <h3><?php the_title(); ?></h3>
+          <p class="date"><?php echo $date_affichee; ?></p>
+          <p class="desc"><?php echo esc_html($desc_courte); ?></p>
 
-            <a href="#" class="bubble-link">En savoir plus</a>
+          <a href="<?php echo site_url('/stages#stage-' . $post_id); ?>" class="bubble-link">En savoir plus</a>
 
-            <div class="stage-detail">
-                <p>👶 Un stage doux et profond pour renouer avec les besoins de notre enfant intérieur : sécurité, joie, expression libre. L’art devient un langage accessible pour explorer cette part enfouie.</p>
-                <p>🎭 Activités proposées : collage, dessin libre, jeu théâtral symbolique, écriture émotionnelle</p>
-                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
-                    ⏰ <strong>Horaires</strong> : 10h00 – 17h00<br>
-                    💶 <strong>Tarif</strong> : 90 €</p>
-            </div>
+          <div class="stage-detail">
+            <p><?php echo nl2br(esc_html($desc_detail)); ?></p>
+            <p>📍 <strong>Lieu</strong> : <?php echo esc_html($lieu); ?><br>
+              ⏰ <strong>Horaires</strong> : <?php echo esc_html($horaires); ?><br>
+              💶 <strong>Tarif</strong> : <?php echo esc_html($tarif); ?> €</p>
+          </div>
         </div>
-
-    </div>
-
-    <h2 class="section-title">Stages et ateliers passés</h2>
-    <div class="stages-wrapper">
-        <div class="stage-bubble past">
-            <div class="stage-floating-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie3.png" alt="Exploration du Soi">
-            </div>
-
-            <h3>Exploration du Soi</h3>
-            <p class="date">12 mai 2025</p>
-            <p class="desc">Un atelier immersif autour de la symbolique personnelle à travers les arts visuels.</p>
-
-            <a href="#" class="bubble-link">En savoir plus</a>
-
-            <div class="stage-detail">
-                <p>✨ Exploration autour des symboles, archétypes et souvenirs visuels marquants. Créations libres en peinture et collage guidé.</p>
-                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
-                    ⏰ <strong>Horaires</strong> : 10h00 – 17h00<br>
-                    💶 <strong>Tarif</strong> : 80 €</p>
-            </div>
-        </div>
-
-        <div class="stage-bubble past">
-            <div class="stage-floating-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/galerie3.png" alt="Exploration du Soi">
-            </div>
-
-            <h3>Exploration du Soi</h3>
-            <p class="date">12 mai 2025</p>
-            <p class="desc">Un atelier immersif autour de la symbolique personnelle à travers les arts visuels.</p>
-
-            <a href="#" class="bubble-link">En savoir plus</a>
-
-            <div class="stage-detail">
-                <p>✨ Exploration autour des symboles, archétypes et souvenirs visuels marquants. Créations libres en peinture et collage guidé.</p>
-                <p>📍 <strong>Lieu</strong> : Prissé (71)<br>
-                    ⏰ <strong>Horaires</strong> : 10h00 – 17h00<br>
-                    💶 <strong>Tarif</strong> : 80 €</p>
-            </div>
-        </div>
-    </div>
+    <?php
+      endwhile;
+      wp_reset_postdata();
+    else :
+      echo '<p>Aucun stage passé enregistré.</p>';
+    endif;
+    ?>
+  </div>
 </section>
 
 <?php get_footer(); ?>
