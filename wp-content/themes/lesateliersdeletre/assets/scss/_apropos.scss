@@ -17,7 +17,6 @@
   }
 
   .container {
-    //max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -53,7 +52,7 @@
         transition: transform 0.5s ease;
 
         &:hover {
-          transform: scale(1.1); // ⬅️ zoom uniquement dans l’image
+          transform: scale(1.1);
         }
       }
     }
@@ -65,7 +64,28 @@
         font-size: 1.6rem;
         line-height: 1.8;
         margin-bottom: 1.5rem;
-        color: lighten($white, 15%);
+        color: lighten($white, 10%);
+        transition: all 0.5s ease;
+
+        &.splitting {
+          transform: translateY(30px);
+          will-change: transform, opacity;
+        }
+
+        &:hover {
+          color: $gold;
+          //transform: translateX(2px);
+          text-shadow: 0 0 8px rgba(222, 196, 73, 0.4);
+        }
+
+        &:first-of-type::first-letter {
+          font-size: 3.6rem;
+          font-weight: bold;
+          color: $gold;
+          float: left;
+          line-height: 1;
+          padding-right: 0.5rem;
+        }
       }
     }
   }
@@ -169,13 +189,15 @@
 
     .bio-wrapper {
       gap: 2rem;
+
       .photo-art-therapeute {
         margin: 1rem auto 0;
         max-width: 330px;
       }
+
       .bio-text {
         p {
-        font-size: 20px;
+          font-size: 18px;
         }
       }
     }

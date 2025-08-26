@@ -1,12 +1,10 @@
-<!-- ====================== CONTACT ====================== -->
 <section class="contact-intro" id="contact">
 
-<!-- spirales décoratives -->
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-1">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-2">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-3">
-<img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-4">
-
+  <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-1">
+  <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-2">
+  <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-3">
+  <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-4">
+  <img src="<?= get_template_directory_uri(); ?>/assets/images/escargot.png" alt="Spirale décorative" class="spirale spirale-6">
 
   <div class="contact-wrapper">
     <h2 class="contact-title">Besoin d’un échange personnalisé&nbsp;?</h2>
@@ -18,7 +16,7 @@
       <p><strong>📍 Adresse&nbsp;:</strong> 79 Chemin de Mont de Milly - 71960 Prissé</p>
     </div>
 
-    <a href="/contact" class="cta-btn">
+    <a href="<?= home_url('/contact') ?>" class="cta-btn">
       <span class="cta-text">Accéder au&nbsp;formulaire</span>
     </a>
   </div>

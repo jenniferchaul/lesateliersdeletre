@@ -37,21 +37,21 @@
           date_i18n('j F Y', strtotime($date_debut)) :
           'Du ' . date_i18n('j F Y', strtotime($date_debut)) . ' au ' . date_i18n('j F Y', strtotime($date_fin));
     ?>
-      <div class="stage-card" id="stage-<?php echo $post_id; ?>">
-        <div class="stage-card-inner">
-          <div class="stage-card-front">
-            <h3 class="stage-name"><?php echo esc_html($title); ?></h3>
-            <div class="flip-arrow">↻</div>
-          </div>
-          <div class="stage-card-back">
-            <div class="close-arrow" title="Fermer">×</div>
-            <p class="stage-date"><strong>Date :</strong> <?php echo $date_affichee; ?></p>
-            <p class="stage-excerpt"><?php echo esc_html($desc_courte); ?></p>
-            <p class="stage-price"><strong>Coût :</strong> <?php echo esc_html($tarif); ?> €</p>
-            <a href="<?php echo site_url('/stages#stage-' . $post_id); ?>" class="btn-link">En savoir plus</a>
+        <div class="stage-card" id="stage-<?php echo $post_id; ?>">
+          <div class="stage-card-inner">
+            <div class="stage-card-front">
+              <h3 class="stage-name"><?php echo esc_html($title); ?></h3>
+              <div class="flip-arrow">↻</div>
+            </div>
+            <div class="stage-card-back">
+              <div class="close-arrow" title="Fermer">×</div>
+              <p class="stage-date"><strong>Date :</strong> <?php echo $date_affichee; ?></p>
+              <p class="stage-excerpt"><?php echo esc_html($desc_courte); ?></p>
+              <p class="stage-price"><strong>Coût :</strong> <?php echo esc_html($tarif); ?> €</p>
+              <a href="<?php echo site_url('/stages#stage-' . $post_id); ?>" class="btn-link">En savoir plus</a>
+            </div>
           </div>
         </div>
-      </div>
     <?php
       endwhile;
       wp_reset_postdata();

@@ -10,6 +10,7 @@
 @import "_blog";
 @import "_article";
 @import "_contact";
+@import "_pagesannexes";
 
 
 html,
@@ -72,6 +73,7 @@ body.lightbox-open {
   .custom-cursor {
     display: none !important;
   }
+
   cursor: default !important;
 }
 
@@ -92,7 +94,7 @@ body.lightbox-open {
     text-decoration: none;
     font-size: 1rem;
     color: #111;
-    border: 1px solid rgba(255, 255, 255, 0.3); // cercle blanc léger
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background: transparent;
     cursor: pointer;
     z-index: 1;
@@ -128,7 +130,7 @@ body.lightbox-open {
       transform: scale(1.05);
 
       &::before {
-        transform: scale(1.1); // zoom du cercle tournant
+        transform: scale(1.1);
       }
     }
   }
@@ -143,7 +145,6 @@ body.lightbox-open {
     transform: rotate(360deg);
   }
 }
-
 
 canvas#bg {
   position: fixed;
@@ -256,7 +257,6 @@ canvas#bg {
   height: 32px;
   pointer-events: none;
   z-index: 9999;
-  //background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACa0lEQVR4nO2WS2sTURTHp74fIG5EUERBfCKidmFxYX0250wqgpCdO0E3fgbdiB9BdCE+EVQQQXwUldg5ZxoXATddSDr3Tps0xkfrW7SIjpzkThza7b1uzB9C4L/53fMez+uoI0eqBLBMMV5WBOOacVhT7kSSeF3ev5AO/dWKQWnGJPtThCedwysMazXDWBNKGIzxgRUR5Y6YR1SdwqNn+XWasNaMlrHYGDi4WPzh4cI8xfhdE0wlyelZTuCacxsUYd1E/qRe7l8kvgAV4aX0UU7gccnfpBgaps6PqkOFhU34rcJsacSWD99UAFvtw8O+jYrxVStCeBgXexf8hcOVFB6FuM9p5Jrw/jT4VZP2rzH7e+3D2d+mGd61uhvuVR7A/BSuCa+14ZTbYx8ewnZFOGEiv10ud8/NwK8b/2NM0GMdPjqY26EIJ03NbxaLvXPacMYbxv+gA3+ndXhM0CORtSKEKRk98SUDivGOmYLJiPLd1uEjob9LE34yNW/VnrA2GsBmRXDXwCekPNbhOvR3a4LPprEuVJ7DEs1IZr3+NP9vrc95XMqtkTprxh9mnn9FAexPr51m/GIy8SYK81uswkcG+1ZJVDMvmmw07NeMj03DNaQMnm0pxvOm2Z7KeW1uPMKBaee1Lr51eJJ4Xel6zY6TKh1ansnEuApwvXW4SJrJRP86+xVTHcqvNGl/L3ffcyXNcMo017nUkz0v+95k4KIzeCKHhPClgGT2xZPFoghepDtAMuHsAYrhaHvZEByXxlOEv41XcVb3TJqjGaPX/JzCM+lXjjNphrMZYE1qrgiOxcXDS52CO/qv9QfRZzccOWzgbAAAAABJRU5ErkJggg==");
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACSklEQVR4nL2Xu4sUQRDG+/C1gvgIDBQ1FxHUQwwMRvR0qvZ8ILKZoBiI4h+gwZkpiqChIhiJGGjsBYoMu1V7t+oKBqvB3lT3noKKgQg+EM67kdZddm7RmQm674OOf1/PfPXVjFKe1YqCFcJwVhhva8IbQrhfLZRkArdqwneaMZl3CB82m8NLvMI71XDdP+H9c8Ub/O1EZbkmfJYBT4Txm4mCknN4kqghzXg/C947pg7bnRvQhBeLwO2ZonCLU7gwHhPCuSJwYfiQPKgscgbvVMMdQvC96O2F4JRLeF7iU2Cc0xSOOYObKCgJ42TBm89ogtNuE094ryD8qyFE5VKawrFigcP3zkfOEBwVgtkCBlpCBze5hXN5m22yXDjBU2mOrHIKTxI1JIyvC8z53VarstQp3ERBSRNc1/UwzHwChJesUafwZH7in9i9PmhCGH4ZxjPKh6aqBzZqgo+pWz4SgkOa8WdvzGKGshe4sYlnfBXXcHfahDCMaw4PC0EnptFhP3DuJ14YXxoK9wjD51S1XnMetp6iKFhsbz7wnhtxHfdqwi9CUJ2m0TXKpXStvOvPBwXhcyG4FddgnzBeHSgdkjrsbI/DMqdw+RuqmYG1OasJLmuC8+nH7nzM2g3YYJOcUSzHbQaE8JzyIc14J6dWX7QbsNIL3ERHVgvBj7xdrnxJE5zIXywYezSAuR8VQnDBmwEheJNtAB57KxtjN1x/9Gyvt7qGPtmKtR1g/3S8wJU1MFne3H3HN9s1WOsN9D9N88h6w+HJBQd39RtgO4XrZ8otuwAAAABJRU5ErkJggg==");
   background-size: contain;
   background-repeat: no-repeat;
@@ -264,9 +264,6 @@ canvas#bg {
   transition: transform 0.1s linear;
 
 }
-
-
-
 
 .brush-trace {
   position: fixed;
@@ -287,11 +284,9 @@ canvas#bg {
   }
 }
 
-
 #loader {
   position: fixed;
   z-index: 9999;
-  //background: #f4f1ec;
   background-color: rgb(25 18 0);
   width: 100%;
   height: 100vh;
@@ -339,13 +334,11 @@ body.loaded .scroll-indicator {
   transition: opacity 0.4s ease;
 }
 
-
 @keyframes move {
   100% {
     transform: translate3d(0, 0, 1px) rotate(360deg);
   }
 }
-
 
 header {
   height: auto;
@@ -372,17 +365,16 @@ header {
   opacity: 0;
 }
 
-/* Apparition en fondu du logo header */
-.site-menu__logo {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
-
-  &.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+//.site-menu__logo {
+//  opacity: 0;
+//  transform: scale(0.9);
+//  transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
+//
+//  &.visible {
+//    opacity: 1;
+//    transform: scale(1);
+//  }
+//}
 
 @keyframes breathe {
 
@@ -404,7 +396,7 @@ header {
 
   h1 {
     font-size: 48px;
-    color: #a4893e; // à adapter à ta palette
+    color: #a4893e;
     margin: 0;
   }
 
@@ -421,8 +413,7 @@ header {
 .navbar {
   display: flex;
   justify-content: space-between;
-  //align-items: center;
-  padding: 65px;
+  padding: 3rem 4rem 1rem 2rem;
   position: relative;
   z-index: 999;
   background: transparent;
@@ -431,6 +422,34 @@ header {
     display: flex;
     align-items: center;
     gap: 28px;
+
+    .logo-navbar {
+  display: flex;
+  align-items: center;
+
+  img {
+    //height: 60px;
+    width: 14rem;
+    //margin-right: 2rem;
+    filter: drop-shadow(0 0 5px rgba($gold, 0.3));
+    animation: floatLogo 4s ease-in-out infinite;
+
+    @media (max-width: 768px) {
+      //height: 50px;
+      display: none;
+    }
+  }
+
+  //@keyframes floatLogo {
+  //  0%, 100% {
+  //    transform: translateY(0);
+  //  }
+  //  50% {
+  //    transform: translateY(4px);
+  //  }
+  //}
+}
+
 
     .mobile-only {
       display: none;
@@ -475,7 +494,6 @@ header {
     transform: translateX(-50%);
 
     .logo img {
-      //margin-top: 16rem;
       width: 30rem;
       filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
       animation: floatLogo 3s ease-in-out infinite;
@@ -505,9 +523,6 @@ header {
         transform: translateY(10px);
       }
     }
-
-
-
   }
 
   @keyframes floatLogo {
@@ -521,7 +536,6 @@ header {
       transform: translateY(25px) scale(1.03);
     }
   }
-
 
   &-right {
     display: flex;
@@ -619,7 +633,6 @@ header {
 
       .toggle-label {
         color: #ffffffb0;
-        //letter-spacing: 0.5px;
         transition: color 0.35s;
       }
 
@@ -712,7 +725,6 @@ header {
       z-index: 10000;
       position: relative;
       transition: transform 1.2s ease-in-out;
-      //backface-visibility: hidden;
 
       &:hover {
         transform: rotate(360deg) !important;
@@ -735,7 +747,6 @@ header {
     }
   }
 }
-
 
 @keyframes floatLogo {
 
@@ -769,7 +780,6 @@ header {
   align-items: center;
   text-align: center;
   padding: 10rem 7rem 16rem;
-  //background-color: #0f0f0f;
 
   .content {
     z-index: 2;
@@ -786,7 +796,6 @@ header {
     }
 
     .intro-title {
-      //padding-left: 2rem;
       display: flex;
       align-items: center;
 
@@ -798,7 +807,6 @@ header {
         padding-left: 1rem;
         text-align: left;
       }
-
     }
 
     .intro-text,
@@ -813,7 +821,6 @@ header {
         line-height: 1.2;
       }
     }
-
   }
 
   .button {
@@ -831,13 +838,12 @@ header {
       text-decoration: none;
       font-size: 1rem;
       color: #111;
-      border: 1px solid rgba(255, 255, 255, 0.3); // cercle blanc léger
+      border: 1px solid rgba(255, 255, 255, 0.3);
       background: transparent;
       cursor: pointer;
       z-index: 1;
       transform: scale(1);
       transition: transform 0.4s ease;
-
 
       &::before {
         content: "";
@@ -867,7 +873,7 @@ header {
         transform: scale(1.05);
 
         &::before {
-          transform: scale(1.1); // zoom du cercle tournant
+          transform: scale(1.1);
         }
       }
     }
@@ -883,7 +889,6 @@ header {
     }
   }
 
-
   .intro-img.small-portrait {
     display: flex;
     justify-content: center;
@@ -891,9 +896,9 @@ header {
 
     img.photo-art-therapeute.small {
       width: clamp(120px, 70vw, 530px);
-      transform: rotate(+10deg); // ou +3deg selon l'effet souhaité
+      transform: rotate(+10deg);
       transition: transform 0.6s ease, box-shadow 0.6s ease;
-      border-radius: 8px; // facultatif pour l'arrondi
+      border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
@@ -901,7 +906,6 @@ header {
       transform: rotate(0deg) scale(1.05);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
-
 
     @keyframes gentlePulseBoxShadow {
 
@@ -953,7 +957,7 @@ header {
       pointer-events: none;
 
       &.active {
-        pointer-events: auto; // ← activé uniquement quand visible
+        pointer-events: auto;
       }
 
       .text-wrapper {
@@ -962,7 +966,7 @@ header {
         justify-content: center;
         align-items: flex-start;
         flex: 1;
-        opacity: 0; // ← important pour le scrollTrigger
+        opacity: 0;
         transition: opacity 0.6s ease;
 
         p {
@@ -1060,7 +1064,6 @@ header {
       }
     }
 
-    // seule la première carte est visible au départ
     .content:first-child .text-wrapper {
       opacity: 1;
     }
@@ -1069,13 +1072,11 @@ header {
       pointer-events: auto;
     }
 
-
     .content:not(:first-child) .img-wrapper {
       transform: translateY(-200%);
     }
   }
 }
-
 
 .section-stage {
   padding: 6rem 7rem 12rem;
@@ -1147,8 +1148,8 @@ header {
       backface-visibility: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center; // centrer verticalement
-      align-items: center; // centrer horizontalement
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 2rem;
     }
@@ -1185,8 +1186,6 @@ header {
           color: lighten($gold, 10%);
         }
       }
-
-
 
       .btn-link {
         display: inline-block;
@@ -1268,13 +1267,12 @@ header {
       text-decoration: none;
       font-size: 1rem;
       color: #111;
-      border: 1px solid rgba(255, 255, 255, 0.3); // cercle blanc léger
+      border: 1px solid rgba(255, 255, 255, 0.3);
       background: transparent;
       cursor: pointer;
       z-index: 1;
       transform: scale(1);
       transition: transform 0.4s ease;
-
 
       &::before {
         content: "";
@@ -1305,7 +1303,7 @@ header {
         transform: scale(1.05);
 
         &::before {
-          transform: scale(1.1); // zoom du cercle tournant
+          transform: scale(1.1);
         }
       }
     }
@@ -1320,7 +1318,6 @@ header {
       transform: rotate(360deg);
     }
   }
-
 }
 
 
@@ -1331,7 +1328,6 @@ $cyl-gold: #d4af37;
   text-align: center;
   overflow: hidden;
   position: relative;
-  //background: #0d0f13;
   font-family: $montserrat;
 
   .gallery-title {
@@ -1406,9 +1402,7 @@ $cyl-gold: #d4af37;
 .tube-gallery-section {
   position: relative;
   height: 100vh;
-  /* ou plus selon ton contenu */
   overflow: hidden;
-  /* ← important pour empêcher les débordements */
   z-index: 1;
 }
 
@@ -1569,7 +1563,7 @@ $white: #f8f8f8;
 
       .card-date {
         font-size: 0.9rem;
-        color: $gold;
+        color: $white;
         font-weight: 500;
         text-transform: uppercase;
         margin-bottom: 0.8rem;
@@ -1577,10 +1571,12 @@ $white: #f8f8f8;
       }
 
       .card-title {
-        font-size: 1.5rem;
-        color: $white;
+        font-size: 1.8rem;
+        color: $gold;
         margin-bottom: 1rem;
-        font-weight: 600;
+        font-family: $satisfy;
+        letter-spacing: 2px;
+        line-height: 1.2;
       }
 
       .card-excerpt {
@@ -1629,7 +1625,6 @@ $gold: #d4af37;
 $white: #f8f8f8;
 
 .testimonials {
-  //background: $bg-dark;
   padding: 7rem 2rem;
   text-align: center;
   font-family: $montserrat;
@@ -1659,6 +1654,13 @@ $white: #f8f8f8;
   }
 
   #avisSplide {
+    position: relative;
+    //padding: 4rem 0;
+
+    .splide__track {
+      min-height: 500px; // Important pour éviter que le container s'écrase
+    }
+
     .splide__slide {
       background-color: #1d1600de;
       color: $white;
@@ -1666,7 +1668,7 @@ $white: #f8f8f8;
       padding: 2.5rem;
       margin: 0 1rem;
       box-shadow: 0 12px 30px rgba($gold, 0.1);
-      max-width: 380px;
+      max-width: 374px;
       margin-inline: auto;
       display: flex;
       flex-direction: column;
@@ -1711,20 +1713,72 @@ $white: #f8f8f8;
         font-size: 0.95rem;
       }
     }
+
+.splide__arrows {
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  right: -2rem;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+
+  .splide__arrow {
+    pointer-events: auto;
+    background-color: transparent;
+    border: 2px solid $gold;
+    color: $gold;
+    font-size: 1.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      background-color: $gold;
+      color: $bg-dark;
+    }
+  }
+}
+
+
+    .splide__pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      gap: 1rem;
+
+      .splide__pagination__page {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: lighten($gold, 15%);
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        border: none;
+
+        &.is-active {
+          background: $gold;
+          opacity: 1;
+          transform: scale(1.3);
+        }
+      }
+    }
   }
 }
 
 @keyframes float-text {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-6px);
   }
 }
+
 
 /* === GALERIE SIMPLE — SCROLLABLE HORIZONTALEMENT =========================== */
 $cyl-bg: #0d0f13;
@@ -1805,7 +1859,7 @@ $cyl-gold: #d4af37;
     top: 4rem;
     width: 100%;
     text-align: center;
-    z-index: 10; // au-dessus du canvas
+    z-index: 10;
 
     h2 {
       font-size: 4.5rem;
@@ -1820,7 +1874,7 @@ $cyl-gold: #d4af37;
 
 .contact-intro {
   position: relative;
-  padding: 34rem 2rem 12rem;
+  padding: 34rem 1rem 12rem;
   text-align: center;
   color: $white;
   overflow: visible;
@@ -1831,9 +1885,9 @@ $cyl-gold: #d4af37;
     max-width: 880px;
     margin: 0 auto;
     padding: 5rem 3rem;
-    background: rgba(255, 255, 255, 0.03); // encore plus transparent
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px); // léger flou pour la lisibilité
+    backdrop-filter: blur(10px);
     z-index: 2;
     box-shadow: 0 0 25px rgba($gold, 0.12);
     border-radius: 20px;
@@ -1852,14 +1906,14 @@ $cyl-gold: #d4af37;
 
   .contact-subtitle {
     font-size: 20px;
-    margin-top: .75rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     color: lighten($white, 30%);
   }
 
   .contact-details {
     font-size: 20px;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     @media (max-width: 767px) {
       margin-bottom: 1rem;
@@ -1869,12 +1923,12 @@ $cyl-gold: #d4af37;
       margin: .6rem 0;
 
       @media (max-width: 767px) {
-        font-size: 20px;
+        font-size: 16px;
       }
 
       a {
         color: $white;
-        text-decoration: underline;
+        text-decoration: none;
         transition: color .3s;
 
         &:hover {
@@ -1893,7 +1947,7 @@ $cyl-gold: #d4af37;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 50px;
 
     @media (max-width: 767px) {
       padding: 1rem;
@@ -1958,37 +2012,49 @@ $cyl-gold: #d4af37;
     }
   }
 
-  .spirale {
-    position: absolute;
-    animation: spin 40s linear infinite;
-    pointer-events: auto;
-    z-index: 1;
-    transform: rotate(15deg);
-
-    &.spirale-1 {
-      max-width: 82rem;
-      top: 31%;
-      left: -46%;
+    .spirale {
+      position: absolute;
+      animation: spin 40s linear infinite;
+      pointer-events: auto;
+      z-index: 1;
+      transform: rotate(15deg);
+  
+      &.spirale-1 {
+        max-width: 82rem;
+        top: 31%;
+        left: -35%;
+      }
+  
+      &.spirale-2 {
+        bottom: 49%;
+        right: 58%;
+        width: 15rem;
+      }
+  
+      &.spirale-3 {
+        bottom: 47%;
+        right: -14%;
+        width: 38rem;
+      }
+  
+      &.spirale-4 {
+        bottom: 1%;
+        right: 48%;
+        width: 42rem;
+      }
+  
+      //&.spirale-5 {
+      //  bottom: 63%;
+      //  right: 28%;
+      //  width: 20rem;
+      //}
+  
+      &.spirale-6 {
+        bottom: 24%;
+        right: 11%;
+        width: 35rem;
+      }
     }
-
-    &.spirale-2 {
-      bottom: 51%;
-      right: 60%;
-      width: 15rem;
-    }
-
-    &.spirale-3 {
-      bottom: 47%;
-      right: -14%;
-      width: 38rem;
-    }
-
-    &.spirale-4 {
-      bottom: 3%;
-      right: 28%;
-      width: 30rem;
-    }
-  }
 }
 
 @keyframes spin {
@@ -2000,40 +2066,6 @@ $cyl-gold: #d4af37;
     transform: rotate(360deg);
   }
 }
-
-// Animation cartoon "zoom gag"
-@keyframes spiral-pop-zoom {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-
-  40% {
-    transform: scale(1.12) rotate(2deg);
-  }
-
-  60% {
-    transform: scale(1.04) rotate(-1deg);
-  }
-
-  80% {
-    transform: scale(1.08) rotate(1deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-
-// Hover spiral cartoon stretch (sans casser ton spin)
-//.contact-intro .spirale {
-//  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); // effet rebondi + fluide
-//
-//  &:hover {
-//    animation: spiral-pop-zoom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-//  }
-//}
-
 
 .cta-button {
   display: inline-block;
@@ -2096,7 +2128,6 @@ $gold: #d4af37;
   .footer__container {
     position: relative;
     z-index: 2;
-    // max-width: 1200px;
     margin: auto;
   }
 
@@ -2171,7 +2202,6 @@ $gold: #d4af37;
     display: flex;
     justify-content: center;
     gap: 0;
-    //margin-top: 2rem;
 
     a.social-icon {
       position: relative;
@@ -2280,6 +2310,23 @@ $gold: #d4af37;
   }
 }
 
+.mobile-only {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: inline;
+  }
+}
+
+.desktop-only {
+  display: inline;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+
 @keyframes spinBorder {
   0% {
     transform: rotate(0deg);
@@ -2368,7 +2415,7 @@ $gold: #d4af37;
       gap: 18px;
 
       .desktop-only {
-        display: none; // On masque le numéro
+        display: none;
       }
 
       .mobile-only {
@@ -2383,7 +2430,6 @@ $gold: #d4af37;
           line-height: 1;
         }
 
-        // ❌ On masque le texte du numéro (si présent)
         span,
         br {
           display: none;
@@ -2395,7 +2441,7 @@ $gold: #d4af37;
       gap: 25px;
 
       .sound-toggle {
-        display: none !important; // ❌ On supprime tout le bloc Son
+        display: none !important;
       }
 
       .menu-toggle {
@@ -2432,7 +2478,6 @@ $gold: #d4af37;
 @media (max-width: 340px) {
   .section-hero {
 
-    //margin-top: 1rem;
     .logo img {
       width: clamp(350px, 42vw, 792px);
     }
@@ -2526,10 +2571,10 @@ $gold: #d4af37;
         align-items: center;
         justify-content: flex-start;
         padding: 0;
-        position: absolute; // garde l’empilement !!
+        position: absolute;
         inset: 0;
         height: 62%;
-        pointer-events: none; // sera activé par JS
+        pointer-events: none;
         transform: none !important;
         z-index: auto !important;
 
@@ -2545,8 +2590,8 @@ $gold: #d4af37;
           text-align: center;
           display: flex;
           flex-direction: column;
-          align-items: center; // ✅ centre tous les enfants, y compris le bouton
-          gap: 1.5rem; // ✅ espace entre le texte et le bouton (optionnel)
+          align-items: center;
+          gap: 1.5rem;
 
           p {
             max-width: 100%;
@@ -2565,7 +2610,6 @@ $gold: #d4af37;
       }
     }
   }
-
 
   .section-stage {
     padding: 1rem 1rem 18rem 1rem;
@@ -2600,12 +2644,14 @@ $gold: #d4af37;
         right: 3rem;
         top: 2rem;
       }
-
-
     }
   }
 
   .contact-intro {
+
+    .cta-btn {
+      font-size: 16px;
+    }
     .spirale {
 
       &.spirale-1,
@@ -2643,7 +2689,7 @@ $gold: #d4af37;
 
     .contact-wrapper {
       line-height: 1.2;
-      padding: 5rem 1rem;
+      padding: 5rem 0.2rem;
     }
   }
 
@@ -2683,6 +2729,7 @@ $gold: #d4af37;
           }
         }
       }
+
       .img-wrapper {
         width: 360px;
       }
@@ -2695,9 +2742,9 @@ $gold: #d4af37;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-.section-intro {
-  .content {
-    padding-right: 0;
+  .section-intro {
+    .content {
+      padding-right: 0;
+    }
   }
-}
 }

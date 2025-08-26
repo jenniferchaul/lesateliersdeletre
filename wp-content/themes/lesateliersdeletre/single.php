@@ -5,11 +5,10 @@
 
   <div class="container open-book">
 
-    <!-- Colonne de gauche : date + titre + extrait -->
     <div class="book-left">
-          <div class="img-intro">
+      <div class="img-intro">
         <img src="<?= get_theme_file_uri('assets/images/logo_transparent.webp'); ?>" alt="logo" class="site-logo">
-    </div>
+      </div>
       <div class="post-meta">
         <span class="post-date"><?php echo get_the_date(); ?></span>
       </div>
@@ -23,8 +22,8 @@
       <?php endif; ?>
     </div>
 
-    <!-- Colonne de droite : contenu -->
-    <!-- Colonne de droite : contenu -->
+
+
     <div class="book-right">
       <article class="post-content">
         <?php if (has_post_thumbnail()) : ?>
@@ -38,11 +37,11 @@
         </div>
       </article>
 
-      <div class="scroll-hint" aria-hidden="true">
-        <span>&darr;</span>
-      </div>
+    <div class="back-to-blog">
+      <a href="<?= home_url('/blog'); ?>" class="btn-retour-articles">
+        ← Retour aux articles
+      </a>
     </div>
-
 
   </div>
 </section>

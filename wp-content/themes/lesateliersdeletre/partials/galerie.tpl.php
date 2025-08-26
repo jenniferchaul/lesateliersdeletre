@@ -16,15 +16,11 @@
     "<?= get_template_directory_uri(); ?>/assets/images/galerie10.png"
   ]'></div>
 
-
-  
-    <div class="button" id="cta-galerie-webgl">
-        <a href="<?= site_url('/galerie') ?>" class="circle-cta">
-            <span class="inner-circle"></span>
-            <span class="cta-text">Voir la Galerie</span>
-        </a>
-    </div>
-
+  <div class="button" id="cta-galerie-webgl">
+    <a href="<?= site_url('/galerie') ?>" class="circle-cta">
+      <span class="inner-circle"></span>
+      <span class="cta-text">Voir la Galerie</span>
+    </a>
+  </div>
 
 </section>
-

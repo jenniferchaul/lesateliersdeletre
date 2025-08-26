@@ -83,7 +83,7 @@
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 200px; // taille de base identique à ton image
+          width: 200px;
           height: 200px;
           border: 3px solid rgba(222, 196, 73, 0.7);
           border-radius: 50%;
@@ -128,7 +128,6 @@
       position: relative;
       z-index: 2;
       overflow-y: auto;
-      //height: 100%;
       padding-left: 22rem;
       width: 110vh;
       max-height: 80vh;
@@ -164,6 +163,16 @@
           line-height: 1.8;
           color: lighten($white, 15%);
           margin-bottom: 2rem;
+
+          &.splitting {
+            transform: translateY(30px);
+            will-change: transform, opacity;
+          }
+
+          &:hover {
+            color: $gold;
+            text-shadow: 0 0 8px rgba(222, 196, 73, 0.4);
+          }
 
           &:first-of-type::first-letter {
             font-size: 4rem;
@@ -265,13 +274,13 @@
 
         .outil-content {
           h3 {
-            font-size: 1.8rem;
+            font-size: 25px;
             margin-bottom: 1rem;
             margin-top: 4rem;
           }
 
           p {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1.6;
             margin-bottom: 1.2rem;
             text-align: left;

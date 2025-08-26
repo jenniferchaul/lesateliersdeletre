@@ -6,7 +6,7 @@ Template Name: Contact
 get_header();
 ?>
 
-<?php get_template_part('partials/hero.tpl'); ?>
+<!--<?php get_template_part('partials/hero.tpl'); ?>-->
 
 <section class="contact-page-art">
 

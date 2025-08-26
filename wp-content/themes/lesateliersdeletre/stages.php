@@ -5,10 +5,10 @@ Template Name: Stages
 get_header();
 ?>
 
-<?php get_template_part('partials/hero.tpl'); ?>
+<!--<?php get_template_part('partials/hero.tpl'); ?>-->
 
 <section class="stages-section">
-  <h2 class="section-title">Stages & ateliers à venir</h2>
+  <h2 class="section-title">Ateliers & Stages à venir</h2>
   <div class="stages-wrapper">
     <?php
     $today = date('Y-m-d');
@@ -73,7 +73,7 @@ get_header();
     ?>
   </div>
 
-  <h2 class="section-title">Stages & ateliers passés</h2>
+  <h2 class="section-title">Ateliers & Stages passés</h2>
   <div class="stages-wrapper">
     <?php
     $args_past = [

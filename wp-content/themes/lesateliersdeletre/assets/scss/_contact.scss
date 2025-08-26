@@ -78,7 +78,7 @@
 
     h2 {
       color: $gold;
-      font-size: 2rem;
+      font-size: 30px;
       margin-bottom: 1.5rem;
     }
 
@@ -95,13 +95,12 @@
       padding-left: 0;
     }
 
-    // Champs CF7 personnalisés
     .wpcf7-form {
 
       label {
         display: block;
-        font-size: 1.3rem;
-        margin-bottom: 0.4rem; // 👈 padding entre le label et le champ
+        font-size: 18px;
+        margin-bottom: 0.4rem; 
         color: lighten($white, 15%);
       }
 
@@ -155,19 +154,19 @@
   }
 
   .map-wrapper {
-  width: 100vw;
-  margin-top: 6rem;
-  margin-left: calc(-1 * (100vw - 100%) / 2); // pour forcer le plein écran même dans un container centré
-  position: relative;
+    width: 100vw;
+    margin-top: 6rem;
+    margin-left: calc(-1 * (100vw - 100%) / 2); 
+    position: relative;
 
-  iframe {
-    width: 100%;
-    height: 450px;
-    display: block;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-    filter: grayscale(1.01) brightness(0.8);
-  }
+    iframe {
+      width: 100%;
+      height: 450px;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      filter: grayscale(1.01) brightness(0.8);
+    }
   }
 
   @media (max-width: 900px) {
@@ -177,7 +176,6 @@
   }
 }
 
-// 🎞️ Animations
 @keyframes underline-grow {
   0% {
     width: 0;
@@ -206,7 +204,7 @@
 
 @media (max-width: 768px) {
   .contact-page-art {
-    padding: 5rem 4vw;
+    padding: 5rem 0.5rem;
 
     .contact-header {
       .section-title {
@@ -215,7 +213,7 @@
       }
 
       .contact-intro-page {
-        font-size: 1.4rem;
+        font-size: 20px;
         padding: 0 1rem;
       }
 

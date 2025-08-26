@@ -28,10 +28,9 @@ add_action('wp_enqueue_scripts', function () {
     THEME_VERSION
   );
 
-  // Google Fonts
   wp_enqueue_style(
     'google-fonts',
-    'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap',
+    'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap&family=Satisfy&display=swap',
     [],
     null
   );
@@ -43,7 +42,6 @@ add_action('wp_enqueue_scripts', function () {
     '5.15.4'
   );
 
-  // ✅ AOS (Animation on Scroll)
   wp_enqueue_style(
     'aos-css',
     'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css',
@@ -78,8 +76,8 @@ add_action('wp_enqueue_scripts', function () {
 
   wp_localize_script(
     'main-js',
-    'laeTheme',                     // 1 nom JS
-    ['uri' => get_template_directory_uri()]   // 2 string -> JS
+    'laeTheme',
+    ['uri' => get_template_directory_uri()]
   );
 
 
@@ -98,7 +96,6 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
-  // GSAP Core
   wp_enqueue_script(
     'gsap',
     'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js',
@@ -107,7 +104,6 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
-  // ScrollTrigger
   wp_enqueue_script(
     'gsap-scrolltrigger',
     'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js',
@@ -116,7 +112,6 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
-  // Splitting.js
   wp_enqueue_script(
     'splitting',
     'https://unpkg.com/splitting/dist/splitting.min.js',
@@ -125,7 +120,6 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
-  // Lenis (scroll fluide)
   wp_enqueue_script(
     'lenis',
     'https://unpkg.com/lenis@1.3.4/dist/lenis.min.js',
@@ -134,7 +128,6 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
-  // GLightbox
   wp_enqueue_style(
     'glightbox-css',
     'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css',
@@ -198,7 +191,6 @@ function jcdev_create_fake_posts()
     ]);
 
     if ($post_id && !is_wp_error($post_id)) {
-      // Associe une image à l’article (doit déjà être dans la médiathèque ou dans uploads)
       $upload_dir = wp_upload_dir();
       $image_path = get_template_directory() . '/assets/images/' . $images[$index];
 
@@ -226,30 +218,17 @@ add_action('after_setup_theme', 'jcdev_create_fake_posts');
 
 function lae_enqueue_effect_assets()
 {
-  // ✅ On NE charge PLUS Three.js ici car on l'importe en module dans le fichier
-  /*
-  wp_enqueue_script(
-    'three-js',
-    'https://unpkg.com/three@0.154.0/build/three.module.js',
-    [],
-    null,
-    true
-  );
-  */
 
-  // ✅ Notre effet custom – TOUT SE JOUE ICI
   wp_enqueue_script(
     'tube-effect',
     get_theme_file_uri('assets/js/tube-effect.js'),
-    [], // pas de dépendance
+    [],
     null,
     true
   );
 }
 add_action('wp_enqueue_scripts', 'lae_enqueue_effect_assets');
 
-
-// ✅ Ajoute le type="module" uniquement à notre script "tube-effect"
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
   if ($handle === 'tube-effect') {
     return '<script type="module" src="' . esc_url($src) . '"></script>';
@@ -297,7 +276,7 @@ function register_cpt_stage()
     'view_item' => 'Voir le stage',
     'search_items' => 'Rechercher un stage',
     'not_found' => 'Aucun stage trouvé',
-    'menu_name' => 'Stages & ateliers',
+    'menu_name' => 'Ateliers & Stages',
   ];
 
   $args = [
@@ -320,7 +299,7 @@ function ajouter_champs_stages()
     'infos_stages',
     'Informations du stage',
     'afficher_champs_stages',
-    'stage', // le slug de ton CPT
+    'stage',
     'normal',
     'default'
   );
@@ -387,7 +366,6 @@ function sauvegarder_champs_stages($post_id)
 }
 add_action('save_post', 'sauvegarder_champs_stages');
 
-// ➕ Champ "Type" : stage ou atelier
 function ajouter_champ_type_stage($post)
 {
   $type = get_post_meta($post->ID, '_stage_type', true);

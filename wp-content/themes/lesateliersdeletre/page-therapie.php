@@ -6,7 +6,7 @@ Template Name: Art-Thérapie
 get_header();
 ?>
 
-<?php get_template_part('partials/hero.tpl'); ?>
+<!--<?php get_template_part('partials/hero.tpl'); ?>-->
 
 
 <section class="art-therapie-section" id="art-therapie">

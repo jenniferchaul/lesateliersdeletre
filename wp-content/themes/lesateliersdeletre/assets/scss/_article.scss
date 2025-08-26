@@ -5,8 +5,8 @@
   position: relative;
   height: 150vh;
 
-    .img-intro {
-    display: flex;
+  .img-intro {
+    display: none;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -27,7 +27,6 @@
       }
     }
   }
-
 
   .container.open-book {
     display: grid;
@@ -51,8 +50,6 @@
     }
   }
 
-
-
   .book-left {
     z-index: 2;
     display: flex;
@@ -72,6 +69,9 @@
       font-size: 3rem;
       color: $gold;
       margin-bottom: 2rem;
+      font-family: $satisfy;
+      letter-spacing: 2px;
+      margin-top: 2rem;
     }
 
     .post-excerpt {
@@ -87,6 +87,46 @@
     }
   }
 
+  .back-to-blog {
+    margin-top: 3rem;
+    text-align: center;
+
+    .btn-retour-articles {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 2px solid $gold;
+      border-radius: 50px;
+      color: $gold;
+      font-size: 1.4rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background: $gold;
+        z-index: -1;
+        transition: width 0.5s ease-in-out;
+      }
+
+      &:hover {
+        color: $black; // ou $white selon ton design
+
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+
   .book-right {
     position: relative;
     z-index: 2;
@@ -94,8 +134,7 @@
     overflow-y: auto;
     height: 100%;
 
-    // 🎨 Scrollbar dorée personnalisée
-    scrollbar-width: thin; // Firefox
+    scrollbar-width: thin;
     scrollbar-color: $gold transparent;
 
     &::-webkit-scrollbar {
@@ -133,7 +172,19 @@
 
       p {
         margin-bottom: 2rem;
+
+        &.splitting {
+          transform: translateY(30px);
+          will-change: transform, opacity;
+        }
+
+        &:hover {
+          color: $gold;
+          text-shadow: 0 0 8px rgba(222, 196, 73, 0.4);
+        }
       }
+
+
 
       h2,
       h3,
@@ -151,7 +202,6 @@
         }
       }
 
-      // Lettrine
       p:first-of-type::first-letter {
         font-size: 4rem;
         font-weight: bold;
@@ -178,8 +228,6 @@
       }
     }
 
-
-
     @keyframes scroll-bounce {
 
       0%,
@@ -196,6 +244,7 @@
 
   @media (max-width: 900px) {
     height: auto;
+    padding: 1.5rem;
 
     .container.open-book {
       grid-template-columns: 1fr;
@@ -215,6 +264,28 @@
 
     .book-right {
       overflow-y: visible;
+
+      .post-body {
+        font-size: 18px;
+      }
+
+      .back-to-blog {
+        .btn-retour-articles {
+        font-size: 20px;
+        }
+      }
+    }
+    .book-left {
+      .post-excerpt {
+        max-width: 90%;
+
+        p {
+          font-size: 21px;
+        }
+      }
+      .post-title {
+        margin-bottom: 1rem;
+      }
     }
   }
 }

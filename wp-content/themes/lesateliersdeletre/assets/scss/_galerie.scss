@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   z-index: 9999;
   overflow: hidden;
   font-family: $montserrat;
@@ -96,6 +96,17 @@
   }
 }
 
+.galerie-indication {
+  font-size: 1.4rem;
+  color: lighten($white, 20%);
+  font-style: italic;
+  letter-spacing: 1px;
+  animation: fadeIn 2s ease-in-out;
+  display: block;
+  margin-top: 1rem;
+}
+
+
 
 body.menu-open {
   .photo-gallery {
@@ -108,19 +119,6 @@ body.menu-open {
     display: none !important;
   }
 }
-
-//.glightbox-container .gslide-image img {
-//  width: auto !important;
-//  height: auto !important;
-//  max-width: 90vw;
-//  max-height: 90vh;
-//  object-fit: contain !important;
-//  background-color: transparent;
-//  display: block;
-//  margin: 0 auto;
-//}
-
-
 
 @keyframes fall {
   0% {
@@ -150,7 +148,6 @@ body.menu-open {
   }
 }
 
-// Animations titre + texte
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -200,6 +197,11 @@ body.menu-open {
         letter-spacing: 1px;
         line-height: 1.1;
         padding: 0 1rem;
+        font-size: 19px;
+
+        .galerie-indication {
+          font-size: 17px;
+        }
       }
     }
 

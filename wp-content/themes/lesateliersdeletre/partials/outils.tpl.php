@@ -37,7 +37,7 @@
             </div>
 
             <div class="img-wrapper">
-              <a href="<?= site_url('/outils#labyrinthe') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/labyrinthe.jpg" alt="" class="" ;></a>
+                <a href="<?= site_url('/outils#labyrinthe') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/labyrinthe.jpg" alt="" class="" ;></a>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                     Le mandala invite à un recentrage profond et créatif, révélant nos émotions intérieures à travers une pratique apaisante et symbolique.
                 </p>
                 <div class="button">
-                    <a href="<?= site_url('/outils#mandala')?>" class="circle-cta">
+                    <a href="<?= site_url('/outils#mandala') ?>" class="circle-cta">
                         <span class="inner-circle"></span>
                         <span class="cta-text">En savoir plus</span>
                     </a>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="img-wrapper">
-                <a href="<?= site_url('/outils#mandala')?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/mandala2.jpg" alt="" class="" ;></a>
+                <a href="<?= site_url('/outils#mandala') ?>"> <img src="<?= get_template_directory_uri(); ?>/assets/images/mandala2.jpg" alt="" class="" ;></a>
             </div>
         </div>
 

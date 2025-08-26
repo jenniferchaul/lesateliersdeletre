@@ -2,30 +2,37 @@
   <div class="footer__container">
     <div class="footer__content">
 
-      <!-- Bloc coordonnées -->
       <div class="footer__bloc">
-          <div class="logo logo-main"><a href="<?= home_url('/') ?>">
-      <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" style="width: 18rem"; alt="Logo Les Ateliers de l’Être">
-    </a>
-  </div>
-        <p><i class="fas fa-phone-alt"></i> <a href="tel:+33768330615">07 68 33 06 15</a></p>
+        <div class="logo logo-main"><a href="<?= home_url('/') ?>">
+            <img src="<?= get_template_directory_uri(); ?>/assets/images/logo_transparent.webp" style="width: 18rem" ; alt="Logo Les Ateliers de l’Être">
+          </a>
+        </div>
+        <!-- Numéro pour mobile (cliquable) -->
+        <p class="mobile-only">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:+33768330615">07 68 33 06 15</a>
+        </p>
+
+        <!-- Numéro pour desktop (non cliquable) -->
+        <p class="desktop-only">
+          <i class="fas fa-phone-alt"></i> 07 68 33 06 15
+        </p>
+
         <p><i class="fas fa-envelope"></i> <a href="mailto:contact.les.ateliers.de.l.etre@gmail.com">contact.les.ateliers.de.l.etre@gmail.com</a></p>
         <p><i class="fas fa-map-marker-alt"></i> 79 Chemin du Mont de Milly - 71960 Prissé</p>
       </div>
 
-      <!-- Bloc réseaux sociaux -->
       <div class="footer__socials">
-        <a href="https://www.facebook.com/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61560824593856" aria-label="Facebook" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/direct/t/17844524064474566/" class="social-icon" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
         <a href="mailto:contact@lesateliersdeletre.fr" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
 
-      <!-- Bloc navigation rapide -->
       <nav class="footer__links">
-        <a href="<?= home_url('/arttherapie') ?>">L'Art-thérapie</a>
-        <a href="<?= home_url('/apropos') ?>">À Propos</a>
+        <a href="<?= home_url('/lart-therapie') ?>">L'Art-thérapie</a>
+        <a href="<?= home_url('/a-propos') ?>">À Propos</a>
         <a href="<?= home_url('/outils') ?>">Outils</a>
-        <a href="<?= home_url('stages') ?>">Stages & Ateliers</a>
+        <a href="<?= home_url('/stages') ?>">Ateliers & Stages</a>
         <a href="<?= home_url('/galerie') ?>">Galerie</a>
         <a href="<?= home_url('/blog') ?>">Blog</a>
         <a href="<?= home_url('/contact') ?>">Contact</a>
@@ -33,7 +40,6 @@
 
     </div>
 
-    <!-- Bas de page -->
     <div class="footer__bottom">
       <ul class="footer__roadmap">
         <li><a href="<?= home_url('/mentions-legales') ?>">Mentions légales</a></li>
@@ -51,7 +57,6 @@
   </div>
 </footer>
 
-
 <div id="back-to-top" aria-label="Remonter">
   <div class="mandala-button">
     <svg class="mandala-svg" viewBox="0 0 100 100">
@@ -63,12 +68,18 @@
   </div>
 </div>
 
-<!-- ✅ SCRIPTS (tu peux les virer du footer.php si mis ici) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
 
+<audio id="background-audio" preload="auto">
+  <source src="<?= get_template_directory_uri(); ?>/assets/audio/sound.mp3" type="audio/mpeg">
+</audio>
+
+
 <?php wp_footer(); ?>
+
 </body>
+
 </html>

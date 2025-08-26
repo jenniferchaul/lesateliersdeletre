@@ -262,16 +262,20 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
   new Splide('#avisSplide', {
     type: 'loop',
-    perPage: 2,
-    gap: '2rem',
+    perPage: 4, // ✅ 3 cards visibles max
+    gap: '0.5rem',
     autoplay: true,
-    interval: 2000,
+    interval: 4000,
     pauseOnHover: true,
-    breakpoints: { 768: { perPage: 1 } },
-    arrows: false,
+    arrows: true, // ✅ On active bien les flèches
     pagination: true,
+    breakpoints: {
+      1024: { perPage: 3 },
+      768: { perPage: 1 }
+    }
   }).mount();
 });
+
 
 
 
@@ -293,40 +297,137 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 11. Gestion du son (play / pause)  -----------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('soundToggle');
-  if (!btn) return;
+//document.addEventListener('DOMContentLoaded', () => {
+//  const btn = document.getElementById('soundToggle');
+//  if (!btn) return;
+//
+//  const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';   //  <-- chemin fiable
+//  const VOLUME = 0.4;
+//  const KEY = 'lae_music_on';
+//
+//  /* instance audio unique */
+//  const audio = new Audio(AUDIO_SRC);
+//  audio.loop = true;
+//  audio.volume = VOLUME;
+//
+//  let isPlaying = false;
+//
+//  /* ----------------- helpers */
+//  function play() { audio.play().catch(() => {/* ignore */ }); }
+//  function pause() { audio.pause(); }
+//  function updateUI() {
+//    btn.classList.toggle('muted', !isPlaying);           // pour l’anim des ondes
+//  }
+//
+//  /* ----------------- init */
+//  updateUI();
+//  if (isPlaying) play();
+//
+//  /* ----------------- toggle */
+//  btn.addEventListener('click', () => {
+//    isPlaying = !isPlaying;
+//    localStorage.setItem(KEY, isPlaying ? '1' : '0');
+//    updateUI();
+//    isPlaying ? play() : pause();
+//  });
+//});
 
-  const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';   //  <-- chemin fiable
+// --------------------------------------------------
+// AUDIO GLOBAL DIRECT EN JS (persistant entre pages)
+// --------------------------------------------------
+
+(function () {
+  const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';
   const VOLUME = 0.4;
   const KEY = 'lae_music_on';
 
-  /* instance audio unique */
+  if (window.lae_audio_initialized) return; // éviter double injection
+  window.lae_audio_initialized = true;
+
   const audio = new Audio(AUDIO_SRC);
   audio.loop = true;
   audio.volume = VOLUME;
+  document.laeAudio = audio; // optionnel, pour débug dans la console
 
-  let isPlaying = false;
+  let isPlaying = localStorage.getItem(KEY) === '1';
 
-  /* ----------------- helpers */
-  function play() { audio.play().catch(() => {/* ignore */ }); }
-  function pause() { audio.pause(); }
-  function updateUI() {
-    btn.classList.toggle('muted', !isPlaying);           // pour l’anim des ondes
+  function updateUI(btn) {
+    btn?.classList.toggle('muted', !isPlaying);
   }
 
-  /* ----------------- init */
-  updateUI();
-  if (isPlaying) play();
+  function playAudio() {
+    audio.play().catch(() => {});
+  }
 
-  /* ----------------- toggle */
-  btn.addEventListener('click', () => {
-    isPlaying = !isPlaying;
-    localStorage.setItem(KEY, isPlaying ? '1' : '0');
-    updateUI();
-    isPlaying ? play() : pause();
+  function pauseAudio() {
+    audio.pause();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('soundToggle');
+
+    updateUI(btn);
+
+    // Premier clic n'importe où : lance le son si activé
+    document.addEventListener('click', () => {
+      if (isPlaying) playAudio();
+    }, { once: true });
+
+    // Toggle bouton
+    if (btn) {
+      btn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        localStorage.setItem(KEY, isPlaying ? '1' : '0');
+        updateUI(btn);
+        isPlaying ? playAudio() : pauseAudio();
+      });
+    }
   });
+})();
+
+//
+
+const audio = document.getElementById('background-audio');
+
+// Stocker la position avant de quitter la page
+window.addEventListener('beforeunload', () => {
+  if (!audio.paused) {
+    sessionStorage.setItem('audioPosition', audio.currentTime);
+    sessionStorage.setItem('audioIsPlaying', 'true');
+  } else {
+    sessionStorage.setItem('audioIsPlaying', 'false');
+  }
 });
+
+// Au chargement de la page
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTime = sessionStorage.getItem('audioPosition');
+  const wasPlaying = sessionStorage.getItem('audioIsPlaying') === 'true';
+
+  if (savedTime && wasPlaying) {
+    audio.currentTime = parseFloat(savedTime);
+    audio.play().catch(() => {
+      // bloqué par navigateur tant que pas de clic
+    });
+  }
+});
+
+// Bouton on/off
+const soundToggle = document.getElementById('soundToggle');
+if (soundToggle) {
+  soundToggle.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      soundToggle.classList.remove('muted');
+    } else {
+      audio.pause();
+      soundToggle.classList.add('muted');
+    }
+  });
+}
+
+
+
 
 /* ==============================================================
    MENU BURGER : open / close + verrouillage scroll
