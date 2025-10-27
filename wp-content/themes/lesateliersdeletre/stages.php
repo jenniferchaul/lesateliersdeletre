@@ -15,7 +15,7 @@ get_header();
 
     $args_upcoming = [
       'post_type' => 'stage',
-      'posts_per_page' => -1,
+      'posts_per_page' => 5,
       'meta_key' => '_stage_date_debut',
       'orderby' => 'meta_value',
       'order' => 'ASC',

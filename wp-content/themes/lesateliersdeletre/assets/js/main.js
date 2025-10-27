@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
       loader.classList.add("fade-out");
       document.body.classList.add("loaded");
     }, 50); // un poil avant la fin du fade-out du cercle
-  }, 1000);
+  }, 900);
 });
 
 
@@ -258,26 +258,111 @@ window.addEventListener('scroll', () => {
   if (bg) bg.style.transform = `translateY(${(window.pageYOffset || 0) * 0.05}px)`;
 });
 
-// 8. Splide — avis clients
+// 8. Splide — avis clients (clamp + voir plus, adaptive loop)
 document.addEventListener('DOMContentLoaded', () => {
-  new Splide('#avisSplide', {
-    type: 'loop',
-    perPage: 4, // ✅ 3 cards visibles max
+  const root = document.getElementById('avisSplide');
+  if (!root) return;
+
+  // Compte les slides ORIGINAUX uniquement
+  const originalSlides = root.querySelectorAll('.splide__list > .splide__slide:not(.is-clone)');
+  const totalAvis = originalSlides.length;
+
+  const splideConfig = {
+    perPage: 4,
     gap: '0.5rem',
     autoplay: true,
     interval: 4000,
     pauseOnHover: true,
-    arrows: true, // ✅ On active bien les flèches
-    pagination: true,
-    breakpoints: {
-      1024: { perPage: 3 },
-      768: { perPage: 1 }
+    arrows: totalAvis > 1,
+    pagination: totalAvis > 1,
+    autoHeight: true,
+    updateOnMove: true,
+    breakpoints: { 
+      1024: { perPage: Math.min(totalAvis, 3) }, 
+      768: { perPage: 1 } 
     }
-  }).mount();
+  };
+
+  // Active loop SEULEMENT si assez d'avis pour remplir perPage
+  const maxPerPage = 4;
+  if (totalAvis >= maxPerPage) {
+    splideConfig.type = 'loop';
+  } else {
+    splideConfig.type = 'slide';
+    splideConfig.autoplay = false;
+    splideConfig.rewind = true;
+    splideConfig.perPage = totalAvis; // 🔥 Affiche exactement le nombre d'avis disponibles
+  }
+
+  const splide = new Splide(root, splideConfig).mount();
+
+  // Force un recalcul pour bien gérer les espacements
+  if (totalAvis < maxPerPage) {
+    setTimeout(() => splide.refresh(), 100);
+  }
+
+  // --- helpers ---
+  const debounce = (fn, d=120) => { let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),d); }; };
+
+  function isOverflowing(p) {
+    return p.scrollHeight > p.clientHeight + 1;
+  }
+
+  function initOriginalSlides() {
+    // Ne traite QUE les originaux
+    const slides = root.querySelectorAll('.splide__slide:not(.is-clone)');
+    slides.forEach((slide) => {
+      const card = slide.querySelector('.testimonial-card');
+      const p = card?.querySelector('.testimonial-content');
+      if (!p) return;
+
+      let btn = card.querySelector('.toggle-more');
+      const need = isOverflowing(p);
+
+      if (!need) {
+        if (btn) btn.style.display = 'none';
+      } else {
+        if (!btn) {
+          btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'toggle-more';
+          btn.textContent = 'Voir plus';
+          btn.setAttribute('aria-expanded', 'false');
+          p.insertAdjacentElement('afterend', btn);
+        } else {
+          btn.style.display = '';
+        }
+      }
+    });
+  }
+
+  // Init après mount
+  setTimeout(initOriginalSlides, 150);
+
+  // Click (délégation) — ignorer les clones
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('.toggle-more');
+    if (!btn) return;
+
+    const slide = btn.closest('.splide__slide');
+    if (slide && slide.classList.contains('is-clone')) return;
+
+    const card = btn.closest('.testimonial-card');
+    const p = card?.querySelector('.testimonial-content');
+    if (!p) return;
+
+    const expanded = p.classList.toggle('is-expanded');
+    btn.textContent = expanded ? 'Voir moins' : 'Voir plus';
+    btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+    requestAnimationFrame(() => splide.refresh());
+  });
+
+  // Recalcule au resize
+  window.addEventListener('resize', debounce(() => {
+    initOriginalSlides();
+  }, 150));
 });
-
-
-
 
 // 10. Fade-in section Contact
 document.addEventListener('DOMContentLoaded', () => {
@@ -295,42 +380,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-// 11. Gestion du son (play / pause)  -----------------------------
-//document.addEventListener('DOMContentLoaded', () => {
-//  const btn = document.getElementById('soundToggle');
-//  if (!btn) return;
-//
-//  const AUDIO_SRC = laeTheme.uri + '/assets/audio/sound.mp3';   //  <-- chemin fiable
-//  const VOLUME = 0.4;
-//  const KEY = 'lae_music_on';
-//
-//  /* instance audio unique */
-//  const audio = new Audio(AUDIO_SRC);
-//  audio.loop = true;
-//  audio.volume = VOLUME;
-//
-//  let isPlaying = false;
-//
-//  /* ----------------- helpers */
-//  function play() { audio.play().catch(() => {/* ignore */ }); }
-//  function pause() { audio.pause(); }
-//  function updateUI() {
-//    btn.classList.toggle('muted', !isPlaying);           // pour l’anim des ondes
-//  }
-//
-//  /* ----------------- init */
-//  updateUI();
-//  if (isPlaying) play();
-//
-//  /* ----------------- toggle */
-//  btn.addEventListener('click', () => {
-//    isPlaying = !isPlaying;
-//    localStorage.setItem(KEY, isPlaying ? '1' : '0');
-//    updateUI();
-//    isPlaying ? play() : pause();
-//  });
-//});
 
 // --------------------------------------------------
 // AUDIO GLOBAL DIRECT EN JS (persistant entre pages)
@@ -427,8 +476,6 @@ if (soundToggle) {
 }
 
 
-
-
 /* ==============================================================
    MENU BURGER : open / close + verrouillage scroll
    ============================================================== */
@@ -494,13 +541,13 @@ const introTL = gsap.timeline({
     trigger: "#intro-home",
     start: "top top",
     end: "+=200%",
-    scrub: true,
-    pin: true,
+    scrub: false,
+    pin: false,
   }
 });
 
 introTL.to("#intro-part", {
-  opacity: 0,
+  opacity: 1,
   ease: "power2.out",
   duration: 1,
 });
@@ -537,21 +584,76 @@ ScrollTrigger.create({
   }
 });
 
-document.querySelectorAll('.flip-arrow').forEach(arrow => {
-  arrow.addEventListener('click', (e) => {
-    const card = e.target.closest('.stage-card');
-    card.classList.toggle('flipped');
+
+
+// Stages – flip card (accessible + intuitif)
+document.addEventListener('DOMContentLoaded', () => {
+  const stageList = document.querySelector('.stage-list');
+  if (!stageList) return;
+
+  function openCard(card) {
+    const inner = card.querySelector('.stage-card-inner');
+    const back  = card.querySelector('.stage-card-back');
+    if (!inner || !back) return;
+    inner.classList.add('is-flipped');
+    card.classList.add('flipped');
+    back.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeCard(card) {
+    const inner = card.querySelector('.stage-card-inner');
+    const back  = card.querySelector('.stage-card-back');
+    if (!inner || !back) return;
+    inner.classList.remove('is-flipped');
+    card.classList.remove('flipped');
+    back.setAttribute('aria-hidden', 'true');
+  }
+
+  // Délégation d’événements (meilleure perf, moins de bindings)
+  stageList.addEventListener('click', (e) => {
+    const flipBtn = e.target.closest('.flip-trigger');
+    const closeBtn = e.target.closest('.close-arrow');
+    const front = e.target.closest('.stage-card-front');
+    const card  = e.target.closest('.stage-card');
+
+    if (!card) return;
+
+    if (flipBtn) {
+      e.preventDefault();
+      openCard(card);
+      return;
+    }
+
+    // clic sur toute la face avant (hors bouton déjà géré)
+    if (front && !flipBtn) {
+      e.preventDefault();
+      openCard(card);
+      return;
+    }
+
+    if (closeBtn) {
+      e.preventDefault();
+      closeCard(card);
+      return;
+    }
+  });
+
+  // clavier : Entrée/Espace ouvre quand le focus est sur la face avant
+  stageList.addEventListener('keydown', (e) => {
+    const front = e.target.closest('.stage-card-front');
+    const card  = e.target.closest('.stage-card');
+    if (front && card && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openCard(card);
+    }
+    // Échap ferme si la carte est ouverte
+    if (card && e.key === 'Escape' && card.classList.contains('flipped')) {
+      e.preventDefault();
+      closeCard(card);
+    }
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.close-arrow').forEach(close => {
-    close.addEventListener('click', () => {
-      const card = close.closest('.stage-card');
-      card.classList.remove('flipped');
-    });
-  });
-});
 
 
 document.addEventListener('DOMContentLoaded', () => {

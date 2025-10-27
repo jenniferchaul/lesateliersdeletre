@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="content content-intro" id="catherine-part">
+    <div class="content content-intro" id="catherine-part"  >
         <div>
             <div class="intro-title">
                 <h2>Catherine Revollon, <br> art-thérapeute</h2>

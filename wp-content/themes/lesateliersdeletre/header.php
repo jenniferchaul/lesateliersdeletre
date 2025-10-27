@@ -2,6 +2,10 @@
 <html lang="<?= get_bloginfo('language'); ?>">
 
 <head>
+  	<!-- Start cookieyes banner -->
+	<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/d08b7ebe351da6edc0400d0d/script.js"></script>
+	<!-- End cookieyes banner -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +24,7 @@
     <div id="loader">
       <div class="breathing-effect"></div>
       <div class="name-title">
-        <h1>Les Ateliers de l’Être</h1>
+        <h1>Les Ateliers de l’Être<span class="visually-hidden"> – Art-thérapie en Saône-et-Loire</span></h1>
         <h2>Catherine Revollon – Art-thérapeute</h2>
       </div>
     </div>
@@ -48,7 +52,7 @@
       <a href="mailto:contact.les.ateliers.de.l.etre@gmail.com" aria-label="Email">
         <i class="fas fa-envelope"></i>
       </a>
-      <a href="https://www.instagram.com/direct/t/17844524064474566/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/lesateliersdeletre/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-instagram"></i>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61560824593856" aria-label="Facebook" target="_blank" rel="noopener noreferrer">

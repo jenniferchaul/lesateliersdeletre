@@ -24,7 +24,7 @@
 
       <div class="footer__socials">
         <a href="https://www.facebook.com/profile.php?id=61560824593856" aria-label="Facebook" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/direct/t/17844524064474566/" class="social-icon" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/lesateliersdeletre/" class="social-icon" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
         <a href="mailto:contact@lesateliersdeletre.fr" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
 

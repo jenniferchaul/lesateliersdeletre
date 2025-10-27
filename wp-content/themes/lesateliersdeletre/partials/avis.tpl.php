@@ -9,62 +9,48 @@
       <ul class="splide__list">
 
         <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">💖</div>
-          <p class="testimonial-content">Une approche sensible et un accompagnement vraiment humain. Merci pour tout !</p>
+          <div class="avatar-circle">✨</div>
+          <p class="testimonial-content">Atelier partagé entre amies sous l'œil professionnel et bienveillant de Catherine, révélant un fort capital sympathie.
+            Juste dans son positionnement , Catherine nous laisse aller, à notre rythme, là où notre psyché a besoin de se retrouver.
+            Éducatrice Spécialisée, je travaille en lien avec beaucoup de familles, d'aidants.
+            J'encourage vivement toutes ces personnes, qui ne se rendent pas forcément compte de l'énergie et de l'abnégation qu'elles déploient, à pousser la porte des "Ateliers de l'être".
+            Vous y trouverez un cocon soyeux, une introspection positive de vous-même, permettant de consolider vos ressources existantes et de les transmettre davantage .✨</p>
+
+          <button class="toggle-more" type="button" aria-expanded="false" aria-controls="testimonial-1">
+            Voir plus
+          </button>
+
           <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Camille T.</p>
+          <p class="testimonial-author">— Sarah</p>
         </li>
 
         <li class="splide__slide testimonial-card">
           <div class="avatar-circle">🎨</div>
-          <p class="testimonial-content">Un univers graphique superbe, un site qui reflète parfaitement mon identité.</p>
+          <p class="testimonial-content">Une parenthèse douce et apaisante vécue avec Catherine.
+            Entre mandala, méditation et partage, cette journée a été un vrai moment de recentrage et de sérénité.
+            Catherine a cette présence bienveillante et apaisante qui met tout de suite en confiance. Elle sait nous accompagner avec justesse, sans jugement, dans un espace où l’on peut simplement être soi.
+
+            Une très belle expérience, remplie d’émotions positives et de belles énergies.
+            Je recommande à tous ceux qui ressentent le besoin de faire une pause, de se reconnecter à eux-mêmes et de prendre un vrai moment pour soi.</p>
+          <button class="toggle-more" type="button" aria-expanded="false" aria-controls="testimonial-2">
+            Voir plus
+          </button>
           <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Élodie R.</p>
+          <p class="testimonial-author">— Jennifer</p>
         </li>
 
         <li class="splide__slide testimonial-card">
           <div class="avatar-circle">🌿</div>
-          <p class="testimonial-content">Une vraie écoute, des idées originales, un rendu élégant et apaisant.</p>
-          <div class="stars">★★★★☆</div>
-          <p class="testimonial-author">— Nicolas V.</p>
-        </li>
+          <p class="testimonial-content">Un moment hors du temps durant lequel Catherine a su créer un véritable climat de confiance.
+            J’ai beaucoup apprécié la sérénité et l’apaisement qui se sont dégagés de cette journée.
+            Une expérience unique que je recommande vivement.</p>
 
-        <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">🌸</div>
-          <p class="testimonial-content">Un accompagnement tout en douceur, qui m’a permis de me reconnecter à moi-même.</p>
+          <button class="toggle-more" type="button" aria-expanded="false" aria-controls="testimonial-3">
+            Voir plus
+          </button>
           <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Sophie M.</p>
+          <p class="testimonial-author">— Lucie</p>
         </li>
-
-        <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">✨</div>
-          <p class="testimonial-content">Catherine a su créer un espace de confiance où je me suis sentie écoutée et comprise.</p>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Laura G.</p>
-        </li>
-
-        <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">🖌️</div>
-          <p class="testimonial-content">Une expérience unique, entre créativité et introspection. Je recommande vivement !</p>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Julien R.</p>
-        </li>
-
-        <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">🌼</div>
-          <p class="testimonial-content">J’ai découvert une nouvelle façon de m’exprimer à travers l’art. Une belle révélation !</p>
-          <div class="stars">★★★★☆</div>
-          <p class="testimonial-author">— Amandine P.</p>
-        </li>
-
-        <li class="splide__slide testimonial-card">
-          <div class="avatar-circle">🌈</div>
-          <p class="testimonial-content">Des ateliers riches, bienveillants et puissants. Merci pour ces moments hors du temps.</p>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-author">— Marc D.</p>
-        </li>
-
-
       </ul>
     </div>
 

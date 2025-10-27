@@ -398,6 +398,19 @@ header {
     font-size: 48px;
     color: #a4893e;
     margin: 0;
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
   h2 {
@@ -424,31 +437,31 @@ header {
     gap: 28px;
 
     .logo-navbar {
-  display: flex;
-  align-items: center;
+      display: flex;
+      align-items: center;
 
-  img {
-    //height: 60px;
-    width: 14rem;
-    //margin-right: 2rem;
-    filter: drop-shadow(0 0 5px rgba($gold, 0.3));
-    animation: floatLogo 4s ease-in-out infinite;
+      img {
+        //height: 60px;
+        width: 14rem;
+        //margin-right: 2rem;
+        filter: drop-shadow(0 0 5px rgba($gold, 0.3));
+        animation: floatLogo 4s ease-in-out infinite;
 
-    @media (max-width: 768px) {
-      //height: 50px;
-      display: none;
+        @media (max-width: 768px) {
+          //height: 50px;
+          display: none;
+        }
+      }
+
+      //@keyframes floatLogo {
+      //  0%, 100% {
+      //    transform: translateY(0);
+      //  }
+      //  50% {
+      //    transform: translateY(4px);
+      //  }
+      //}
     }
-  }
-
-  //@keyframes floatLogo {
-  //  0%, 100% {
-  //    transform: translateY(0);
-  //  }
-  //  50% {
-  //    transform: translateY(4px);
-  //  }
-  //}
-}
 
 
     .mobile-only {
@@ -779,13 +792,15 @@ header {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10rem 7rem 16rem;
+  //padding: 10rem 7rem 16rem;
+  padding: 10rem 7rem 8rem;
 
   .content {
     z-index: 2;
     font-family: $montserrat;
     display: flex;
-    margin-bottom: 3rem;
+    //margin-bottom: 3rem;
+    margin-bottom: 8rem;
     text-align: left;
     padding-right: 15rem;
 
@@ -976,6 +991,10 @@ header {
           color: $white;
           margin-bottom: 2rem;
           max-width: 60%;
+
+          strong {
+            color: $gold;
+          }
         }
 
         .button {
@@ -1082,6 +1101,23 @@ header {
   padding: 6rem 7rem 12rem;
   font-family: $montserrat;
   background: transparent;
+
+  .no-stage {
+    font-size: 1.8rem;
+    color: $gold;
+    text-align: center;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    //border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 80px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    font-family: $montserrat;
+    line-height: 1.5;
+  }
+
 
   .container-title {
     display: flex;
@@ -1220,8 +1256,10 @@ header {
 
     .close-arrow {
       position: absolute;
+      background-color: transparent;
+      border: none;
       top: 1rem;
-      right: 1rem;
+      right: 0;
       font-size: 3rem;
       color: $gold;
       cursor: pointer;
@@ -1308,6 +1346,44 @@ header {
       }
     }
   }
+
+  .flip-trigger {
+    margin-top: 2rem;
+    background: transparent;
+    border: 1px solid $gold;
+    color: $gold;
+    font-family: $montserrat;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.8rem 1.6rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    .flip-trigger__icon {
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+
+    .flip-trigger__text {
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      background: $gold;
+      color: $black;
+
+      .flip-trigger__icon {
+        transform: translateX(5px);
+      }
+    }
+  }
+
 
   @keyframes spinBorder {
     0% {
@@ -1628,6 +1704,7 @@ $white: #f8f8f8;
   padding: 7rem 2rem;
   text-align: center;
   font-family: $montserrat;
+  display: block;
 
   .testimonials-header {
     margin-bottom: 4rem;
@@ -1655,6 +1732,7 @@ $white: #f8f8f8;
 
   #avisSplide {
     position: relative;
+
     //padding: 4rem 0;
 
     .splide__track {
@@ -1674,6 +1752,7 @@ $white: #f8f8f8;
       flex-direction: column;
       align-items: center;
       transition: transform 0.3s ease;
+      margin-right: 112px !important;
 
       &:hover {
         transform: scale(1.04);
@@ -1682,7 +1761,7 @@ $white: #f8f8f8;
       .avatar-circle {
         width: 70px;
         height: 70px;
-        background: $gold;
+        background: #d4af3740;
         color: $bg-dark;
         font-size: 2rem;
         border-radius: 50%;
@@ -1714,35 +1793,35 @@ $white: #f8f8f8;
       }
     }
 
-.splide__arrows {
-  position: absolute;
-  top: 50%;
-  left: -2rem;
-  right: -2rem;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
+    .splide__arrows {
+      position: absolute;
+      top: 50%;
+      left: -2rem;
+      right: -2rem;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
 
-  .splide__arrow {
-    pointer-events: auto;
-    background-color: transparent;
-    border: 2px solid $gold;
-    color: $gold;
-    font-size: 1.8rem;
-    padding: 0.5rem 1rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 2;
-    backdrop-filter: blur(4px);
+      .splide__arrow {
+        pointer-events: auto;
+        background-color: transparent;
+        border: 2px solid $gold;
+        color: $gold;
+        font-size: 1.8rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 2;
+        backdrop-filter: blur(4px);
 
-    &:hover {
-      background-color: $gold;
-      color: $bg-dark;
+        &:hover {
+          background-color: $gold;
+          color: $bg-dark;
+        }
+      }
     }
-  }
-}
 
 
     .splide__pagination {
@@ -1771,9 +1850,12 @@ $white: #f8f8f8;
 }
 
 @keyframes float-text {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -2012,49 +2094,80 @@ $cyl-gold: #d4af37;
     }
   }
 
+  .spirale {
+    position: absolute;
+    animation: spin 40s linear infinite;
+    pointer-events: auto;
+    z-index: 1;
+    transform: rotate(15deg);
+
+    &.spirale-1 {
+      max-width: 82rem;
+      top: 31%;
+      left: -35%;
+    }
+
+    &.spirale-2 {
+      bottom: 71%;
+      right: 58%;
+      width: 15rem;
+    }
+
+    &.spirale-3 {
+      bottom: 47%;
+      right: -12%;
+      width: 38rem;
+    }
+
+    &.spirale-4 {
+      bottom: 1%;
+      right: 48%;
+      width: 42rem;
+    }
+
+    &.spirale-6 {
+      bottom: 18%;
+      right: 8%;
+      width: 35rem;
+    }
+  }
+
+}
+
+@media (max-width: 1550px) {
+  .contact-intro {
     .spirale {
-      position: absolute;
-      animation: spin 40s linear infinite;
-      pointer-events: auto;
-      z-index: 1;
-      transform: rotate(15deg);
-  
       &.spirale-1 {
-        max-width: 82rem;
+        max-width: 64rem;
         top: 31%;
         left: -35%;
       }
-  
+
       &.spirale-2 {
-        bottom: 49%;
+        bottom: 71%;
         right: 58%;
         width: 15rem;
       }
-  
+
       &.spirale-3 {
         bottom: 47%;
-        right: -14%;
+        right: -12%;
         width: 38rem;
       }
-  
+
       &.spirale-4 {
-        bottom: 1%;
+        bottom: -7%;
         right: 48%;
         width: 42rem;
       }
-  
-      //&.spirale-5 {
-      //  bottom: 63%;
-      //  right: 28%;
-      //  width: 20rem;
-      //}
-  
+
       &.spirale-6 {
-        bottom: 24%;
-        right: 11%;
+        bottom: 9%;
+        right: -1%;
         width: 35rem;
       }
     }
+  }
 }
 
 @keyframes spin {
@@ -2339,8 +2452,8 @@ $gold: #d4af37;
 
 #back-to-top {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 5.5rem;
+  right: 0.5rem;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -2652,6 +2765,7 @@ $gold: #d4af37;
     .cta-btn {
       font-size: 16px;
     }
+
     .spirale {
 
       &.spirale-1,
@@ -2748,3 +2862,86 @@ $gold: #d4af37;
     }
   }
 }
+
+// === Testimonials : clamp + "Voir plus" ===
+.testimonials {
+  #avisSplide {
+    .testimonial-card {
+      // Espace pour le bouton
+      .toggle-more {
+        margin-top: .4rem;
+        background: transparent;
+        border: 1px solid $gold;
+        color: $gold;
+        font-family: $montserrat;
+        font-size: .95rem;
+        padding: .45rem .9rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all .25s ease;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+
+        &:hover {
+          background: $gold;
+          color: $bg-dark;
+        }
+      }
+
+      .testimonial-content {
+        // Clamp par défaut
+        --lines: 6; // tu peux ajuster (ex. 5 ou 7)
+        display: -webkit-box;
+        -webkit-line-clamp: var(--lines);
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: relative;
+
+        // petit fondu en bas
+        &.is-clamped::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 3rem;
+          pointer-events: none;
+          background: linear-gradient(to bottom, rgba(29,22,0,0), #1d1600de 70%);
+        }
+
+        &.is-expanded {
+          display: block;
+          -webkit-line-clamp: unset;
+          &::after { display: none; }
+        }
+      }
+
+      // Responsive : un peu plus de lignes en mobile si tu veux
+      @media (max-width: 768px) {
+        .testimonial-content { --lines: 7; }
+      }
+    }
+  }
+}
+
+/* Splide: ne pas égaliser la hauteur de toutes les slides */
+#avisSplide {
+  .splide__list { align-items: flex-start; }  // évite que toutes s’étirent à la même hauteur
+  .splide__slide { height: auto !important; } // laisse chaque slide prendre sa hauteur naturelle
+}
+
+/* Fix espacement Splide en mode slide */
+#avisSplide.splide .splide__slide {
+  margin-right: 0.5rem;
+}
+
+#avisSplide.splide .splide__slide:last-child {
+  margin-right: 0;
+}
+
+/* Sécurité : cache les boutons sur les clones */
+.splide__slide.is-clone .toggle-more {
+  display: none !important;
+}
+

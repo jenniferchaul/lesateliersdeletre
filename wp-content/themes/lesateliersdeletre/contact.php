@@ -41,9 +41,10 @@ get_header();
   </div>
 
   <div class="map-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2755.057901353098!2d4.749143576759982!3d46.328544675354266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f3719d83711fcf%3A0xccc038def876fca5!2s79%20Chem.%20du%20Mont%20de%20Milly%2C%2071960%20Priss%C3%A9!5e0!3m2!1sfr!2sfr!4v1753195136588!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d688.76614275447!2d4.752177119293704!3d46.32841225681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f3719d9951d1e9%3A0x4b3b7b734344d1b7!2s6%20Lot.%20le%20Clos%20des%20M%C3%A9sanges%2C%2071960%20Priss%C3%A9!5e0!3m2!1sfr!2sfr!4v1756303171823!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
 </section>
 
 <?php get_footer(); ?>
+
